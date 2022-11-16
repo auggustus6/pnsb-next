@@ -1,0 +1,17 @@
+{
+  "name": "Paróquia Nossa Senhora do Brasil",
+  "short_name": "PNSB",
+  "icons": [
+    {
+      "src": "/img/favicon.ico",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#06092b",
+  "description": "Paróquia Nossa Senhora do Brasil",
+  "background_color": "#06092b",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}
