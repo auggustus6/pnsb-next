@@ -6,3 +6,9 @@ export const Wrapper = styled.main`
   min-height: 100vh;
   color: gray;
 `;
+
+export const BgSection = styled.main`
+  img{
+    width: 100vw !important;
+  }
+`

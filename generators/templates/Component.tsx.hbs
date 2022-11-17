@@ -1,8 +1,13 @@
+import { ReactNode } from "react";
 import * as S from './styles'
 
-const {{pascalCase name}} = () => (
+type {{pascalCase name}}Props = {
+  children?: ReactNode;
+}
+
+const {{pascalCase name}} = ({children}:{{pascalCase name}}Props) => (
   <S.Wrapper>
-    <h1>{{pascalCase name}}</h1>
+    {children}
   </S.Wrapper>
 )
 
