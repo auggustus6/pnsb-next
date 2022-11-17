@@ -12,4 +12,3 @@ export const MegaMenu = ({ children }: MegaMenuProps) => (
     </S.MegaMenuContent>
   </S.MegaMenu>
 );
-

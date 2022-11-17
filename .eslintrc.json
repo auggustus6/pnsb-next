@@ -37,14 +37,6 @@
     " @typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-empty-interface": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": false,
-        "trailingComma": "all",
-        "arrowParens": "always",
-        "endOfLine": "auto"
-      }
-    ]
+    "prettier/prettier": 0
   }
 }

@@ -8,7 +8,7 @@ export const Wrapper = styled.main`
 `;
 
 export const BgSection = styled.main`
-  img{
+  img {
     width: 100vw !important;
   }
-`
+`;
