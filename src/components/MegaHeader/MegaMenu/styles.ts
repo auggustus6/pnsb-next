@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import media from "styled-media-query";
 
 export const MegaMenu = styled.div`
   /* if the percentage is 100% the megamenu will fill all the screen width */
@@ -6,7 +7,7 @@ export const MegaMenu = styled.div`
 
   position: absolute;
   left: calc((100% - var(--width-percentage)) / 2);
-  top: 90px;
+  top: 100px;
 
   opacity: 0;
   visibility: hidden;
@@ -19,6 +20,15 @@ export const MegaMenu = styled.div`
   border: 1rem solid transparent;
 
   transition: ${(p) => p.theme.transition.default};
+
+  ::before{
+    content: '';
+    position: absolute;
+    top: -44px;
+    right: 0;
+    width: 100%;
+    height: 40px;
+  }
 `;
 
 export const MegaMenuContent = styled.div``;

@@ -10,12 +10,13 @@ type PageHeaderProps = {
 const PageHeader = ({ children, className }: PageHeaderProps) => (
   <Header>
     <Navigator>
+      <NavItem text="Home" href={""} />
       <NavItem text="Institucional" href={""}>
         <MegaMenu></MegaMenu>
       </NavItem>
-      <NavItem text="Home" href={""} />
-      <NavItem text="Institucional" href={""} />
-      <NavItem text="Pastorais" href={""} />
+      <NavItem text="Pastorais" href={""}>
+        <MegaMenu></MegaMenu>
+      </NavItem>
       <NavItem text="Mural Eventos" href={""} />
       <NavItem text="Noticias" href={""} />
       <NavItem text="Colabore" href={""} />

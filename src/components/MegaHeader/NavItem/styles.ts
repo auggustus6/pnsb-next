@@ -3,8 +3,6 @@ import styled from "styled-components";
 
 export const NavItem = styled.span`
   display: flex;
-  align-items: center;
-  height: 90px;
 
   &:hover {
     a::before {
@@ -35,6 +33,7 @@ export const NavItem = styled.span`
     padding: 0.6rem 1rem;
     border-radius: 2rem;
     color: white;
+    transition: all ${(p) => p.theme.transition.default};
 
     ::before {
       --width-size: 30px;
