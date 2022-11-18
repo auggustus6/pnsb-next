@@ -58,4 +58,8 @@ export default {
     default: "0.3s ease-in-out",
     fast: "0.1s ease-in-out",
   },
+  shadows: {
+    small: "0px 0px 10px 0px rgba(0, 0, 0, 0.25)",
+    cards: "0px 0px 30px 0px rgba(0, 0, 0, 0.25)",
+  },
 } as const;

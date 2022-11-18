@@ -1,19 +1,46 @@
+import { DefaultButton } from "components/Buttons";
 import Container from "components/Container";
 import Footer from "components/Footer";
-import Headerr from "components/Headerr";
 import PageHeader from "components/PageHeader";
+import BackGroundSection from "components/Sections/BackGroundSection";
 
-import Image from "next/image";
+import theme from "styles/theme";
 import * as S from "./styles";
 
 const HomeTemplate = () => (
   <S.Wrapper>
-    {/* <Headerr /> */}
     <PageHeader />
-    <S.BgSection>
-      <Image src="/img/bg-main.png" width={1440} height={623} />
-      <Container style={{ height: "90vh" }}></Container>
-    </S.BgSection>
+    <BackGroundSection img="/img/bg-main.png">
+      <h1>teste</h1>
+      <DefaultButton>SEJA UM DIZIMISTA</DefaultButton>
+      <DefaultButton
+        bgColor={theme.colors.green}
+        textColor={theme.colors.white}
+        onClick={() => alert(":D")}
+      >
+        SEJA UM DIZIMISTA
+      </DefaultButton>
+      <DefaultButton borderColor="blue" onClick={() => alert(":D")}>
+        SEJA UM DIZIMISTA
+      </DefaultButton>
+
+      {/* <DefaultButton
+        style={{ borderRadius: "3px" }}
+        borderColor={theme.colors.green}
+        onClick={() => alert(":D")}
+      >
+        SEJA UM DIZIMISTA
+      </DefaultButton>
+
+      <DefaultButton
+        height="2rem"
+        fontSize="0.8rem"
+        width="10rem"
+        onClick={() => alert(":D")}
+      >
+        SEJA UM DIZIMISTA
+      </DefaultButton> */}
+    </BackGroundSection>
     <Footer />
   </S.Wrapper>
 );

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import media from "styled-media-query";
+import { CgClose } from "react-icons/cg";
 
 export const MegaMenu = styled.div`
   /* if the percentage is 100% the megamenu will fill all the screen width */
@@ -21,8 +22,8 @@ export const MegaMenu = styled.div`
 
   transition: ${(p) => p.theme.transition.default};
 
-  ::before{
-    content: '';
+  ::before {
+    content: "";
     position: absolute;
     top: -44px;
     right: 0;
@@ -31,4 +32,7 @@ export const MegaMenu = styled.div`
   }
 `;
 
-export const MegaMenuContent = styled.div``;
+export const MegaMenuContent = styled.div`
+  position: relative;
+`;
+

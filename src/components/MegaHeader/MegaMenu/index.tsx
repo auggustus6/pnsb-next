@@ -3,6 +3,7 @@ import * as S from "./styles";
 
 type MegaMenuProps = {
   children?: ReactNode;
+
 };
 
 export const MegaMenu = ({ children }: MegaMenuProps) => (
