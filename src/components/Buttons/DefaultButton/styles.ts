@@ -13,6 +13,7 @@ export const Wrapper = styled.button<WrapperData>`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.4rem;
 
   border-radius: 30px;
 

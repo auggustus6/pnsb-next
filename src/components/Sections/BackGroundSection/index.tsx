@@ -14,7 +14,7 @@ const BackGroundSection = ({
   className,
   img,
   color = "white",
-  height = "686px",
+  height = "623px",
 }: BackGroundSectionProps) => (
   <S.Wrapper $height={height} $color={color} $img={img} className={className}>
     {children}

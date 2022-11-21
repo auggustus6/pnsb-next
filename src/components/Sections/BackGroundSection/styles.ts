@@ -10,8 +10,8 @@ export const Wrapper = styled.div<WrapperData>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: ${(p) => p.$height};
+  width: 100%;
+  min-height: ${(p) => p.$height};
 
   ${(p) =>
     p.$img &&
