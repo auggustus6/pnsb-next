@@ -10,7 +10,7 @@ export const Wrapper = styled.div<WrapperData>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   height: ${(p) => p.$height};
 
   ${(p) =>
