@@ -1,10 +1,10 @@
 import Link from "next/link";
 import * as S from "./styles";
 
-const Institutional = () => {
+const PastoralCategory = () => {
   return (
-    <S.Institutional>
-      <h6>INSTITUCIONAL</h6>
+    <S.Pastoral>
+      <h6>PASTORAIS</h6>
       <ul>
         <li>
           <Link href="/">Lorem</Link>
@@ -24,9 +24,12 @@ const Institutional = () => {
         <li>
           <Link href="/">Dolor sit amet</Link>
         </li>
+        <li>
+          <Link href="/">Dolor sit amet</Link>
+        </li>
       </ul>
-    </S.Institutional>
+    </S.Pastoral>
   );
 };
 
-export default Institutional;
+export default PastoralCategory;

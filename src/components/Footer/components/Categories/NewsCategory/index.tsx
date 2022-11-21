@@ -1,7 +1,7 @@
 import Link from "next/link";
 import * as S from "./styles";
 
-const News = () => {
+const NewsCategory = () => {
   return (
     <S.News>
       <h6>NOTÍCIAS</h6>
@@ -20,4 +20,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default NewsCategory;

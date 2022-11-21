@@ -1,10 +1,9 @@
 import Link from "next/link";
-import Institutional from "./Institutional";
-import MoraleOfEvents from "./MoraleOfEvents";
-import News from "./News";
-import Pastoral from "./Pastoral";
 import * as S from "./styles";
-
+import InstitutionalCategory from "./components/Categories/InstitutionalCategory";
+import PastoralCategory from "./components/Categories/PastoralCategory";
+import MoraleOfEventsCategory from "./components/Categories/MoraleOfEventsCategory";
+import NewsCategory from "./components/Categories/NewsCategory";
 const Footer = () => (
   <S.Wrapper>
     <S.ContainerFooter>
@@ -54,10 +53,10 @@ const Footer = () => (
           </S.ContainerItems>
         </S.WrapperContent>
         <S.WrapperLinks>
-          <Institutional />
-          <Pastoral />
-          <MoraleOfEvents />
-          <News />
+          <InstitutionalCategory />
+          <PastoralCategory />
+          <MoraleOfEventsCategory />
+          <NewsCategory />
         </S.WrapperLinks>
       </S.NavFooter>
     </S.ContainerFooter>

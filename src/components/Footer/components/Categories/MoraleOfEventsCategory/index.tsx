@@ -1,10 +1,10 @@
 import Link from "next/link";
 import * as S from "./styles";
 
-const Pastoral = () => {
+const MoraleOfEventsCategory = () => {
   return (
-    <S.Pastoral>
-      <h6>PASTORAIS</h6>
+    <S.Morale>
+      <h6>MURAL DE EVENTOS</h6>
       <ul>
         <li>
           <Link href="/">Lorem</Link>
@@ -28,8 +28,8 @@ const Pastoral = () => {
           <Link href="/">Dolor sit amet</Link>
         </li>
       </ul>
-    </S.Pastoral>
+    </S.Morale>
   );
 };
 
-export default Pastoral;
+export default MoraleOfEventsCategory;
