@@ -15,6 +15,7 @@ export const MyContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.6rem;
 `;
 
 export const MenuButton = styled(CgMenu)`
@@ -32,9 +33,6 @@ export const MenuButton = styled(CgMenu)`
 
   transition: all ${(p) => p.theme.transition.default};
 
-  &:active {
-    transform: scale(1.1);
-  }
 
   ${media.greaterThan("medium")`
       display: none;

@@ -1,9 +1,15 @@
 import Image from "next/image";
 import * as S from "./styles";
 
-const Logo = () => (
-  <S.Wrapper>
-    <Image src="/img/logo.png" width={92} height={92} />
+interface LogoProps {
+  height: number;
+  width: number;
+  className?: string;
+}
+
+const Logo = ({ height, width, className }: LogoProps) => (
+  <S.Wrapper $height={height} $width={width} className={className}>
+    <Image alt="" src="/img/logo.png" layout="fill" />
   </S.Wrapper>
 );
 

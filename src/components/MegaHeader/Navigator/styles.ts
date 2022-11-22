@@ -3,9 +3,12 @@ import styled from "styled-components";
 import media from "styled-media-query";
 
 export const Navigator = styled.nav<{ $isOpen: boolean }>`
+  --modal-width: 96vw;
+  --modal-height: 96vh;
   display: flex;
   align-items: center;
-  left: 100%;
+  left: ${(p) =>
+    p.$isOpen ? "calc((100vw - var(--modal-width)) / 2)" : "100%"};
 
   .not__show__arrow {
     a::before {
@@ -13,26 +16,21 @@ export const Navigator = styled.nav<{ $isOpen: boolean }>`
     }
   }
 
-  ${media.lessThan<{ $isOpen: boolean }>("medium")`
-    --modal-width: 96vw;
-    --modal-height: 96vh;
-
-    left: ${(p) =>
-      p.$isOpen ? "calc((100vw - var(--modal-width)) / 2)" : "100%"};
-    top: calc((100vh - var(--modal-height)) / 2);
-    
+  ${media.lessThan("medium", )`
+    position: fixed;
+    top: calc((100vh - var(--modal-height)) / 2);  
     transition: left ${(p) => p.theme.transition.default};
 
-    position: fixed;
-
+    display: flex;
+    flex-direction: column;
     width: var(--modal-width);
     height: var(--modal-height);
-
+    gap: 0.4rem;
+    padding: 4rem 1rem 1rem 1rem;
     border-radius: 10px;
 
     box-shadow: ${(p) => p.theme.shadows.default};
-
-    background: white;
+    background: white;  
   `}
 `;
 

@@ -11,7 +11,7 @@ export const Wrapper = styled.div<WrapperData>`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: ${(p) => p.$height};
+  min-height: ${(p) => p.$height};
 
   ${(p) =>
     p.$img &&

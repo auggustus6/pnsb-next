@@ -11,7 +11,7 @@ type HeaderProps = {
 export const Header = ({ children, className, onOpen }: HeaderProps) => (
   <S.Wrapper className={className}>
     <S.MyContainer>
-      <Logo />
+      <Logo height={68} width={102} />
       {children}
       <S.MenuButton onClick={() => onOpen && onOpen(true)} />
     </S.MyContainer>
