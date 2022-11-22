@@ -6,6 +6,7 @@ export const NavItem = styled.span`
   ${media.greaterThan("medium")`
     display: flex;
 
+
     &:hover {
       a::before {
         opacity: 1;
@@ -59,6 +60,8 @@ export const NavItem = styled.span`
         background-size: contain;
         background-repeat: no-repeat;
 
+        z-index: 10;
+
         transition: none;
 
         opacity: 0;
@@ -82,6 +85,7 @@ export const NavItem = styled.span`
       opacity: 1;
       visibility: visible;
     }
+
 
     a{
       color: ${(p) => p.theme.colors.primary};

@@ -6,10 +6,12 @@ type {{pascalCase name}}Props = {
   className?: string;
 }
 
-const {{pascalCase name}} = ({children, className}:{{pascalCase name}}Props) => (
-  <S.Wrapper className={className}>
-    {children}
-  </S.Wrapper>
-)
+const {{pascalCase name}} = ({children, className}:{{pascalCase name}}Props) => {
+  return(
+    <S.Wrapper className={className}>
+      {children}
+    </S.Wrapper>
+  )
+};
 
 export default {{pascalCase name}}

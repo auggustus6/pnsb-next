@@ -12,7 +12,7 @@ import * as S from "./styles";
 const HomeTemplate = () => (
   <S.Wrapper>
     <PageHeader />
-    <BackGroundSection img="/img/bg-main.png">
+    <BackGroundSection img="/img/bg-main.png" href="#">
       <S.BannerContent>
         <BannerRecentEvent />
         <BannerSchedule/>

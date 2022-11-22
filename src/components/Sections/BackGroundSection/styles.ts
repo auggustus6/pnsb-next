@@ -13,6 +13,8 @@ export const Wrapper = styled.div<WrapperData>`
   width: 100%;
   min-height: ${(p) => p.$height};
 
+  position: relative;
+
   ${(p) =>
     p.$img &&
     css`

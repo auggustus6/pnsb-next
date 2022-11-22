@@ -15,6 +15,8 @@ export const Wrapper = styled.button<WrapperData>`
   justify-content: center;
   gap: 0.4rem;
 
+  white-space: nowrap;
+
   border-radius: 30px;
 
   width: ${(p) => p.$width};
