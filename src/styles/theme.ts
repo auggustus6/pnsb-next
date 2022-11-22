@@ -32,7 +32,7 @@ export default {
     turquoise: "#2EC4C9",
     white: "#FFF",
     black: "#141414",
-    gray: "#8F8F8F",
+    gray: "#5F5F5F",
     lightGray: "#E5E5E5",
     dangerDark: "#f13003b",
     mainBg: "#141414",
