@@ -54,7 +54,8 @@ const GlobalStyles: GlobalStyleComponent<
   h5{
     font-size: 1.44rem;
   }
-  h5{
+  
+  h6{
     font-size: 1.2rem;
   }
   p{
@@ -67,6 +68,10 @@ const GlobalStyles: GlobalStyleComponent<
 
   input {
     outline:none;
+  }
+
+  ul {
+    list-style: none;
   }
 
   button {
