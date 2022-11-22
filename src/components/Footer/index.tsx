@@ -1,11 +1,8 @@
 import Link from "next/link";
 import * as S from "./styles";
-import InstitutionalCategory from "./components/Categories/InstitutionalCategory";
-import PastoralCategory from "./components/Categories/PastoralCategory";
-import MoraleOfEventsCategory from "./components/Categories/MoraleOfEventsCategory";
-import NewsCategory from "./components/Categories/NewsCategory";
 import FooterLinksSection from "./components/Categories/FooterLinksSection";
 import { useTheme } from "styled-components";
+import Image from "next/image";
 const Footer = () => {
   const theme = useTheme();
 
@@ -25,6 +22,32 @@ const Footer = () => {
 
   return (
     <S.Wrapper>
+      <S.Box>
+        <S.ContainerFooterLogo>
+          <S.ContentLogo>
+            <Image src="/img/logo.png" width={150} height={150} />
+            <S.ContentTexts>
+              <h6>Lorem Impsum dollor.</h6>
+              <p>Lorem Impsum dollor.</p>
+              <p>Lorem Impsum.</p>
+            </S.ContentTexts>
+          </S.ContentLogo>
+          <S.ContentInfos>
+            <S.Info>
+              <Image src="/img/icons/church.svg" width={29} height={29} />
+              <p>Rua Lorem Impsum dollor.</p>
+            </S.Info>
+            <S.Info>
+              <Image src="/img/icons/emailExample.svg" width={29} height={29} />
+              <p>(11) 9 9999-9999</p>
+            </S.Info>
+            <S.Info>
+              <Image src="/img/icons/Telephone.svg" width={29} height={29} />
+              <p>Rua Lorem Impsum dollor.</p>
+            </S.Info>
+          </S.ContentInfos>
+        </S.ContainerFooterLogo>
+      </S.Box>
       <S.ContainerFooter>
         <h5>
           <span>HORÁRIOS</span> DA SECRETARIA:
@@ -72,10 +95,6 @@ const Footer = () => {
             </S.ContainerItems>
           </S.WrapperContent>
           <S.WrapperLinks>
-            {/* <InstitutionalCategory />
-        <PastoralCategory />
-        <MoraleOfEventsCategory />
-        <NewsCategory /> */}
             <FooterLinksSection
               title="INSTITUCIONAL"
               titleColor={theme.colors.secondary}

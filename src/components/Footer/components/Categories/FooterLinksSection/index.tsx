@@ -20,11 +20,11 @@ const FooterLinksSection = ({
   seeMoreText,
 }: FooterLinksSection) => {
   return (
-    <S.Institutional>
+    <S.Institutional $color={titleColor}>
       <h6 style={{ color: titleColor }}>{title}</h6>
       <ul>
-        {links.map((link) => (
-          <li key={link.href}>
+        {links.map((link, index) => (
+          <li key={index}>
             <Link href={link.href}>{link.text}</Link>
           </li>
         ))}
