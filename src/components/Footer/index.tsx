@@ -21,7 +21,7 @@ const Footer = () => {
   ];
 
   return (
-    <S.Wrapper>
+    <S.Wrapper id="footer">
       <S.Box>
         <S.ContainerFooterLogo>
           <S.ContentLogo>

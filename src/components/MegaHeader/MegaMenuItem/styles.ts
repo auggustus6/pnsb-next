@@ -19,9 +19,23 @@ export const Row = styled.div`
   `}
 `;
 
-export const MobileTitle = styled.span`
+export const MobileTitle = styled.span<{$titleColor: string}>`
   display: none;
-  width: 100%;
+  width: 95%;
+  margin-left: 1rem;
 
-  color: red;
+  padding: 0.8rem 1rem;
+  color: ${(p) => p.$titleColor};
+
+  transition: ${(p) => p.theme.transition.fast};
+
+  border-radius: 10px;
+
+  ${media.lessThan("medium")`
+    display: flex;
+    &:hover{
+      background: ${(p) => p.theme.colors.green};
+      color: white;
+    }
+  `}
 `;

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ReactNode } from "react";
 import * as S from "./styles";
 
@@ -7,6 +8,7 @@ type MegaMenuItemProps = {
   title?: string;
   titleColor?: string;
   mobileHref?: string;
+  mobileTitleColor?: string;
 };
 
 const MegaMenuItem = ({
@@ -14,14 +16,17 @@ const MegaMenuItem = ({
   className,
   title,
   titleColor,
-}: MegaMenuItemProps) => (
-  <>
-    <S.MobileTitle className="mobile-show-when-hover">{title}</S.MobileTitle>
-    <S.Row className={className}>
-      {title && <h5 style={{ color: titleColor }}>{title}</h5>}
-      {children}
-    </S.Row>
-  </>
-);
+  mobileTitleColor = "gray",
+}: MegaMenuItemProps) => {
+  return (
+    <>
+      <S.MobileTitle $titleColor={mobileTitleColor}>{title}</S.MobileTitle>
+      <S.Row className={className}>
+        {title && <h5 style={{ color: titleColor }}>{title}</h5>}
+        {children}
+      </S.Row>
+    </>
+  );
+};
 
 export default MegaMenuItem;

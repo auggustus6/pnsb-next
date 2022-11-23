@@ -1,8 +1,9 @@
-import { ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
+import { NavItemProps } from "../NavItem";
 import * as S from "./styles";
 
-type NavigatorProps = {
-  children?: ReactNode;
+export type NavigatorProps = {
+  children?: ReactElement<NavItemProps> | ReactElement<NavItemProps>[];
   className?: string;
   isOpen: boolean;
   onClose?: (value: boolean) => void;

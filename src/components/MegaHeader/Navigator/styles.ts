@@ -29,8 +29,9 @@ export const Navigator = styled.nav<{ $isOpen: boolean }>`
     padding: 4rem 1rem 1rem 1rem;
     border-radius: 10px;
 
-    box-shadow: ${(p) => p.theme.shadows.default};
     background: white;  
+    box-shadow: ${(p) => p.theme.shadows.small};
+
   `}
 `;
 

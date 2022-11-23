@@ -44,7 +44,6 @@ export const MegaMenu = styled.div`
   }
 
   ${media.lessThan("medium")`
-    height: 100%;
     width: 100%;
     padding: 0;
     min-height: 0;
@@ -78,6 +77,8 @@ export const MegaMenuContent = styled.div`
   width: 100%;
   padding: 1rem;
 
+  gap: 1rem;
+
   ${media.lessThan("medium")`
     flex-direction: column;
     justify-content: flex-start;
@@ -91,10 +92,6 @@ export const MegaMenuContent = styled.div`
       padding: 0.6rem 0;
       width: 100%;
       padding-left: 1rem;
-    }
-
-    &:hover > .mobile-click{
-      display: block;
     }
   `}
 `;

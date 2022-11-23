@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ReactNode } from "react";
 import * as S from "./styles";
 
-type MegaMenuProps = {
+export type MegaMenuProps = {
   children?: ReactNode;
   imgSrc: string;
   style?: React.CSSProperties;

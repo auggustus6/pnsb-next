@@ -6,7 +6,6 @@ export const NavItem = styled.span`
   ${media.greaterThan("medium")`
     display: flex;
 
-
     &:hover {
       a::before {
         opacity: 1;
@@ -18,7 +17,8 @@ export const NavItem = styled.span`
         transition: all ${(p) => p.theme.transition.default};
       }
       & > a {
-        background: red;
+        background: ${(p) => p.theme.colors.primary};
+        color: white !important;
       }
     }
 
@@ -26,7 +26,7 @@ export const NavItem = styled.span`
       & > .megamenu {
         opacity: 1;
         visibility: visible;
-        top: 90px;
+        top: 88px;
       }
     }
 
@@ -77,22 +77,74 @@ export const NavItem = styled.span`
     align-items: flex-start;
     width: 100%;
 
+    cursor: pointer;
+
     font-size: 1.4rem;
 
     .megamenu{
       position: static;
-      display: block;
+      display: none;
       opacity: 1;
       visibility: visible;
     }
 
+    &:hover > .megamenu{
+      display: block;
+    }
 
-    a{
-      color: ${(p) => p.theme.colors.primary};
+    /* .megamenu span:hover{
+      background: red;
+    } */
+
+    & > a{
+      display: none;
     }
 
     a::before{
       content: none;
     }
+  `}
+`;
+
+export const MobileItem = styled.span`
+  position: relative;
+  display: none;
+  gap: 0.6rem;
+  align-items: center;
+
+  svg{
+    color: ${(p) => p.theme.colors.turquoise};
+    font-size: 30px;
+    transition: ${(p) => p.theme.transition.fast};
+  }
+
+  cursor: pointer;
+  width: 100%;
+  text-align: start;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+
+  transition: ${(p) => p.theme.transition.fast};
+
+  &:hover {
+    background: ${(p) => p.theme.colors.primary};
+    color: white;
+
+    .mobile__more__indicator{
+      transform: rotate(180deg);
+    }
+
+    svg{
+      color: white;
+    }
+  }
+
+  .mobile__more__indicator{
+    position: absolute;
+    right: 1rem;
+  }
+
+  ${media.lessThan("medium")`
+    display: flex;
   `}
 `;

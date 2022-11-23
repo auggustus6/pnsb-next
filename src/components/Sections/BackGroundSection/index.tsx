@@ -21,7 +21,7 @@ const BackGroundSection = ({
 }: BackGroundSectionProps) => (
   <S.Wrapper $height={height} $color={color} $img={img} className={className}>
     {children}
-    {href && <ArrowDownSection href={"#"} />}
+    {href && <ArrowDownSection href={href} />}
   </S.Wrapper>
 );
 

@@ -8,7 +8,7 @@ interface LogoProps {
 }
 
 const Logo = ({ height, width, className }: LogoProps) => (
-  <S.Wrapper $height={height} $width={width} className={className}>
+  <S.Wrapper href="/" $height={height} $width={width}>
     <Image alt="" src="/img/logo.png" layout="fill" />
   </S.Wrapper>
 );

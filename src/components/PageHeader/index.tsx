@@ -6,6 +6,17 @@ import { useWindowSize } from "hooks/useWindowSize";
 import { ReactNode, useEffect, useState } from "react";
 import { useTheme } from "styled-components";
 import * as S from "./styles";
+import {
+  AiOutlineHome as HomeIcon,
+  AiOutlineInfoCircle as InstitutionalIcon,
+} from "react-icons/ai";
+import { FaHandsHelping as CharityIcon } from "react-icons/fa";
+import {
+  BsCalendarEvent as EventsIcon,
+  BsPhone as ContactIcon,
+} from "react-icons/bs";
+import { ImNewspaper as NewsIcon } from "react-icons/im";
+import { GiReceiveMoney as CollaborateIcon } from "react-icons/gi";
 
 type PageHeaderProps = {
   children?: ReactNode;
@@ -24,8 +35,12 @@ const PageHeader = ({ children, className }: PageHeaderProps) => {
   return (
     <Header onOpen={setIsOpen}>
       <Navigator isOpen={isOpen} onClose={setIsOpen}>
-        <NavItem text="Home" href={""} />
-        <NavItem text="Institucional" href={""}>
+        <NavItem text="Home" href={""} mobileIcon={<HomeIcon />} />
+        <NavItem
+          text="Institucional"
+          href={""}
+          mobileIcon={<InstitutionalIcon />}
+        >
           <MegaMenu
             imgSrc="/img/foto-igreja.jpg"
             // style={{ visibility: "visible", opacity: 1 }}
@@ -90,14 +105,13 @@ const PageHeader = ({ children, className }: PageHeaderProps) => {
             </MegaMenuItem>
           </MegaMenu>
         </NavItem>
-        <NavItem text="Pastorais" href={""}>
-          <MegaMenu imgSrc="/img/logo.png">
-          </MegaMenu>
+        <NavItem text="Pastorais" href={""} mobileIcon={<CharityIcon />}>
+          <MegaMenu imgSrc="/img/logo.png"></MegaMenu>
         </NavItem>
-        <NavItem text="Mural Eventos" href={""} />
-        <NavItem text="Noticias" href={""} />
-        <NavItem text="Colabore" href={""} />
-        <NavItem text="Contato" href={""} />
+        <NavItem text="Mural Eventos" href={""} mobileIcon={<EventsIcon />} />
+        <NavItem text="Noticias" href={""} mobileIcon={<NewsIcon />} />
+        <NavItem text="Colabore" href={""} mobileIcon={<CollaborateIcon />} />
+        <NavItem text="Contato" href={""} mobileIcon={<ContactIcon />} />
       </Navigator>
     </Header>
   );

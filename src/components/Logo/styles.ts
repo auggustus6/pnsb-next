@@ -4,7 +4,8 @@ interface WrapperData {
   $width: number;
 }
 
-export const Wrapper = styled.div<WrapperData>`
+// substituir link next
+export const Wrapper = styled.a<WrapperData>`
   position: relative;
   height: ${(p) => p.$height}px;
   width: ${(p) => p.$width}px;
