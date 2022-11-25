@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import media from "styled-media-query";
 
 export const Wrapper = styled.div`
   width: 302px;
   height: 274px;
   padding: 0.4rem 0;
 
-  transition: ${(p) => p.theme.transition.default};
+  transition: transform ${(p) => p.theme.transition.default};
 
   cursor: pointer;
 
@@ -14,12 +15,23 @@ export const Wrapper = styled.div`
 
   img {
     border-radius: 10px;
-    border: 3px solid ${(p) => p.theme.colors.turquoise} !important;
+    /* border: 3px solid ${(p) => p.theme.colors.turquoise} !important; */
   }
 
   &:hover {
     transform: scale(1.05);
   }
+
+  ${media.lessThan("medium")`
+    width: 100%;
+    
+
+    & > img,& > span{
+      width: 96% !important;
+      height: 200px !important;
+
+    }
+  `}
 `;
 
 export const Content = styled.div`

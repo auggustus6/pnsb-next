@@ -1,0 +1,6 @@
+overwrite: true
+schema: "https://adm-pnsb-6h995.ondigitalocean.app/graphql"
+generates:
+  ./src/types.d.ts:
+    plugins:
+      - "typescript"

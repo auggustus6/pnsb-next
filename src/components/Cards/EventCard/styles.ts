@@ -1,13 +1,16 @@
 import styled from "styled-components";
+import media from "styled-media-query";
 
 export const Wrapper = styled.div`
   width: 302px;
   height: 400px;
   padding: 0.4rem 0;
 
+  position: relative;
+
   cursor: pointer;
 
-  transition: ${(p) => p.theme.transition.default};
+  transition: transform ${(p) => p.theme.transition.default};
 
   box-shadow: ${(p) => p.theme.shadows.small};
   border-radius: 10px;
@@ -19,6 +22,17 @@ export const Wrapper = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+
+  ${media.lessThan("medium")`
+    width: 100%;
+    
+
+    & > img,& > span{
+      width: 96% !important;
+      height: 274px !important;
+
+    }
+  `}
 `;
 
 export const Content = styled.div`
@@ -39,13 +53,14 @@ export const Content = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    span,time {
+    span,
+    time {
       display: flex;
       align-items: center;
       gap: 0.4rem;
     }
 
-    svg{
+    svg {
       margin-bottom: 0.2rem;
     }
   }

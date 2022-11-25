@@ -113,7 +113,7 @@ export const MobileItem = styled.span`
   align-items: center;
 
   svg{
-    color: ${(p) => p.theme.colors.turquoise};
+    color: ${(p) => p.theme.colors.primary};
     font-size: 30px;
     transition: ${(p) => p.theme.transition.fast};
   }

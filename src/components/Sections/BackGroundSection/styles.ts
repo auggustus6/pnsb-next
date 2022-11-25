@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import media from "styled-media-query";
 
 interface WrapperData {
   $img?: string;
@@ -12,6 +13,11 @@ export const Wrapper = styled.div<WrapperData>`
   justify-content: center;
   width: 100%;
   min-height: ${(p) => p.$height};
+
+
+  ${media.lessThan<WrapperData>("medium")`
+    display: flex;
+  `}
 
   position: relative;
 

@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import media from "styled-media-query";
 
 export const Wrapper = styled.div`
   width: 304px;
   height: 308px;
 
-  transition: ${(p) => p.theme.transition.default};
+  transition: transform ${(p) => p.theme.transition.default};
   box-shadow: ${(p) => p.theme.shadows.small};
 
   border-radius: 5px;
@@ -16,11 +17,22 @@ export const Wrapper = styled.div`
     font-weight: normal;
   }
 
-  img{
+  img {
     border-radius: 5px 5px 0 0;
   }
 
   &:hover {
     transform: scale(1.05);
   }
+
+  ${media.lessThan("medium")`
+    width: 100%;
+    
+
+    & > img,& > span{
+      width: 96% !important;
+      height: 268px !important;
+
+    }
+  `}
 `;
