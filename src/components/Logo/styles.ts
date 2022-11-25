@@ -1,4 +1,6 @@
+
 import styled from "styled-components";
+
 interface WrapperData {
   $height: number;
   $width: number;

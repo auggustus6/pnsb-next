@@ -12,7 +12,9 @@ const PastoralTemplate = ({ slug }: PastoraisTemplateProps) => {
       <Container
         style={{ height: "600px", display: "flex", alignItems: "center" }}
       >
-        <h1>SLUG: {slug}</h1>
+        <S.Wrapper>
+         <h1>SLUG: {slug}</h1>
+        </S.Wrapper>
       </Container>
     </DefaultLayout>
   );

@@ -1,6 +1,3 @@
-import styled from "styled-components";
-import media from "styled-media-query";
+import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div`
-  
-`
+export const Wrapper = styled.div``;
