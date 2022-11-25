@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import media from "styled-media-query";
 
 interface InstitutionalData {
   $color: string;
@@ -6,6 +7,12 @@ interface InstitutionalData {
 
 export const Institutional = styled.div<InstitutionalData>`
   text-align: left;
+
+  ${media.lessThan("small")`
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+  `}
 
   h6 {
     margin-bottom: 1rem;

@@ -13,7 +13,7 @@ const Footer = () => {
     { text: "Lorem ipsum", href: "/" },
     { text: "Ipsum dolor", href: "/" },
     { text: "Dolor sit amet", href: "/" },
-    { text: "Adipiscing elit. Integer placerat", href: "/" },
+    { text: "Adipiscing elit. ", href: "/" },
     { text: "Phasellus ac nisi et lig", href: "/" },
     { text: "Mattis lectus efficitur a.", href: "/" },
     { text: "Dolor sit amet", href: "/" },
@@ -25,7 +25,9 @@ const Footer = () => {
       <S.Box>
         <S.ContainerFooterLogo>
           <S.ContentLogo>
-            <Image src="/img/logo.png" width={150} height={150} />
+            <S.LogoImage>
+              <Image src="/img/logo.png" width={150} height={150} />
+            </S.LogoImage>
             <S.ContentTexts>
               <h6>Lorem Impsum dollor.</h6>
               <p>Lorem Impsum dollor.</p>
