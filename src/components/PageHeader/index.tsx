@@ -35,10 +35,10 @@ const PageHeader = ({ children, className }: PageHeaderProps) => {
   return (
     <Header onOpen={setIsOpen}>
       <Navigator isOpen={isOpen} onClose={setIsOpen}>
-        <NavItem text="Home" href={""} mobileIcon={<HomeIcon />} />
+        <NavItem text="Home" link={"/"} mobileIcon={<HomeIcon />} />
         <NavItem
           text="Institucional"
-          href={""}
+          link={"/"}
           mobileIcon={<InstitutionalIcon />}
         >
           <MegaMenu
@@ -105,13 +105,13 @@ const PageHeader = ({ children, className }: PageHeaderProps) => {
             </MegaMenuItem>
           </MegaMenu>
         </NavItem>
-        <NavItem text="Pastorais" href={""} mobileIcon={<CharityIcon />}>
+        <NavItem text="Pastorais" link={"/"} mobileIcon={<CharityIcon />}>
           <MegaMenu imgSrc="/img/logo.png"></MegaMenu>
         </NavItem>
-        <NavItem text="Mural Eventos" href={""} mobileIcon={<EventsIcon />} />
-        <NavItem text="Noticias" href={""} mobileIcon={<NewsIcon />} />
-        <NavItem text="Colabore" href={""} mobileIcon={<CollaborateIcon />} />
-        <NavItem text="Contato" href={""} mobileIcon={<ContactIcon />} />
+        <NavItem text="Mural Eventos" link={"/"} mobileIcon={<EventsIcon />} />
+        <NavItem text="Noticias" link={"/"} mobileIcon={<NewsIcon />} />
+        <NavItem text="Colabore" link={"/"} mobileIcon={<CollaborateIcon />} />
+        <NavItem text="Contato" link={"/"} mobileIcon={<ContactIcon />} />
       </Navigator>
     </Header>
   );

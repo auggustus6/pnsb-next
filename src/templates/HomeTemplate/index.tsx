@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import BreadCrumbs from "components/BreadCrumbs";
 import { DefaultButton } from "components/Buttons";
 import { EventCard, NewsCard, ShortcutCard } from "components/Cards";
 import Container from "components/Container";

@@ -12,7 +12,7 @@ type EventCardProps = {
 
 export const EventCard = ({ className }: EventCardProps) => {
   return (
-    <Link href={""}>
+    <Link href={"/"}>
       <S.Wrapper className={className}>
         <Image
           src={"/img/foto-igreja.jpg"}

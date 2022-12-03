@@ -31,7 +31,7 @@ const FooterLinksSection = ({
       </ul>
       {seeMoreHref && (
         <b>
-          <Link href={seeMoreHref}>{seeMoreText}</Link>
+          <Link href={seeMoreHref || ""}>{seeMoreText}</Link>
         </b>
       )}
     </S.Institutional>

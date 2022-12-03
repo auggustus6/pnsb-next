@@ -26,7 +26,7 @@ const BannerRecentEvent = ({ className }: BannerRecentEventProps) => {
             placerat ex quam, non mattis lectus efficitur a. Phasellus ac nisi
             et lig...
           </p>
-          <Link href={""}>Ver mais</Link>
+          <Link href={"/"}>Ver mais</Link>
         </S.Info>
       </S.RecentEventInfoContainer>
     </S.Wrapper>

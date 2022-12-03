@@ -8,14 +8,14 @@ import {RiArrowDownSFill} from 'react-icons/ri'
 
 export type NavItemProps = {
   children?: ReactElement<MegaMenuProps>;
-  href: string;
+  link: string;
   text: string;
   mobileIcon: ReactElement<IconType>;
 };
 
-export const NavItem = ({ children, href, text,mobileIcon }: NavItemProps) => (
+export const NavItem = ({ children, link, text,mobileIcon }: NavItemProps) => (
   <S.NavItem className={!children ? "not__show__arrow" : ""}>
-    <Link href={href}>{text}</Link>
+    <Link href={link}>{text}</Link>
     <S.MobileItem>{mobileIcon}{text}
     {children && <RiArrowDownSFill className="mobile__more__indicator"/>}
     </S.MobileItem>

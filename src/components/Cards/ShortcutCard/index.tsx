@@ -9,7 +9,7 @@ type ShortcutCardProps = {
 
 export const ShortcutCard = ({className }: ShortcutCardProps) => {
   return (
-    <Link href={""}>
+    <Link href={"/"}>
       <S.Wrapper className={className}>
       <Image
           src={"/img/bg-main.png"}
