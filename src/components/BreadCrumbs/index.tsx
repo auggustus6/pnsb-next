@@ -1,8 +1,6 @@
 import { useRouter } from "next/router";
 import * as S from "./styles";
 import { AiOutlineHome } from "react-icons/ai";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 import CustomNextLink from "components/CustomNextLink";
 
 type BreadCrumbsProps = {
@@ -30,7 +28,7 @@ const BreadCrumbs = ({ className }: BreadCrumbsProps) => {
       </CustomNextLink>
       <S.NextIcon />
       {breads.map((bread, i) => (
-        <div key={i} style={{display:"flex"}}>
+        <div key={bread} style={{display:"flex"}}>
           <CustomNextLink href={getLink(i)} key={bread}>
             {formatLink(bread)}
           </CustomNextLink>

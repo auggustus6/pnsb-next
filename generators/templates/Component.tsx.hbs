@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import * as S from './styles'
+import * as Styles from './styles'
 
 type {{pascalCase name}}Props = {
   children?: ReactNode;
@@ -8,9 +8,9 @@ type {{pascalCase name}}Props = {
 
 const {{pascalCase name}} = ({children, className}:{{pascalCase name}}Props) => {
   return(
-    <S.Wrapper className={className}>
+    <Styles.Wrapper className={className}>
       {children}
-    </S.Wrapper>
+    </Styles.Wrapper>
   )
 };
 

@@ -1,7 +1,6 @@
 import Footer from "components/Footer";
 import PageHeader from "components/PageHeader";
 import { ReactNode } from "react";
-import * as S from './styles'
 
 type DefaultLayoutProps = {
   children?: ReactNode;
