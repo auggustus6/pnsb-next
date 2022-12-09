@@ -32,11 +32,11 @@ export default {
     turquoise: "#2EC4C9",
     white: "#FFF",
     black: "#141414",
-    gray: "#5F5F5F",
+    gray: "#7B7B7B",
     lightGray: "#E5E5E5",
     dangerDark: "#f13003b",
-    mainBg: "#141414",
-    red: "#BC0000",
+    textColor: "#474747",
+    red: "#BC0000"
   },
   spacings: {
     xxsmall: "0.4rem",

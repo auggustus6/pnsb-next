@@ -5,6 +5,10 @@ export const Wrapper = styled.div`
   width: 302px;
   height: 274px;
   padding: 0.4rem 0;
+  text-align: center;
+  color: ${(p) => p.theme.colors.textColor};
+
+  transform: scale(1);
 
   transition: transform ${(p) => p.theme.transition.default};
 

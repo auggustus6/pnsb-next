@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement } from "react";
 import { NavItemProps } from "../NavItem";
 import * as S from "./styles";
 

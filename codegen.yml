@@ -1,6 +1,14 @@
 overwrite: true
 schema: "https://adm-pnsb-6h995.ondigitalocean.app/graphql"
+documents: "src/graphql/**/*.ts"
 generates:
-  ./src/types.d.ts:
+  ./src/graphql/generated/schema.ts:
     plugins:
       - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
+skipDocumentsValidation:
+  - skipDuplicateValidation

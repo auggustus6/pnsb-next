@@ -9,7 +9,7 @@ interface WrapperData {
 
 export const Wrapper = styled.header<WrapperData>`
   position: fixed;
-  z-index: 99;
+  z-index: ${(p) => p.theme.layers.menu};
   height: 90px;
   width: 100%;
   background: ${(p) => (p.$isOnTop ? "none" : "white")};
@@ -36,8 +36,8 @@ export const MyContainer = styled(Container)`
 `;
 
 export const MenuButton = styled(CgMenu)`
-  width: 46px;
-  height: 34px;
+  width: 40px;
+  height: 30px;
   margin-right: 1rem;
 
   border-radius: 5px;
@@ -45,8 +45,8 @@ export const MenuButton = styled(CgMenu)`
   cursor: pointer;
 
   background: white;
-  color: ${(p) => p.theme.colors.primary};
-  box-shadow: ${(p) => p.theme.shadows.small};
+  color: ${(p) => p.theme.colors.gray};
+  /* box-shadow: ${(p) => p.theme.shadows.small}; */
 
   transition: all ${(p) => p.theme.transition.default};
 

@@ -8,7 +8,7 @@ export const Navigator = styled.nav<{ $isOpen: boolean }>`
   display: flex;
   align-items: center;
   left: ${(p) =>
-    p.$isOpen ? "calc((100vw - var(--modal-width)) / 2)" : "100%"};
+    p.$isOpen ? "calc((100vw - var(--modal-width)) / 2)" : "105%"};
 
   .not__show__arrow {
     a::before {

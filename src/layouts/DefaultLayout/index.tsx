@@ -4,16 +4,19 @@ import { ReactNode } from "react";
 
 type DefaultLayoutProps = {
   children?: ReactNode;
-}
-
-const DefaultLayout = ({children}:DefaultLayoutProps) => {
-  return(
-    <>
-      <PageHeader />
-        {children}
-      <Footer />
-    </>
-  )
+  home?: boolean;
 };
 
-export default DefaultLayout
+const DefaultLayout = ({ children,home }: DefaultLayoutProps) => {
+  return (
+    <>
+      <PageHeader />
+      {!home && <div style={{paddingTop: "90px"}} />}
+
+      {children}
+      <Footer />
+    </>
+  );
+};
+
+export default DefaultLayout;

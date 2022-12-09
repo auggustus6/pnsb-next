@@ -10,10 +10,10 @@ const Container = styled.div`
     padding-left: calc(${theme.grid.gutter} / 2);
     padding-right: calc(${theme.grid.gutter} / 2);
     /* half of the padding in mobile */
-    ${media.lessThan("medium")`
+    /* ${media.lessThan("medium")`
       padding-left: calc(${theme.grid.gutter} / 4);
       padding-right: calc(${theme.grid.gutter} / 4);
-  `};
+  `}; */
   `}
 `;
 

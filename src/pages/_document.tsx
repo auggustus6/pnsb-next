@@ -47,6 +47,10 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap"
+            rel="stylesheet"
+          ></link>
           <link rel="shortcut icon" href="/img/favicon.ico" />
           <link rel="apple-touch-icon" href="/img/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />

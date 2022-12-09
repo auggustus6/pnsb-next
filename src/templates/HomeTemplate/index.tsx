@@ -8,6 +8,7 @@ import { SectionTitle } from "components/Labels";
 import PageHeader from "components/PageHeader";
 import BackGroundSection from "components/Sections/BackGroundSection";
 import { QR_HORARIOS_MISSAS } from "graphql/querys/HorariosMissa";
+import DefaultLayout from "layouts/DefaultLayout";
 import { useEffect } from "react";
 
 import theme from "styles/theme";
@@ -15,16 +16,17 @@ import BannerRecentEvent from "./components/BannerRecentEvent";
 import BannerSchedule from "./components/BannerSchedule";
 import * as S from "./styles";
 
+import { useHorariosMissasQuery } from "graphql/generated/schema";
+
 const HomeTemplate = () => {
-  const { error, loading, data } = useQuery(QR_HORARIOS_MISSAS);
+  const { error, loading, data } = useHorariosMissasQuery();
 
   useEffect(() => {
-    console.log(data?.horariosMissas?.data[0].attributes.Dia);
+    console.log(data);
   }, [data]);
 
   return (
-    <S.Wrapper>
-      <PageHeader />
+    <DefaultLayout home>
       <BackGroundSection img="/img/bg-main.png" href="#footer">
         <S.BannerContent>
           <BannerRecentEvent />
@@ -32,7 +34,7 @@ const HomeTemplate = () => {
         </S.BannerContent>
       </BackGroundSection>
 
-      <Container style={{paddingTop: "3rem"}}>
+      <Container style={{ paddingTop: "3rem" }}>
         <SectionTitle
           title={"Próximos eventos"}
           subtitle={"Eventos que ocorrerão nos próximos dias:"}
@@ -82,8 +84,7 @@ const HomeTemplate = () => {
         <ShortcutCard />
         <ShortcutCard />
       </Container>
-      <Footer />
-    </S.Wrapper>
+    </DefaultLayout>
   );
 };
 

@@ -1,13 +1,6 @@
 import styled from "styled-components";
 import media from "styled-media-query";
 
-export const Wrapper = styled.main`
-  background-color: white;
-  text-align: center;
-  min-height: 100vh;
-  color: gray;
-`;
-
 export const BannerContent = styled.div`
   display: flex;
   justify-content: space-evenly;

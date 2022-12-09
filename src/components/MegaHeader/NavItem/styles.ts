@@ -60,7 +60,7 @@ export const NavItem = styled.span`
         background-size: contain;
         background-repeat: no-repeat;
 
-        z-index: 10;
+        z-index: ${(p) => p.theme.layers.menu};
 
         transition: none;
 

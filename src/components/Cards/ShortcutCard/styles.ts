@@ -4,6 +4,9 @@ import media from "styled-media-query";
 export const Wrapper = styled.div`
   width: 304px;
   height: 308px;
+  text-align: center;
+  transform: scale(1);
+  color: ${(p) => p.theme.colors.textColor};
 
   transition: transform ${(p) => p.theme.transition.default};
   box-shadow: ${(p) => p.theme.shadows.small};

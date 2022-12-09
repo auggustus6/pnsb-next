@@ -24,12 +24,13 @@ export const PaginationItem = styled.span<PaginationItemData>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  user-select: none;
 
   @media (max-width: ${BREAKPOINTS["medium"]}) {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
 
   cursor: pointer;

@@ -5,8 +5,11 @@ export const Wrapper = styled.div`
   width: 302px;
   height: 400px;
   padding: 0.4rem 0;
+  text-align: center;
+  color: ${(p) => p.theme.colors.textColor};
 
   position: relative;
+  transform: scale(1);
 
   cursor: pointer;
 
@@ -46,6 +49,17 @@ export const Content = styled.div`
   h6 {
     font-weight: normal;
     color: ${(p) => p.theme.colors.primary};
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   div {

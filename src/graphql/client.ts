@@ -10,7 +10,14 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 });
 
-const link = from([errorLink, new HttpLink({ uri: process.env.GRAPHQL_URI })]);
+const link = from([
+  errorLink,
+  new HttpLink({ uri: process.env.NEXT_PUBLIC_GRAPHQL_URI }),
+]);
+// const link = from([
+//   errorLink,
+//   new HttpLink({ uri: "https://adm-pnsb-6h995.ondigitalocean.app/graphql" }),
+// ]);
 
 const client = new ApolloClient({
   link: link,
