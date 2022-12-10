@@ -16,14 +16,12 @@ import BannerRecentEvent from "./components/BannerRecentEvent";
 import BannerSchedule from "./components/BannerSchedule";
 import * as S from "./styles";
 
-import { useHorariosMissasQuery } from "graphql/generated/schema";
-
 const HomeTemplate = () => {
-  const { error, loading, data } = useHorariosMissasQuery();
+  // const { error, loading, data } = useHorariosMissasQuery();
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
 
   return (
     <DefaultLayout home>

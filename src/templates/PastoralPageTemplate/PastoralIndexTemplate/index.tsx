@@ -11,15 +11,13 @@ import { useEffect, useState } from "react";
 import theme from "styles/theme";
 import * as Styles from "./styles";
 
-import { usePastoraisQuery } from "graphql/generated/schema";
-
 const PastoralIndexTemplate = () => {
   const [paginationIndex, setPaginationIndex] = useState(0);
-  const { error, loading, data } = usePastoraisQuery();
+  // const { error, loading, data } = usePastoraisQuery();
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
 
   return (
     <DefaultLayout>

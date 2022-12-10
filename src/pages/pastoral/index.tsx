@@ -4,3 +4,5 @@ import PastoraisIndexTemplate from "templates/PastoralPageTemplate/PastoralIndex
 export default function Pastorais() {
   return <PastoraisIndexTemplate />;
 }
+
+

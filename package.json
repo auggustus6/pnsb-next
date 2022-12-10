@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "graphql-codegen --config codegen.yml && next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint src --max-warnings=0",
@@ -23,6 +23,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.6.0",
+    "react-markdown": "^8.0.4",
     "styled-components": "5.3.3",
     "styled-media-query": "^2.1.2",
     "sweetalert2": "^11.6.15"

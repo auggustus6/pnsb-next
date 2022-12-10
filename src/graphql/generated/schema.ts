@@ -1,11 +1,9 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -1522,110 +1520,7 @@ export type PastoraisQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type PastoraisQuery = { __typename?: 'Query', pastorals?: { __typename?: 'PastoralEntityResponseCollection', data: Array<{ __typename?: 'PastoralEntity', attributes?: { __typename?: 'Pastoral', Titulo: string, Descricao: string, Slug: string, Responsavel: string, Video?: string | null, publishedAt?: any | null, Galeria?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null }> } | null, Imagem?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null }> } | null };
 
-export const Fr_Horarios_MissasFragmentDoc = gql`
-    fragment FR_HORARIOS_MISSAS on HorariosMissa {
-  Dia
-}
-    `;
-export const Fr_PastoraisFragmentDoc = gql`
-    fragment FR_PASTORAIS on Pastoral {
-  Titulo
-  Descricao
-  Galeria {
-    data {
-      attributes {
-        url
-        alternativeText
-      }
-    }
-  }
-  Slug
-  Imagem {
-    data {
-      attributes {
-        url
-        alternativeText
-      }
-    }
-  }
-  Responsavel
-  Video
-  publishedAt
-}
-    `;
-export const HorariosMissasDocument = gql`
-    query HorariosMissas {
-  horariosMissas {
-    data {
-      attributes {
-        ...FR_HORARIOS_MISSAS
-      }
-    }
-  }
-}
-    ${Fr_Horarios_MissasFragmentDoc}`;
-
-/**
- * __useHorariosMissasQuery__
- *
- * To run a query within a React component, call `useHorariosMissasQuery` and pass it any options that fit your needs.
- * When your component renders, `useHorariosMissasQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useHorariosMissasQuery({
- *   variables: {
- *   },
- * });
- */
-export function useHorariosMissasQuery(baseOptions?: Apollo.QueryHookOptions<HorariosMissasQuery, HorariosMissasQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<HorariosMissasQuery, HorariosMissasQueryVariables>(HorariosMissasDocument, options);
-      }
-export function useHorariosMissasLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HorariosMissasQuery, HorariosMissasQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<HorariosMissasQuery, HorariosMissasQueryVariables>(HorariosMissasDocument, options);
-        }
-export type HorariosMissasQueryHookResult = ReturnType<typeof useHorariosMissasQuery>;
-export type HorariosMissasLazyQueryHookResult = ReturnType<typeof useHorariosMissasLazyQuery>;
-export type HorariosMissasQueryResult = Apollo.QueryResult<HorariosMissasQuery, HorariosMissasQueryVariables>;
-export const PastoraisDocument = gql`
-    query Pastorais {
-  pastorals {
-    data {
-      attributes {
-        ...FR_PASTORAIS
-      }
-    }
-  }
-}
-    ${Fr_PastoraisFragmentDoc}`;
-
-/**
- * __usePastoraisQuery__
- *
- * To run a query within a React component, call `usePastoraisQuery` and pass it any options that fit your needs.
- * When your component renders, `usePastoraisQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = usePastoraisQuery({
- *   variables: {
- *   },
- * });
- */
-export function usePastoraisQuery(baseOptions?: Apollo.QueryHookOptions<PastoraisQuery, PastoraisQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PastoraisQuery, PastoraisQueryVariables>(PastoraisDocument, options);
-      }
-export function usePastoraisLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PastoraisQuery, PastoraisQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PastoraisQuery, PastoraisQueryVariables>(PastoraisDocument, options);
-        }
-export type PastoraisQueryHookResult = ReturnType<typeof usePastoraisQuery>;
-export type PastoraisLazyQueryHookResult = ReturnType<typeof usePastoraisLazyQuery>;
-export type PastoraisQueryResult = Apollo.QueryResult<PastoraisQuery, PastoraisQueryVariables>;
+export const Fr_Horarios_MissasFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"FR_HORARIOS_MISSAS"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"HorariosMissa"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Dia"}}]}}]} as unknown as DocumentNode<Fr_Horarios_MissasFragment, unknown>;
+export const Fr_PastoraisFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"FR_PASTORAIS"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Pastoral"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Titulo"}},{"kind":"Field","name":{"kind":"Name","value":"Descricao"}},{"kind":"Field","name":{"kind":"Name","value":"Galeria"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"Slug"}},{"kind":"Field","name":{"kind":"Name","value":"Imagem"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"Responsavel"}},{"kind":"Field","name":{"kind":"Name","value":"Video"}},{"kind":"Field","name":{"kind":"Name","value":"publishedAt"}}]}}]} as unknown as DocumentNode<Fr_PastoraisFragment, unknown>;
+export const HorariosMissasDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"HorariosMissas"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"horariosMissas"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"FR_HORARIOS_MISSAS"}}]}}]}}]}}]}},...Fr_Horarios_MissasFragmentDoc.definitions]} as unknown as DocumentNode<HorariosMissasQuery, HorariosMissasQueryVariables>;
+export const PastoraisDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Pastorais"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pastorals"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"FR_PASTORAIS"}}]}}]}}]}}]}},...Fr_PastoraisFragmentDoc.definitions]} as unknown as DocumentNode<PastoraisQuery, PastoraisQueryVariables>;

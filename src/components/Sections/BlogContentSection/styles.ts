@@ -21,11 +21,16 @@ export const Title = styled.h1``;
 export const PostInfo = styled.div`
   text-align: center;
   margin-top: 0.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   color: ${(p) => p.theme.colors.gray};
 
   span {
     margin: 0 0.5rem;
+  }
+
+  svg{
+    margin-bottom: -2px;
+    margin-right: 0.2rem;
   }
 `;
 
