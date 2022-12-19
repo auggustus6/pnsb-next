@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components";
 import media from "styled-media-query";
+import { colorsType } from "..";
 
 interface WrapperData {
   $img?: string;
-  $color?: string;
+  $color: keyof colorsType;
   $height: string;
 }
 
@@ -13,7 +14,7 @@ export const Wrapper = styled.div<WrapperData>`
   justify-content: center;
   width: 100%;
   min-height: ${(p) => p.$height};
-
+  background-color: ${(p) => p.theme.colors[p.$color]};
 
   ${media.lessThan<WrapperData>("medium")`
     display: flex;
@@ -27,11 +28,5 @@ export const Wrapper = styled.div<WrapperData>`
       background-image: url(${p.$img});
       background-position: center;
       background-size: cover;
-    `};
-
-  ${(p) =>
-    p.$color &&
-    css`
-      background-color: ${p.color};
     `};
 `;

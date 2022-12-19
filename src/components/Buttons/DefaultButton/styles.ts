@@ -15,11 +15,16 @@ export const Wrapper = styled.button<WrapperData>`
   justify-content: center;
   gap: 0.4rem;
 
+  line-height: 1;
   white-space: nowrap;
+  font-weight: 700;
+
+  transition: all ${(p) => p.theme.transition.default};
 
   border-radius: 30px;
 
-  width: ${(p) => p.$width};
+  max-width: ${(p) => p.$width};
+  width: 100%;
   height: ${(p) => p.$height};
   font-size: ${(p) => p.$fontSize};
 
@@ -39,6 +44,6 @@ export const Wrapper = styled.button<WrapperData>`
     `};
 
   &:hover {
-    filter: brightness(1.1);
+    opacity: 0.8;
   }
 `;

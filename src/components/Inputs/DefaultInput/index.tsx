@@ -4,8 +4,13 @@ import * as Styles from "./styles";
 type DefaultInputProps = {
   className?: string;
   state: string;
-  setState: (value: string) => void;
+  setState: any;
   inputLabel: string;
+  name: string;
+  error: {
+    error: string;
+    touched: boolean;
+  };
 };
 
 export const DefaultInput = ({
@@ -13,16 +18,23 @@ export const DefaultInput = ({
   state,
   setState,
   inputLabel,
+  name,
+  error,
 }: DefaultInputProps) => {
   return (
-    <Styles.Wrapper className={className}>
+    <Styles.Wrapper
+      className={className}
+      $error={error.error && error.touched ? true : false}
+    >
       <input
         type="text"
-        id={inputLabel}
+        id={name}
+        name={name}
         value={state}
-        onChange={(e) => setState(e.target.value)}
+        onChange={setState}
       />
-      <label htmlFor={inputLabel}>{inputLabel}</label>
+      <label htmlFor={name}>{inputLabel}</label>
+      {error.error && error.touched && <span>{error.error}</span>}
     </Styles.Wrapper>
   );
 };

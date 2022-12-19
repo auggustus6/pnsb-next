@@ -11,6 +11,7 @@ type ModalProps = {
 
 const Modal = ({ children, className, style, modalName }: ModalProps) => {
   const closeRef = useRef<HTMLDivElement>(null);
+  const [isTouch, setIsTouch] = useState(false);
   const { toggleModal, modals, closeAllModals } = useModal();
 
   const closeModal = (evt: any) => {
@@ -36,7 +37,7 @@ const Modal = ({ children, className, style, modalName }: ModalProps) => {
         <Styles.Wrapper
           className={className}
           style={style}
-          onMouseUp={closeModal}
+          onMouseDown={closeModal}
           ref={closeRef}
         >
           {children}

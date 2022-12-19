@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import * as S from "./styles";
 import { AiOutlineHome } from "react-icons/ai";
 import CustomNextLink from "components/CustomNextLink";
+import { urlToTitle } from "utils/format";
 
 type BreadCrumbsProps = {
   className?: string;
@@ -16,8 +17,6 @@ const BreadCrumbs = ({ className }: BreadCrumbsProps) => {
   const currentPage = breads.slice(-1)[0]; //getting last element
   breads.pop();
 
-  const formatLink = (link: string) => link.replace(/[-_]/g, " ");
-
   const getLink = (index: number) => "/" + breads.slice(0, index + 1).join("/");
 
   return (
@@ -30,13 +29,13 @@ const BreadCrumbs = ({ className }: BreadCrumbsProps) => {
       {breads.map((bread, i) => (
         <div key={bread} style={{display:"flex"}}>
           <CustomNextLink href={getLink(i)} key={bread}>
-            {formatLink(bread)}
+            {urlToTitle(bread)}
           </CustomNextLink>
           <S.NextIcon />
         </div>
       ))}
       <span className="bread-active">
-        {formatLink(currentPage)}
+        {urlToTitle(currentPage)}
       </span>
     </S.Wrapper>
   );

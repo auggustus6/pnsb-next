@@ -1,86 +1,173 @@
-import { useQuery } from "@apollo/client";
-import BreadCrumbs from "components/BreadCrumbs";
-import { DefaultButton } from "components/Buttons";
-import { EventCard, NewsCard, ShortcutCard } from "components/Cards";
+import { NewsCard, ShortcutCard } from "components/Cards";
 import Container from "components/Container";
-import Footer from "components/Footer";
 import { SectionTitle } from "components/Labels";
-import PageHeader from "components/PageHeader";
-import BackGroundSection from "components/Sections/BackGroundSection";
-import { QR_HORARIOS_MISSAS } from "graphql/querys/HorariosMissa";
+import FullWidthSection from "components/Sections/FullWidthSection";
 import DefaultLayout from "layouts/DefaultLayout";
-import { useEffect } from "react";
 
-import theme from "styles/theme";
 import BannerRecentEvent from "./components/BannerRecentEvent";
 import BannerSchedule from "./components/BannerSchedule";
-import * as S from "./styles";
+import * as Style from "./styles";
+
+import { BorderButton, DefaultButton } from "components/Buttons";
+import Link from "next/link";
+import Image from "next/image";
+import theme from "styles/theme";
+import { FaMicrophone } from "react-icons/fa";
+import { useTilt } from "hooks/useTilt";
+import api from "services/axios";
 
 const HomeTemplate = () => {
-  // const { error, loading, data } = useHorariosMissasQuery();
+  const ref1 = useTilt(true);
+  const ref2 = useTilt(true);
+  const ref3 = useTilt(true);
 
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+  async function handleButton() {
+    const result = await api.post("/send_facebook_post", {
+      message: "Post feito pelo site",
+      photo: "https://i.kym-cdn.com/photos/images/original/001/972/760/d6c",
+    });
+    if (result.status === 200) {
+      alert("post enviado com sucesso.");
+    }
+  }
 
   return (
     <DefaultLayout home>
-      <BackGroundSection img="/img/bg-main.png" href="#footer">
-        <S.BannerContent>
+      <FullWidthSection img="/img/bg-main.png" href="#footer">
+        <Style.BannerContent>
           <BannerRecentEvent />
           <BannerSchedule />
-        </S.BannerContent>
-      </BackGroundSection>
+        </Style.BannerContent>
+      </FullWidthSection>
+
+      <BorderButton onClick={handleButton} style={{ marginTop: "3rem" }}>
+        Enviar Post
+      </BorderButton>
 
       <Container style={{ paddingTop: "3rem" }}>
         <SectionTitle
           title={"Próximos eventos"}
           subtitle={"Eventos que ocorrerão nos próximos dias:"}
-          titleColor={"green"}
+          titleColor={"primary"}
         />
+        <BorderButton link="/eventos">VER MAIS</BorderButton>
       </Container>
 
-      <Container
-        style={{
-          padding: "3rem 1rem",
-          display: "flex",
-          gap: "34px",
-          justifyContent: "space-around",
-          flexWrap: "wrap",
-        }}
+      <FullWidthSection
+        color="secondary"
+        height="222px"
+        style={{ marginTop: "3rem" }}
       >
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
+        <Container>
+          <Style.DonateBanner>
+            <Style.Left>
+              <Image src="/svgs/pray.svg" width={92} height={92} />
+              <div>
+                <h2 style={{ color: "white" }}>Seja um Dizimista Fiel</h2>
+                <p>
+                  Ajude no crescimento de nossa obra, seja um dizimista fiel.
+                </p>
+              </div>
+            </Style.Left>
+            <Style.CustomButton>SEJA UM DIZIMISTA</Style.CustomButton>
+          </Style.DonateBanner>
+        </Container>
+      </FullWidthSection>
+
+      <Container style={{ marginTop: "4rem" }}>
+        <SectionTitle
+          title={"Noticias da Igreja"}
+          subtitle={"Eventos que ocorreram nos ultimos dias:"}
+          titleColor={"turquoise"}
+        />
+        <Style.CardsContainer $height={320}>
+          <NewsCard />
+          <NewsCard />
+          <NewsCard />
+          <NewsCard />
+        </Style.CardsContainer>
+        <div style={{ marginTop: "2rem" }}></div>
+        <BorderButton color="turquoise" link="/noticias">
+          VER MAIS
+        </BorderButton>
       </Container>
-      <Container
-        style={{
-          padding: "3rem 1rem",
-          display: "flex",
-          gap: "34px",
-          justifyContent: "space-around",
-          flexWrap: "wrap",
-        }}
-      >
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
+      <Container style={{ paddingTop: "3rem" }}>
+        <SectionTitle
+          title={"Acesso rápido"}
+          subtitle={"Encontre de forma rápida e fácil o que está buscando."}
+          titleColor={"secondary"}
+        />
+        <Style.CardsContainer $height={360}>
+          <ShortcutCard />
+          <ShortcutCard />
+          <ShortcutCard />
+          <ShortcutCard />
+        </Style.CardsContainer>
       </Container>
-      <Container
-        style={{
-          padding: "3rem 1rem",
-          display: "flex",
-          gap: "34px",
-          justifyContent: "space-around",
-          flexWrap: "wrap",
-        }}
-      >
-        <ShortcutCard />
-        <ShortcutCard />
-        <ShortcutCard />
-        <ShortcutCard />
+      <div style={{ paddingTop: "3rem" }}></div>
+
+      <Style.RentStudioContainer>
+        <Style.RentStudio>
+          <h2>
+            Alugue nosso estúdio de{" "}
+            <b>
+              Podcast
+              <FaMicrophone />
+            </b>
+          </h2>
+          <p>
+            Curabitur eget metus pulvinar, interdum orci sed, suscipit quam. In
+            lobortis odio vitae enim mattis pharetra. In aliquam sit amet massa
+            vel interdum. Ut nec velit ullamcorper, vestibulum nisl id, pretium
+            mi. Nunc dignissim consectetur massa.
+          </p>
+          <Link href={""}>
+            <DefaultButton bgColor={theme.colors.primary} textColor="white">
+              SAIBA MAIS
+            </DefaultButton>
+          </Link>
+        </Style.RentStudio>
+        <Style.RentStudioBackGround $img="/img/estudio.png" />
+      </Style.RentStudioContainer>
+
+      <Container>
+        <Style.PastoralContainer>
+          <Style.PastoralImages>
+            <Style.PastoralImageItem
+              src="/img/image1.png"
+              $width={45}
+              $height={100}
+              ref={ref1}
+              style={{ marginLeft: "2vw" }}
+            />
+            <div>
+              <Style.PastoralImageItem
+                src="/img/image2.png"
+                $width={60}
+                $height={30}
+                ref={ref2}
+              />
+              <Style.PastoralImageItem
+                src="/img/image3.png"
+                $width={100}
+                $height={50}
+                ref={ref3}
+              />
+            </div>
+          </Style.PastoralImages>
+          <Style.PastoralText>
+            <h2>Faça parte das nossas pastorais</h2>
+            <p>
+              Curabitur eget metus pulvinar, interdum orci sed, suscipit quam.
+              In lobortis odio vitae enim mattis pharetra. In aliquam sit amet
+              massa vel interdum. Ut nec velit ullamcorper, vestibulum nisl id,
+              pretium mi. Nunc dignissim consectetur massa.
+            </p>
+            <DefaultButton bgColor={theme.colors.green} textColor="white">
+              SAIBA MAIS
+            </DefaultButton>
+          </Style.PastoralText>
+        </Style.PastoralContainer>
       </Container>
     </DefaultLayout>
   );

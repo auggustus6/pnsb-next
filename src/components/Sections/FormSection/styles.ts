@@ -24,7 +24,7 @@ export const FormImage = styled.div<{ $imgSrc?: string }>`
   background-size: cover;
 `;
 
-export const Content = styled.div`
+export const Content = styled.form`
   flex: 1;
   display: flex;
   flex-direction: column;

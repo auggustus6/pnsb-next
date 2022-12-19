@@ -12,7 +12,13 @@ type PaginationProps = {
   setIndex: (value: number) => void;
 };
 
-const Pagination = ({ className, index, setIndex, size, color }: PaginationProps) => {
+const Pagination = ({
+  className,
+  index,
+  setIndex,
+  size,
+  color,
+}: PaginationProps) => {
   function handleNextButton() {
     if (index < size) {
       setIndex(index + 1);
@@ -23,6 +29,38 @@ const Pagination = ({ className, index, setIndex, size, color }: PaginationProps
     if (index > 0) {
       setIndex(index - 1);
     }
+  }
+
+  if(size <= 1){
+    return null;
+  }
+
+  if (size < 6) {
+    return (
+      <Styles.Wrapper className={className} $color={color}>
+        <Styles.PaginationItem
+          $disabled={index == 0}
+          onClick={index == 0 ? () => {} : handleBackButton}
+        >
+          <ArrowIcon size={55} style={{ transform: "rotate(180deg)" }} />
+        </Styles.PaginationItem>
+        {new Array(size).fill(null).map((_, i) => (
+          <Styles.PaginationItem
+            $active={index == i}
+            onClick={() => setIndex(i)}
+            key={i}
+          >
+            {i + 1}
+          </Styles.PaginationItem>
+        ))}
+        <Styles.PaginationItem
+          $disabled={index == size - 1}
+          onClick={index == size - 1 ? () => {} : handleNextButton}
+        >
+          <ArrowIcon size={55} />
+        </Styles.PaginationItem>
+      </Styles.Wrapper>
+    );
   }
 
   if (index === 0) {
@@ -96,8 +134,6 @@ const Pagination = ({ className, index, setIndex, size, color }: PaginationProps
       </Styles.Wrapper>
     );
   }
-
-  console.log(index > size / 2);
 
   if (index >= size / 2) {
     return (

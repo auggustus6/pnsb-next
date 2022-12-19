@@ -3,44 +3,42 @@ import { DefaultButton } from "components/Buttons";
 import Container from "components/Container";
 import Modal from "components/Modal";
 import { BlogContentSection } from "components/Sections";
-import BackGroundSection from "components/Sections/BackGroundSection";
+import BackGroundSection from "components/Sections/FullWidthSection";
 import { FormSection } from "components/Sections";
 import { useModal } from "hooks/useModal";
 import DefaultLayout from "layouts/DefaultLayout";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import theme from "styles/theme";
-import post from "./tempPost.json";
 import { DefaultInput } from "components/Inputs";
 import { customSwal } from "utils/customSwal";
+import FormikForm from "./components/FormikForm";
+import { PastoralEntity } from "graphql/generated/schema";
 
 interface PastoraisTemplateProps {
-  slug: string;
+  pastoral: PastoralEntity;
 }
 
-const PastoralTemplate = ({ slug }: PastoraisTemplateProps) => {
-  const [texto, setTexto] = useState("");
+const PastoralTemplate = ({ pastoral }: PastoraisTemplateProps) => {
   const { toggleModal } = useModal();
-  const {closeAllModals} = useModal();
-
-  const handleSubmitButton = () =>{
-    closeAllModals();
-    customSwal({title: "Teste",text:"Alo? bip bop?", icon: "success", confirmButtonText: "Ok"});
-  }
+  const bgImage = pastoral?.attributes?.Galeria?.data[0].attributes?.url;
 
   return (
     <DefaultLayout>
-      <BackGroundSection img="/img/voluntarios.jpg" height="320px" />
+      <BackGroundSection
+        img={bgImage ? bgImage : "/img/voluntarios.jpg"}
+        height="320px"
+      />
       <Container>
         <div style={{ padding: "1rem 0 2rem" }}>
           <BreadCrumbs />
         </div>
         <BlogContentSection
-          title={post.title}
-          dangerousHtml={post.content}
-          publishedAt={post.publishedAt}
-          author={post.author}
-          videoUrl="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          title={pastoral?.attributes?.Titulo || ""}
+          dangerousHtml={pastoral?.attributes?.Descricao || ""}
+          publishedAt={pastoral?.attributes?.publishedAt || ""}
+          author={pastoral?.attributes?.Responsavel || ""}
+          videoUrl={pastoral?.attributes?.Video || ""}
         />
         <div style={{ padding: "1rem 0 5rem" }}>
           <DefaultButton
@@ -54,40 +52,8 @@ const PastoralTemplate = ({ slug }: PastoraisTemplateProps) => {
             Quero participar
           </DefaultButton>
 
-          {/* <MyModal isOpen={isModalOpen} setIsOpen={()=> setIsModalOpen(true)} /> */}
           <Modal modalName={"wannaParticipate"}>
-            <FormSection imgUrl="/img/jesus.jpg">
-              <h4 style={{ color: theme.colors.primary, marginBottom: "1rem" }}>
-                Algum Titulo Legal
-              </h4>
-
-              <DefaultInput
-                state={texto}
-                setState={setTexto}
-                inputLabel="Nome Completo"
-              />
-              <DefaultInput
-                state={texto}
-                setState={setTexto}
-                inputLabel="Email"
-              />
-              <DefaultInput
-                state={texto}
-                setState={setTexto}
-                inputLabel="WhatsApp/Celular"
-              />
-
-              <DefaultButton
-                bgColor={theme.colors.primary}
-                height="3rem"
-                width="100%"
-                textColor="white"
-                style={{ borderRadius: "5px"}}
-                onClick={handleSubmitButton}
-              >
-                Participar
-              </DefaultButton>
-            </FormSection>
+            <FormikForm />
           </Modal>
         </div>
       </Container>

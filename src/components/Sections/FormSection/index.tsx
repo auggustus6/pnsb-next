@@ -6,13 +6,20 @@ type FormSectionProps = {
   className?: string;
   imgUrl?: string;
   style?: React.CSSProperties;
+  onSubmit?: any;
 };
 
-export const FormSection = ({ children, className, imgUrl,style }: FormSectionProps) => {
+export const FormSection = ({
+  children,
+  className,
+  onSubmit,
+  imgUrl,
+  style,
+}: FormSectionProps) => {
   return (
-    <Styles.Wrapper className={className} style={style}>
+    <Styles.Wrapper className={className} style={style} onSubmit={onSubmit}>
       <Styles.Content>{children}</Styles.Content>
-      <Styles.FormImage $imgSrc={imgUrl}/>
+      <Styles.FormImage $imgSrc={imgUrl} />
     </Styles.Wrapper>
   );
 };

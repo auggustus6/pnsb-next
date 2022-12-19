@@ -13,3 +13,16 @@ export const QR_PASTORAIS = gql`
     }
   }
 `;
+
+export const QR_GET_PASTORAL_BY_SLUG = gql`
+  ${FR_PASTORAIS}
+  query GetPastoralBySlug($slug: StringFilterInput) {
+    pastorals(filters: { Slug: $slug }) {
+      data {
+        attributes {
+          ...FR_PASTORAIS
+        }
+      }
+    }
+  }
+`;

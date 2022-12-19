@@ -1,23 +1,25 @@
 import { useQuery } from "@apollo/client";
 import BreadCrumbs from "components/BreadCrumbs";
-import { DefaultButton } from "components/Buttons";
-import { EventCard } from "components/Cards";
+import { DefaultCard, MobileCard, SwitchCards } from "components/Cards";
 import Container from "components/Container";
-import IframeVideo from "components/IframeVideo";
 import Pagination from "components/Pagination";
-import { QR_PASTORAIS } from "graphql/querys/Pastorals";
+import { PastoraisQuery } from "graphql/generated/schema";
 import DefaultLayout from "layouts/DefaultLayout";
-import { useEffect, useState } from "react";
-import theme from "styles/theme";
+import { useState } from "react";
 import * as Styles from "./styles";
+import { TfiLayoutListThumb } from "react-icons/tfi";
+import { repeatJSX } from "utils/repeatJSX";
+import { FaList } from "react-icons/fa";
+import { BsGrid3X2Gap } from "react-icons/bs";
+import { formatDate, formatTime } from "utils/format";
 
-const PastoralIndexTemplate = () => {
+type PastoralIndexTemplate = {
+  pastorais?: PastoraisQuery;
+};
+
+const PastoralIndexTemplate = ({ pastorais }: PastoralIndexTemplate) => {
   const [paginationIndex, setPaginationIndex] = useState(0);
-  // const { error, loading, data } = usePastoraisQuery();
-
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+  const [isList, setIsList] = useState(false);
 
   return (
     <DefaultLayout>
@@ -26,19 +28,51 @@ const PastoralIndexTemplate = () => {
           <BreadCrumbs />
         </div>
 
-        <h1 style={{ color: theme.colors.green }}>Pastorais</h1>
+        <Styles.SectionHeader>
+          <h1>Pastorais</h1>
+          <Styles.ListButtons>
+            <span
+              onClick={() => setIsList(false)}
+              className={!isList ? "button-active" : ""}
+            >
+              <BsGrid3X2Gap size={30} />
+            </span>
+            <span
+              onClick={() => setIsList(true)}
+              className={isList ? "button-active" : ""}
+            >
+              <FaList size={24} />
+            </span>
+          </Styles.ListButtons>
+        </Styles.SectionHeader>
 
-        <Styles.CardsContainer>
-          {new Array(8).fill(null).map((_, i) => (
-            <EventCard key={i} />
-          ))}
+        <Styles.CardsContainer $isList={isList}>
+          {pastorais?.pastorals?.data.map((pastorais) =>
+            repeatJSX(
+              <SwitchCards
+                key={pastorais.attributes?.Slug}
+                post={{
+                  slug: pastorais.attributes?.Slug || "",
+                  title: pastorais.attributes?.Titulo || "",
+                  summary: pastorais.attributes?.Descricao || "",
+                  imgUrl:
+                    pastorais.attributes?.Galeria?.data[0].attributes?.url ||
+                    "",
+                  date: formatDate(pastorais.attributes?.publishedAt),
+                  time: formatTime(pastorais.attributes?.publishedAt),
+                }}
+                mobile={isList}
+              />,
+              8,
+            ),
+          )}
         </Styles.CardsContainer>
 
         <Styles.PaginationContainer>
           <Pagination
             index={paginationIndex}
             setIndex={setPaginationIndex}
-            size={20}
+            size={3}
             color="green"
           />
         </Styles.PaginationContainer>

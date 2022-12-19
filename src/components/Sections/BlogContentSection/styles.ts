@@ -6,6 +6,9 @@ type ColorData = {
 };
 
 export const Wrapper = styled.div<ColorData>`
+  max-width: 1045px;
+  width: 100%;
+  margin: 0 auto;
   h1 {
     text-align: center;
     color: ${(p) => p.theme.colors[p.$color]};

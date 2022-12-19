@@ -1,3 +1,3 @@
-export * from "./BackGroundSection";
+export * from "./FullWidthSection";
 export * from "./BlogContentSection";
 export * from "./FormSection";

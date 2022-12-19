@@ -37,6 +37,7 @@ const GlobalStyles: GlobalStyleComponent<
 
   body {
     font-family: "Inter", "Roboto", Helvetica, sans-serif;
+    color: ${(p) => p.theme.colors.textColor};
   }
 
   h1{

@@ -5,7 +5,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.map(({ message, locations, path }) => {
       alert(`GRAPHQL ERROR: ${message}`);
-      console.log({ locations }, { path });
+      console.error({ locations }, { path });
     });
   }
 });

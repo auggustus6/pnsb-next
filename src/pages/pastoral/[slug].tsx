@@ -1,48 +1,53 @@
+import client from "graphql/client";
+import { PastoraisQuery, PastoralEntity } from "graphql/generated/schema";
 import {
-  PastoraisDocument,
-  Pastoral,
-  PastoralEntity,
-} from "graphql/generated/schema";
+  QR_GET_PASTORAL_BY_SLUG,
+  QR_PASTORAIS,
+} from "graphql/querys/Pastorals";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
-import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import { gqlRequest } from "services/gqlRequest";
-import PastoraisTemplate from "templates/PastoralPageTemplate/PastoralTemplate";
+import PastoralTemplate from "templates/PastoralPageTemplate/PastoralTemplate";
 
 interface SlugParams extends ParsedUrlQuery {
   slug: string | undefined;
 }
 
 interface PastoraisPostProps {
-  result: PastoralEntity[];
+  pastoral: PastoralEntity;
 }
 
-export default function PastoraisPost({ result }: PastoraisPostProps) {
-  const router = useRouter();
-  const { slug } = router.query;
-
-  useEffect(() => {
-    console.log(result?.at(0)?.attributes?.Descricao);
-  }, [result]);
-
-  return <PastoraisTemplate slug={String(slug)} />;
+export default function PastoralPost({ pastoral }: PastoraisPostProps) {
+  return <PastoralTemplate pastoral={pastoral} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const result = await client.query<PastoraisQuery>({ query: QR_PASTORAIS });
+
+  console.log(result.data.pastorals?.data[0].attributes?.Slug);
+
+  const paths = result.data.pastorals?.data.map((pastoral) => {
+    return {
+      params: {
+        slug: pastoral.attributes?.Slug as string,
+      },
+    };
+  });
+
   return {
-    paths: [],
-    fallback: true,
+    paths: [...(paths || [])],
+    fallback: "blocking",
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as SlugParams;
-
-  const result = await gqlRequest(PastoraisDocument);
+  const result = await client.query<PastoraisQuery>({
+    query: QR_GET_PASTORAL_BY_SLUG,
+    variables: { $slug: slug },
+  });
 
   return {
-    props: { result: result.pastorals?.data },
+    props: { pastoral: result.data.pastorals?.data[0] },
+    revalidate: 60 * 60, //1 hour
   };
 };

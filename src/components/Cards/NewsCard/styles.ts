@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 
   img {
     border-radius: 10px;
-    /* border: 3px solid ${(p) => p.theme.colors.turquoise} !important; */
+    /* border: 1px solid ${(p) => p.theme.colors.turquoise} !important; */
   }
 
   &:hover {

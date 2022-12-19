@@ -105,13 +105,13 @@ const PageHeader = ({ children, className }: PageHeaderProps) => {
             </MegaMenuItem>
           </MegaMenu>
         </NavItem>
-        <NavItem text="Pastorais" link={"/"} mobileIcon={<CharityIcon />}>
+        <NavItem text="Pastorais" link={"/pastoral"} mobileIcon={<CharityIcon />}>
           <MegaMenu imgSrc="/img/logo.png"></MegaMenu>
         </NavItem>
-        <NavItem text="Mural Eventos" link={"/"} mobileIcon={<EventsIcon />} />
-        <NavItem text="Noticias" link={"/"} mobileIcon={<NewsIcon />} />
-        <NavItem text="Colabore" link={"/"} mobileIcon={<CollaborateIcon />} />
-        <NavItem text="Contato" link={"/"} mobileIcon={<ContactIcon />} />
+        <NavItem text="Mural Eventos" link={"/eventos"} mobileIcon={<EventsIcon />} />
+        <NavItem text="Notícias" link={"/noticias"} mobileIcon={<NewsIcon />} />
+        <NavItem text="Colabore" link={"/colabore"} mobileIcon={<CollaborateIcon />} />
+        <NavItem text="Contato" link={"/contato"} mobileIcon={<ContactIcon />} />
       </Navigator>
     </Header>
   );
