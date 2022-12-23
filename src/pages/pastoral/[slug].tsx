@@ -23,8 +23,6 @@ export default function PastoralPost({ pastoral }: PastoraisPostProps) {
 export const getStaticPaths: GetStaticPaths = async () => {
   const result = await client.query<PastoraisQuery>({ query: QR_PASTORAIS });
 
-  console.log(result.data.pastorals?.data[0].attributes?.Slug);
-
   const paths = result.data.pastorals?.data.map((pastoral) => {
     return {
       params: {

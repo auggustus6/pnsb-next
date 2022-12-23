@@ -5,6 +5,7 @@ import BackGroundSection from "components/Sections/FullWidthSection";
 import { useModal } from "hooks/useModal";
 import DefaultLayout from "layouts/DefaultLayout";
 import { NoticiaEntity, PastoralEntity } from "graphql/generated/schema";
+import BlogLayout from "layouts/BlogLayout";
 
 interface PastoraisTemplateProps {
   noticia: NoticiaEntity;
@@ -14,23 +15,13 @@ const NoticiaTemplate = ({ noticia }: PastoraisTemplateProps) => {
   const bgImage = noticia?.attributes?.Galeria?.data[0].attributes?.url;
 
   return (
-    <DefaultLayout>
-      <BackGroundSection
-        img={bgImage ? bgImage : "/img/voluntarios.jpg"}
-        height="320px"
-      />
-      <Container>
-        <div style={{ padding: "1rem 0 2rem" }}>
-          <BreadCrumbs />
-        </div>
-        <BlogContentSection
-          title={noticia?.attributes?.Titulo || ""}
-          dangerousHtml={noticia?.attributes?.Descricao || ""}
-          publishedAt={noticia?.attributes?.publishedAt || ""}
-          videoUrl={noticia?.attributes?.Video || ""}
-        />
-      </Container>
-    </DefaultLayout>
+    <BlogLayout
+      bgImg={bgImage}
+      postTitle={noticia?.attributes?.Titulo}
+      postContent={noticia?.attributes?.Descricao || undefined}
+      publishedAt={noticia?.attributes?.publishedAt}
+      videoUrl={noticia?.attributes?.Video || undefined}
+    />
   );
 };
 

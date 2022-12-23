@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   BsStopwatch as WatchIcon,
   BsCalendar4 as CalendarIcon,
 } from "react-icons/bs";
 import { CardType } from "types/card-types";
-import { formatDate, formatTime, markDownToPlainText } from "utils/format";
-import * as S from "./styles";
+import { markDownToPlainText } from "utils/format";
+import * as Styles from "./styles";
 
 type DefaultCardProps = {
   className?: string;
@@ -15,12 +16,14 @@ type DefaultCardProps = {
 
 export const DefaultCard = ({ className, post }: DefaultCardProps) => {
   const formattedSummary = markDownToPlainText(post?.summary);
+  const router = useRouter();
+  let link = router.asPath !== "/" ? router.asPath : "";
 
   return (
-    <Link href={`/pastoral/${post.slug}`}>
-      <S.Wrapper className={className}>
+    <Link href={`${link}/${post.slug}`}>
+      <Styles.Wrapper className={className}>
         <Image src={post.imgUrl} width={290} height={247} objectFit="cover" />
-        <S.Content $info={!!post.date || !!post.time}>
+        <Styles.Content $info={!!post.date || !!post.time}>
           <h6>{post.title}</h6>
           <p>{formattedSummary}</p>
           <div>
@@ -38,8 +41,8 @@ export const DefaultCard = ({ className, post }: DefaultCardProps) => {
               </time>
             )}
           </div>
-        </S.Content>
-      </S.Wrapper>
+        </Styles.Content>
+      </Styles.Wrapper>
     </Link>
   );
 };

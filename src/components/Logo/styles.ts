@@ -1,13 +1,18 @@
+import BetterNextImg from "components/BetterNextImg";
+import styled, { css } from "styled-components";
 
-import styled from "styled-components";
-
-interface WrapperData {
-  $height: number;
-  $width: number;
+interface SizeData {
+  $height?: number;
+  $width?: number;
 }
 
+export const CustomImage = styled(BetterNextImg)<SizeData>`
+  height: ${(p) => p.$height}px;
+  width: ${(p) => p.$width}px;
+`;
+
 // substituir link next
-export const Wrapper = styled.a<WrapperData>`
+export const Wrapper = styled.a<SizeData>`
   position: relative;
   height: ${(p) => p.$height}px;
   width: ${(p) => p.$width}px;

@@ -92,30 +92,31 @@ export const Left = styled.div`
 `;
 
 export const RentStudioContainer = styled.div`
+  position: relative;
   display: flex;
-  align-items: center;
   gap: 2rem;
 
-  @media (max-width: ${BREAKPOINTS.medium}) {
+  /* @media (max-width: ${BREAKPOINTS.medium}) {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-  }
+  } */
 `;
 
 export const RentStudio = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  /* align-items: flex-start; */
   gap: 2.6rem;
-  position: relative;
-  padding-left: ${(p) => p.theme.grid.gutter};
+  height: 630px;
+
+  /* margin-left: 2rem; */
   h2 {
     font-size: 3.5rem;
     font-weight: 700;
     color: ${(p) => p.theme.colors.primary};
-    text-align: center;
     max-width: 660px;
     b {
       color: ${(p) => p.theme.colors.darkGreen};
@@ -130,11 +131,13 @@ export const RentStudio = styled.div`
 
   p {
     max-width: 40vw;
-    text-align: center;
   }
 
   @media (max-width: ${BREAKPOINTS.medium}) {
-    padding-inline: ${(p) => p.theme.grid.gutter};
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+
     h2 {
       font-size: 3rem;
     }
@@ -147,20 +150,25 @@ export const RentStudio = styled.div`
 
 export const RentStudioBackGround = styled.div<{ $img: string }>`
   flex: 1;
+  position: absolute;
+  left: 50%;
+
   background: linear-gradient(270deg, rgba(255, 255, 255, 0) 26.66%, #fff 99.1%),
     url(${(p) => p.$img});
   background-size: cover;
 
   height: 630px;
-  width: 100%;
+  width: 50%;
 
   @media (max-width: ${BREAKPOINTS.medium}) {
-    flex: initial;
     height: 250px;
     background: linear-gradient(0, rgba(255, 255, 255, 0) 26.66%, #fff 99.1%),
       url(${(p) => p.$img});
+    width: 100%;
+    left: 0;
     background-position-y: 40%;
     background-size: cover;
+    top: 3rem;
   }
 `;
 
@@ -173,8 +181,8 @@ export const PastoralContainer = styled.div`
   margin: 8rem 0;
   gap: 2rem;
 
-  @media(max-width:${BREAKPOINTS.medium}){
-      flex-direction: column;
+  @media (max-width: ${BREAKPOINTS.medium}) {
+    flex-direction: column;
   }
 `;
 
@@ -188,6 +196,10 @@ export const PastoralImages = styled.div`
     padding-top: 1.5rem;
     padding-left: 2rem;
     gap: 1rem;
+  }
+
+  @media(max-width:${BREAKPOINTS.medium}){
+      margin-bottom: -3rem;
   }
 `;
 
@@ -224,5 +236,9 @@ export const PastoralText = styled.div`
     font-size: 3.5rem;
     font-weight: 700;
     color: ${(p) => p.theme.colors.green};
+  }
+  @media(max-width:${BREAKPOINTS.medium}){
+      align-items: center;
+      text-align: center;
   }
 `;

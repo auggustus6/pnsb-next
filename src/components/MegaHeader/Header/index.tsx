@@ -25,7 +25,11 @@ export const Header = ({ children, className, onOpen }: HeaderProps) => {
   return (
     <S.Wrapper className={className} $isOnTop={isOnTop}>
       <S.MyContainer>
-          <Logo height={68} width={102} />
+        <Link href="/">
+          <div style={{cursor: "pointer"}}>
+            <Logo height={68} width={102} />
+          </div>
+        </Link>
         {children}
         <S.MenuButton onClick={() => onOpen && onOpen(true)} />
       </S.MyContainer>

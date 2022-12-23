@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   BsStopwatch as WatchIcon,
   BsCalendar4 as CalendarIcon,
@@ -15,9 +16,10 @@ type MobileCardProps = {
 
 export const MobileCard = ({ className, post }: MobileCardProps) => {
   const formattedSummary = markDownToPlainText(post?.summary);
+  const router = useRouter();
 
   return (
-    <Link href={`/pastoral/${post.slug}`}>
+    <Link href={`${router.asPath}/${post.slug}`}>
       <S.Wrapper className={className}>
         <Image src={post.imgUrl} width={250} height={250} objectFit="cover" />
         <S.Content>

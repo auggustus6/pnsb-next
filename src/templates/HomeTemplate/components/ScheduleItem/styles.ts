@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
 
 export const Title = styled.div`
   font-size: 1.125rem;
+  font-weight: 700;
   color: ${(p) => p.theme.colors.primary};
 `;
 

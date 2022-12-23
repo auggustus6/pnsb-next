@@ -1,11 +1,10 @@
 import BreadCrumbs from "components/BreadCrumbs";
 import Container from "components/Container";
 import Pagination from "components/Pagination";
-import { EventsQuery, PastoraisQuery } from "graphql/generated/schema";
+import { EventsQuery } from "graphql/generated/schema";
 import DefaultLayout from "layouts/DefaultLayout";
 import { useState } from "react";
 import * as Styles from "./styles";
-import { repeatJSX } from "utils/repeatJSX";
 import { FaList } from "react-icons/fa";
 import { BsGrid3X2Gap } from "react-icons/bs";
 import { SwitchCards } from "components/Cards";
@@ -31,13 +30,13 @@ const EventsIndexTemplate = ({ events }: EventIndexTemplate) => {
           <Styles.ListButtons>
             <span
               onClick={() => setIsList(false)}
-              className={!isList ? "button-active" : ""}
+              className={!isList ? "button-active" : undefined}
             >
               <BsGrid3X2Gap size={30} />
             </span>
             <span
               onClick={() => setIsList(true)}
-              className={isList ? "button-active" : ""}
+              className={isList ? "button-active" : undefined}
             >
               <FaList size={24} />
             </span>
@@ -45,24 +44,20 @@ const EventsIndexTemplate = ({ events }: EventIndexTemplate) => {
         </Styles.SectionHeader>
 
         <Styles.CardsContainer $isList={isList}>
-          {events?.events?.data.map((event) =>
-            repeatJSX(
-              <SwitchCards
-                key={event.attributes?.Slug}
-                post={{
-                  slug: event.attributes?.Slug || "",
-                  title: event.attributes?.Titulo || "",
-                  summary: event.attributes?.Descricao || "",
-                  imgUrl:
-                    event.attributes?.Imagem?.data?.attributes?.url || "",
-                  date: formatDate(event.attributes?.publishedAt),
-                  time: formatTime(event.attributes?.publishedAt),
-                }}
-                mobile={isList}
-              />,
-              8,
-            ),
-          )}
+          {events?.events?.data.map((event) => (
+            <SwitchCards
+              key={event.attributes?.Slug}
+              post={{
+                slug: event.attributes?.Slug || "",
+                title: event.attributes?.Titulo || "",
+                summary: event.attributes?.Descricao || "",
+                imgUrl: event.attributes?.Imagem?.data?.attributes?.url || "",
+                date: formatDate(event.attributes?.publishedAt),
+                time: formatTime(event.attributes?.publishedAt),
+              }}
+              mobile={isList}
+            />
+          ))}
         </Styles.CardsContainer>
 
         <Styles.PaginationContainer>

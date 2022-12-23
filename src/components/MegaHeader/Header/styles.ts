@@ -33,6 +33,10 @@ export const MyContainer = styled(Container)`
   justify-content: space-between;
   align-items: center;
   padding: 0.6rem;
+
+  a{
+    cursor: pointer;
+  }
 `;
 
 export const MenuButton = styled(CgMenu)`

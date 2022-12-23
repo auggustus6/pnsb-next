@@ -1,4 +1,3 @@
-// export const { format: formatDate } = new Intl.DateTimeFormat("pt-br", {});
 const { format } = new Intl.DateTimeFormat("pt-br", {});
 
 export const formatDate = (date: any) => {
@@ -16,7 +15,6 @@ export const formatDate = (date: any) => {
 
 export const formatTime = (date: any) => {
   if (typeof date == typeof Date) {
-    console.log("2");
     return date.toTimeString().split(" ")[0];
   }
   try {
@@ -27,8 +25,6 @@ export const formatTime = (date: any) => {
   }
   return new Date().toTimeString().split(" ")[0];
 };
-
-// export const formatTime = (date: Date) => date.toTimeString().split(" ")[0];
 
 export const markDownToPlainText = (mdtext: string) =>
   mdtext.replace(/([-]{2}|[_]{2}|[~]{2}|[*]{2}|[`]{2})/g, "");

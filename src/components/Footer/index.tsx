@@ -3,6 +3,7 @@ import * as S from "./styles";
 import FooterLinksSection from "./components/Categories/FooterLinksSection";
 import { useTheme } from "styled-components";
 import Image from "next/image";
+import Logo from "components/Logo";
 const Footer = () => {
   const theme = useTheme();
 
@@ -26,7 +27,7 @@ const Footer = () => {
         <S.ContainerFooterLogo>
           <S.ContentLogo>
             <S.LogoImage>
-              <Image src="/img/logo.png" width={150} height={150} />
+              <Logo width={194} height={120} />
             </S.LogoImage>
             <S.ContentTexts>
               <h6>Lorem Impsum dollor.</h6>

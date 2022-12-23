@@ -22,8 +22,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     query: QR_GET_NOTICIA_BY_SLUG,
   });
 
-  console.log(result.data.noticias?.data[0].attributes?.Slug);
-
   const paths = result.data.noticias?.data.map((noticia) => {
     return {
       params: {
@@ -46,7 +44,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
 
   return {
-    props: { pastoral: result.data.noticias?.data[0] },
+    props: { noticia: result.data.noticias?.data[0] },
     revalidate: 60 * 60, //1 hour
   };
 };

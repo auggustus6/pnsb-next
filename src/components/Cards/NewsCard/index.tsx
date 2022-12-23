@@ -1,39 +1,46 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   BsStopwatch as WatchIcon,
   BsCalendar4 as CalendarIcon,
 } from "react-icons/bs";
-import * as S from "./styles";
+import { CardType } from "types/card-types";
+import * as Styles from "./styles";
 
 type EventCardProps = {
   className?: string;
+  post: {
+    slug: string;
+    imgUrl: string;
+    title: string;
+    date: string;
+    time: string;
+  };
 };
 
-export const NewsCard = ({ className }: EventCardProps) => {
+export const NewsCard = ({ post, className }: EventCardProps) => {
+  const router = useRouter();
+  let link = router.asPath !== "/" ? router.asPath : "";
+
   return (
-    <Link href={"/"}>
-      <S.Wrapper className={className}>
-        <Image
-          src={"/img/bg-main.png"}
-          width={287}
-          height={185}
-          objectFit="cover"
-        />
-        <S.Content>
-          <h6>Titulo da Noticia</h6>
+    <Link href={`${link}/${post.slug}`}>
+      <Styles.Wrapper className={className}>
+        <Image src={post.imgUrl} width={287} height={185} objectFit="cover" />
+        <Styles.Content>
+          <h6>{post.title}</h6>
           <div>
             <span>
               <CalendarIcon size={20} />
-              20/11/2022
+              {post.date}
             </span>
             <time>
               <WatchIcon size={20} />
-              9:00 AM
+              {post.time}
             </time>
           </div>
-        </S.Content>
-      </S.Wrapper>
+        </Styles.Content>
+      </Styles.Wrapper>
     </Link>
   );
 };

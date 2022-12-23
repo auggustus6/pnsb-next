@@ -1,7 +1,7 @@
 import BreadCrumbs from "components/BreadCrumbs";
 import Container from "components/Container";
 import Pagination from "components/Pagination";
-import { PastoraisQuery } from "graphql/generated/schema";
+import { NoticiasQuery, PastoraisQuery } from "graphql/generated/schema";
 import DefaultLayout from "layouts/DefaultLayout";
 import { useState } from "react";
 import * as Styles from "./styles";
@@ -12,7 +12,7 @@ import { SwitchCards } from "components/Cards";
 import { formatDate, formatTime } from "utils/format";
 
 type NoticiaIndexTemplate = {
-  noticias?: PastoraisQuery;
+  noticias?: NoticiasQuery;
 };
 
 const NoticiaIndexTemplate = ({ noticias }: NoticiaIndexTemplate) => {
@@ -45,24 +45,21 @@ const NoticiaIndexTemplate = ({ noticias }: NoticiaIndexTemplate) => {
         </Styles.SectionHeader>
 
         <Styles.CardsContainer $isList={isList}>
-          {noticias?.pastorals?.data.map((noticia) =>
-            repeatJSX(
-              <SwitchCards
-                key={noticia.attributes?.Slug}
-                post={{
-                  slug: noticia.attributes?.Slug || "",
-                  title: noticia.attributes?.Titulo || "",
-                  summary: noticia.attributes?.Descricao || "",
-                  imgUrl:
-                    noticia.attributes?.Galeria?.data[0].attributes?.url || "",
-                  date: formatDate(noticia.attributes?.publishedAt),
-                  time: formatTime(noticia.attributes?.publishedAt),
-                }}
-                mobile={isList}
-              />,
-              8,
-            ),
-          )}
+          {noticias?.noticias?.data.map((noticia) => (
+            <SwitchCards
+              key={noticia.attributes?.Slug}
+              post={{
+                slug: noticia.attributes?.Slug || "",
+                title: noticia.attributes?.Titulo || "",
+                summary: noticia.attributes?.Descricao || "",
+                imgUrl:
+                  noticia.attributes?.Galeria?.data[0].attributes?.url || "",
+                date: formatDate(noticia.attributes?.publishedAt),
+                time: formatTime(noticia.attributes?.publishedAt),
+              }}
+              mobile={isList}
+            />
+          ))}
         </Styles.CardsContainer>
 
         <Styles.PaginationContainer>

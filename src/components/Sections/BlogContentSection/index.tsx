@@ -5,6 +5,7 @@ import IframeVideo from "components/IframeVideo";
 import theme from "styles/theme";
 import Container from "components/Container";
 import { formatDate } from "utils/format";
+import ReactMD from "react-markdown";
 
 export type colorsType = typeof theme.colors;
 
@@ -27,8 +28,6 @@ export const BlogContentSection = ({
   videoUrl,
   mainColor = "green",
 }: BlogContentSectionProps) => {
-  console.log(publishedAt);
-
   return (
     <Styles.Wrapper className={className} $color={mainColor}>
       <Styles.Title>{title}</Styles.Title>
@@ -49,7 +48,9 @@ export const BlogContentSection = ({
         </span>
       </Styles.PostInfo>
       <Container style={{ padding: "0 2rem" }}>
-        <Styles.Content dangerouslySetInnerHTML={{ __html: dangerousHtml }} />
+        <Styles.Content>
+          <ReactMD>{dangerousHtml}</ReactMD>
+        </Styles.Content>
       </Container>
       <Container className="iframe-video" style={{ padding: "2rem 2rem" }}>
         {videoUrl && <IframeVideo urlVideo={videoUrl} />}

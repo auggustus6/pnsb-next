@@ -1,13 +1,11 @@
-import { useQuery } from "@apollo/client";
 import BreadCrumbs from "components/BreadCrumbs";
-import { DefaultCard, MobileCard, SwitchCards } from "components/Cards";
+import { SwitchCards } from "components/Cards";
 import Container from "components/Container";
 import Pagination from "components/Pagination";
 import { PastoraisQuery } from "graphql/generated/schema";
 import DefaultLayout from "layouts/DefaultLayout";
 import { useState } from "react";
 import * as Styles from "./styles";
-import { TfiLayoutListThumb } from "react-icons/tfi";
 import { repeatJSX } from "utils/repeatJSX";
 import { FaList } from "react-icons/fa";
 import { BsGrid3X2Gap } from "react-icons/bs";
@@ -47,25 +45,21 @@ const PastoralIndexTemplate = ({ pastorais }: PastoralIndexTemplate) => {
         </Styles.SectionHeader>
 
         <Styles.CardsContainer $isList={isList}>
-          {pastorais?.pastorals?.data.map((pastorais) =>
-            repeatJSX(
-              <SwitchCards
-                key={pastorais.attributes?.Slug}
-                post={{
-                  slug: pastorais.attributes?.Slug || "",
-                  title: pastorais.attributes?.Titulo || "",
-                  summary: pastorais.attributes?.Descricao || "",
-                  imgUrl:
-                    pastorais.attributes?.Galeria?.data[0].attributes?.url ||
-                    "",
-                  date: formatDate(pastorais.attributes?.publishedAt),
-                  time: formatTime(pastorais.attributes?.publishedAt),
-                }}
-                mobile={isList}
-              />,
-              8,
-            ),
-          )}
+          {pastorais?.pastorals?.data.map((pastorais) => (
+            <SwitchCards
+              key={pastorais.attributes?.Slug}
+              post={{
+                slug: pastorais.attributes?.Slug || "",
+                title: pastorais.attributes?.Titulo || "",
+                summary: pastorais.attributes?.Descricao || "",
+                imgUrl:
+                  pastorais.attributes?.Galeria?.data[0].attributes?.url || "",
+                date: formatDate(pastorais.attributes?.publishedAt),
+                time: formatTime(pastorais.attributes?.publishedAt),
+              }}
+              mobile={isList}
+            />
+          ))}
         </Styles.CardsContainer>
 
         <Styles.PaginationContainer>

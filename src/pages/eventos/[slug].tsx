@@ -1,5 +1,9 @@
 import client from "graphql/client";
-import { EventEntity, EventsQuery, NoticiasQuery } from "graphql/generated/schema";
+import {
+  EventEntity,
+  EventsQuery,
+  NoticiasQuery,
+} from "graphql/generated/schema";
 import { QR_EVENTS, QR_EVENTS_BY_SLUG } from "graphql/querys/MuralEventos";
 import { QR_GET_NOTICIA_BY_SLUG } from "graphql/querys/Noticias";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -23,8 +27,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     query: QR_EVENTS,
   });
 
-  console.log(result.data.events?.data[0].attributes?.Slug);
-
   const paths = result.data.events?.data.map((event) => {
     return {
       params: {
@@ -47,7 +49,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
 
   return {
-    props: { pastoral: result.data.events?.data[0] },
+    props: { event: result.data.events?.data[0] },
     revalidate: 60 * 60, //1 hour
   };
 };

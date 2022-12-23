@@ -1,4 +1,4 @@
-import { NewsCard, ShortcutCard } from "components/Cards";
+import { DefaultCard, NewsCard, ShortcutCard } from "components/Cards";
 import Container from "components/Container";
 import { SectionTitle } from "components/Labels";
 import FullWidthSection from "components/Sections/FullWidthSection";
@@ -15,13 +15,27 @@ import theme from "styles/theme";
 import { FaMicrophone } from "react-icons/fa";
 import { useTilt } from "hooks/useTilt";
 import api from "services/axios";
+import {
+  PastoraisQuery,
+  EventsQuery,
+  NoticiasQuery,
+} from "graphql/generated/schema";
+import { formatDate, formatTime } from "utils/format";
 
-const HomeTemplate = () => {
+type HomeTemplateProps = {
+  pastorais: PastoraisQuery;
+  events: EventsQuery;
+  news: NoticiasQuery;
+};
+
+const HomeTemplate = ({ pastorais, events, news }: HomeTemplateProps) => {
   const ref1 = useTilt(true);
   const ref2 = useTilt(true);
   const ref3 = useTilt(true);
 
-  async function handleButton() {
+  console.log(pastorais, events, news);
+
+  async function handleSendFacebookPostButton() {
     const result = await api.post("/send_facebook_post", {
       message: "Post feito pelo site",
       photo: "https://i.kym-cdn.com/photos/images/original/001/972/760/d6c",
@@ -40,16 +54,27 @@ const HomeTemplate = () => {
         </Style.BannerContent>
       </FullWidthSection>
 
-      <BorderButton onClick={handleButton} style={{ marginTop: "3rem" }}>
-        Enviar Post
-      </BorderButton>
-
       <Container style={{ paddingTop: "3rem" }}>
         <SectionTitle
           title={"Próximos eventos"}
           subtitle={"Eventos que ocorrerão nos próximos dias:"}
           titleColor={"primary"}
         />
+        <Style.CardsContainer $height={480}>
+          {events?.events?.data.map((event) => (
+            <DefaultCard
+              key={event.attributes?.Slug}
+              post={{
+                title: event.attributes?.Titulo || "",
+                summary: event.attributes?.Descricao || "",
+                slug: event.attributes?.Slug || "",
+                imgUrl: event.attributes?.Imagem?.data?.attributes?.url || "",
+                date: formatDate(event.attributes?.publishedAt),
+                time: formatTime(event.attributes?.publishedAt),
+              }}
+            />
+          ))}
+        </Style.CardsContainer>
         <BorderButton link="/eventos">VER MAIS</BorderButton>
       </Container>
 
@@ -81,10 +106,18 @@ const HomeTemplate = () => {
           titleColor={"turquoise"}
         />
         <Style.CardsContainer $height={320}>
-          <NewsCard />
-          <NewsCard />
-          <NewsCard />
-          <NewsCard />
+          {news.noticias?.data.map((newsItem) => (
+            <NewsCard
+              key={newsItem.attributes?.Slug}
+              post={{
+                slug: newsItem.attributes?.Slug || "",
+                title: newsItem.attributes?.Titulo || "",
+                imgUrl: newsItem.attributes?.Imagem.data?.attributes?.url || "",
+                date: formatDate(newsItem.attributes?.publishedAt),
+                time: formatTime(newsItem.attributes?.publishedAt),
+              }}
+            />
+          ))}
         </Style.CardsContainer>
         <div style={{ marginTop: "2rem" }}></div>
         <BorderButton color="turquoise" link="/noticias">
@@ -107,26 +140,28 @@ const HomeTemplate = () => {
       <div style={{ paddingTop: "3rem" }}></div>
 
       <Style.RentStudioContainer>
-        <Style.RentStudio>
-          <h2>
-            Alugue nosso estúdio de{" "}
-            <b>
-              Podcast
-              <FaMicrophone />
-            </b>
-          </h2>
-          <p>
-            Curabitur eget metus pulvinar, interdum orci sed, suscipit quam. In
-            lobortis odio vitae enim mattis pharetra. In aliquam sit amet massa
-            vel interdum. Ut nec velit ullamcorper, vestibulum nisl id, pretium
-            mi. Nunc dignissim consectetur massa.
-          </p>
-          <Link href={""}>
-            <DefaultButton bgColor={theme.colors.primary} textColor="white">
-              SAIBA MAIS
-            </DefaultButton>
-          </Link>
-        </Style.RentStudio>
+        <Container>
+          <Style.RentStudio>
+            <h2>
+              Alugue nosso estúdio de{" "}
+              <b>
+                Podcast
+                <FaMicrophone />
+              </b>
+            </h2>
+            <p>
+              Curabitur eget metus pulvinar, interdum orci sed, suscipit quam.
+              In lobortis odio vitae enim mattis pharetra. In aliquam sit amet
+              massa vel interdum. Ut nec velit ullamcorper, vestibulum nisl id,
+              pretium mi. Nunc dignissim consectetur massa.
+            </p>
+            <Link href={""}>
+              <DefaultButton bgColor={theme.colors.primary} textColor="white">
+                SAIBA MAIS
+              </DefaultButton>
+            </Link>
+          </Style.RentStudio>
+        </Container>
         <Style.RentStudioBackGround $img="/img/estudio.png" />
       </Style.RentStudioContainer>
 

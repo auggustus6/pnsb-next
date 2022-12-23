@@ -1,6 +1,7 @@
 import Container from "components/Container";
 import styled from "styled-components";
 import media from "styled-media-query";
+import { BREAKPOINTS } from "utils/breakpoints";
 
 export const Wrapper = styled.div`
   padding-bottom: 6rem;
@@ -29,9 +30,9 @@ export const Box = styled.div`
 `;
 
 export const LogoImage = styled.div`
-  ${media.lessThan("small")`
-  display: none;
-`}
+  @media (max-width: ${BREAKPOINTS.medium}) {
+    display: none;
+  }
 `;
 
 export const ContentLogo = styled.div`
@@ -148,7 +149,7 @@ export const ContainerItems = styled.div`
 export const Social = styled.div`
   margin-top: 30px;
   cursor: pointer;
-  
+
   ul {
     display: flex;
     list-style: none;
