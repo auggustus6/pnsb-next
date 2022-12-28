@@ -1,41 +1,50 @@
 import styled from "styled-components";
-import media from "styled-media-query";
+import { BREAKPOINTS } from "utils/breakpoints";
 
 export const Wrapper = styled.div`
-  width: 304px;
-  height: 308px;
-  text-align: center;
-  transform: scale(1);
-  color: ${(p) => p.theme.colors.textColor};
-
-  transition: transform ${(p) => p.theme.transition.default};
-  box-shadow: ${(p) => p.theme.shadows.small};
-
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 304px;
+  width: 100%;
+  background: white;
+  transition: all ${(p) => p.theme.transition.default};
   border-radius: 5px;
-
   cursor: pointer;
 
-  h6 {
-    margin-top: 0.4rem;
-    font-weight: normal;
+  &:hover {
+    filter: brightness(0.95);
   }
 
   img {
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px;
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
   }
 
-  &:hover {
-    transform: scale(1.05);
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-right: 0.5rem;
+    gap: 0.2rem;
   }
 
-  ${media.lessThan("medium")`
-    width: 100%;
-    
+  h5 {
+    font-size: 1rem;
+    color: ${(p) => p.theme.colors.primary};
+  }
 
-    & > img,& > span{
-      width: 96% !important;
-      height: 268px !important;
+  p {
+    font-size: 0.825rem;
+  }
 
-    }
-  `}
+  @media (max-width: ${BREAKPOINTS.medium}) {
+    max-width: 200px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.small}) {
+    max-width: 100%;
+  }
 `;

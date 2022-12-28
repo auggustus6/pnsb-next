@@ -1,24 +1,26 @@
 import Link from "next/link";
-import Image from "next/image";
-import { ReactNode } from "react";
-import * as S from "./styles";
+import * as Style from "./styles";
 
 type ShortcutCardProps = {
   className?: string;
+  title: string;
+  description: string;
 };
 
-export const ShortcutCard = ({className }: ShortcutCardProps) => {
+export const ShortcutCard = ({
+  className,
+  description,
+  title,
+}: ShortcutCardProps) => {
   return (
     <Link href={"/"}>
-      <S.Wrapper className={className}>
-      <Image
-          src={"/img/bg-main.png"}
-          width={304}
-          height={263}
-          objectFit="cover"
-        />
-        <h6>Obras Sociais</h6>
-      </S.Wrapper>
+      <Style.Wrapper className={className}>
+        <img src={"/img/bg-main.png"} />
+        <div>
+          <h5>{title}</h5>
+          <p>{description}</p>
+        </div>
+      </Style.Wrapper>
     </Link>
   );
 };

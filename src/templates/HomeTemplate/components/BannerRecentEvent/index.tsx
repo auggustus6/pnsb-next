@@ -12,7 +12,7 @@ type BannerRecentEventProps = {
 const BannerRecentEvent = ({ className }: BannerRecentEventProps) => {
   return (
     <S.Wrapper className={className}>
-      <S.MyLogo width={166} height={110} />
+      <S.MyLogo width={166} height={110} className="logo__recent__event"/>
       <S.StreamButton>
         <AiFillPlayCircle size={24} />
         Transmissões online

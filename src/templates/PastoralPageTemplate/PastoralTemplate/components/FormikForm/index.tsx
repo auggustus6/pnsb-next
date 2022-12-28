@@ -6,6 +6,8 @@ import theme from "styles/theme";
 import { withFormik } from "formik";
 import { customSwal } from "utils/customSwal";
 import { useRouter } from "next/router";
+import client from "graphql/client";
+import { MT_WANNA_PARTICIPATE } from "graphql/mutations/pastorals";
 
 const MyForm = (props: any) => {
   const { values, touched, errors, handleChange, handleSubmit } = props;
@@ -72,12 +74,34 @@ const formSchema = Yup.object().shape({
 export const FormikForm = withFormik({
   mapPropsToValues: () => ({ name: "", email: "", phone: "", pastoral: "" }),
   handleSubmit: async (values, { setSubmitting, resetForm }) => {
-    customSwal({
-      title: "Mensagem Enviada com Sucesso!",
-      text: "",
-      icon: "success",
-      confirmButtonText: "Ok",
+    const mutationResult = await client.mutate({
+      mutation: MT_WANNA_PARTICIPATE,
+      variables: {
+        $nome: values.name,
+        $email: values.email,
+        $telefone: values.phone,
+        $participa: true,
+        $trabalho: values.pastoral,
+      },
     });
+
+    if (mutationResult.errors) {
+      customSwal({
+        title:
+          "Falha ao enviar mensagem, por favor verifique e tente novamente",
+        text: "",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    } else {
+      customSwal({
+        title: "Mensagem enviada com sucesso!",
+        text: "",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
+    }
+
     setSubmitting(false);
     resetForm();
   },

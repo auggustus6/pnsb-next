@@ -1,6 +1,7 @@
 import Logo from "components/Logo";
 import styled from "styled-components";
 import media from "styled-media-query";
+import { BREAKPOINTS } from "utils/breakpoints";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -13,6 +14,12 @@ export const Wrapper = styled.div`
     max-width:482px;
     width: 100%;
   `}
+
+  @media (max-width: ${BREAKPOINTS.medium}) {
+    .logo__recent__event {
+      display: none !important;
+    }
+  }
 `;
 export const StreamButton = styled.div`
   display: flex;
@@ -62,7 +69,7 @@ export const RecentEventInfoContainer = styled.div`
     align-items: center;
     img{
       object-fit: contain;
-    } 
+    }
   `}
 `;
 

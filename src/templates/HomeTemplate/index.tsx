@@ -21,6 +21,9 @@ import {
   NoticiasQuery,
 } from "graphql/generated/schema";
 import { formatDate, formatTime } from "utils/format";
+import FluidCardsContainer from "components/FluidCardsContainer";
+import { repeatJSX } from "utils/repeatJSX";
+import Spacing from "components/Spacing";
 
 type HomeTemplateProps = {
   pastorais: PastoraisQuery;
@@ -60,7 +63,7 @@ const HomeTemplate = ({ pastorais, events, news }: HomeTemplateProps) => {
           subtitle={"Eventos que ocorrerão nos próximos dias:"}
           titleColor={"primary"}
         />
-        <Style.CardsContainer $height={480}>
+        <FluidCardsContainer>
           {events?.events?.data.map((event) => (
             <DefaultCard
               key={event.attributes?.Slug}
@@ -74,7 +77,8 @@ const HomeTemplate = ({ pastorais, events, news }: HomeTemplateProps) => {
               }}
             />
           ))}
-        </Style.CardsContainer>
+        </FluidCardsContainer>
+        <Spacing size={3} />
         <BorderButton link="/eventos">VER MAIS</BorderButton>
       </Container>
 
@@ -105,7 +109,7 @@ const HomeTemplate = ({ pastorais, events, news }: HomeTemplateProps) => {
           subtitle={"Eventos que ocorreram nos ultimos dias:"}
           titleColor={"turquoise"}
         />
-        <Style.CardsContainer $height={320}>
+        <FluidCardsContainer>
           {news.noticias?.data.map((newsItem) => (
             <NewsCard
               key={newsItem.attributes?.Slug}
@@ -118,8 +122,10 @@ const HomeTemplate = ({ pastorais, events, news }: HomeTemplateProps) => {
               }}
             />
           ))}
-        </Style.CardsContainer>
-        <div style={{ marginTop: "2rem" }}></div>
+        </FluidCardsContainer>
+
+        <Spacing size={3} />
+
         <BorderButton color="turquoise" link="/noticias">
           VER MAIS
         </BorderButton>
@@ -130,40 +136,48 @@ const HomeTemplate = ({ pastorais, events, news }: HomeTemplateProps) => {
           subtitle={"Encontre de forma rápida e fácil o que está buscando."}
           titleColor={"secondary"}
         />
-        <Style.CardsContainer $height={360}>
-          <ShortcutCard />
-          <ShortcutCard />
-          <ShortcutCard />
-          <ShortcutCard />
-        </Style.CardsContainer>
+
+        <Style.ShortcutsWrapper>
+          {repeatJSX(
+            <ShortcutCard
+              title="Obras Sociais"
+              description="Pequena descrição do que o usuário vai encontrar acessando o link."
+            />,
+            8,
+          )}
+        </Style.ShortcutsWrapper>
       </Container>
       <div style={{ paddingTop: "3rem" }}></div>
 
-      <Style.RentStudioContainer>
+      <Style.FullWidthWrapper>
         <Container>
-          <Style.RentStudio>
-            <h2>
-              Alugue nosso estúdio de{" "}
-              <b>
-                Podcast
-                <FaMicrophone />
-              </b>
-            </h2>
-            <p>
-              Curabitur eget metus pulvinar, interdum orci sed, suscipit quam.
-              In lobortis odio vitae enim mattis pharetra. In aliquam sit amet
-              massa vel interdum. Ut nec velit ullamcorper, vestibulum nisl id,
-              pretium mi. Nunc dignissim consectetur massa.
-            </p>
-            <Link href={""}>
-              <DefaultButton bgColor={theme.colors.primary} textColor="white">
-                SAIBA MAIS
-              </DefaultButton>
-            </Link>
-          </Style.RentStudio>
+          <Style.RentStudioContainer>
+            <Style.RentStudio>
+              <h2>
+                Alugue nosso estúdio de{" "}
+                <b>
+                  Podcast
+                  <FaMicrophone />
+                </b>
+              </h2>
+              <p>
+                Curabitur eget metus pulvinar, interdum orci sed, suscipit quam.
+                In lobortis odio vitae enim mattis pharetra. In aliquam sit amet
+                massa vel interdum. Ut nec velit ullamcorper, vestibulum nisl
+                id, pretium mi. Nunc dignissim consectetur massa.
+              </p>
+              <Link href={""}>
+                <DefaultButton bgColor={theme.colors.primary} textColor="white">
+                  SAIBA MAIS
+                </DefaultButton>
+              </Link>
+            </Style.RentStudio>
+            <Style.WrapperRentBg>
+              <Style.RentStudioBackGround $img="/img/estudio.png" />
+            </Style.WrapperRentBg>
+          </Style.RentStudioContainer>
         </Container>
-        <Style.RentStudioBackGround $img="/img/estudio.png" />
-      </Style.RentStudioContainer>
+      </Style.FullWidthWrapper>
 
       <Container>
         <Style.PastoralContainer>

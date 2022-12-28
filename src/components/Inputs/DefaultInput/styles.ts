@@ -10,7 +10,15 @@ export const Wrapper = styled.div<WrapperData>`
 
   transition: all ${(p) => p.theme.transition.fast};
 
-  input {
+  .styled__textarea {
+    height: 10rem !important;
+    resize: none;
+    overflow: scroll;
+    padding:  1rem !important;
+    font-family: "Inter";
+  }
+
+  .styled__input {
     width: 100%;
     height: 3rem;
     padding: 0 0.8rem;
@@ -19,6 +27,7 @@ export const Wrapper = styled.div<WrapperData>`
     font-size: 1rem;
     color: ${(p) => (p.$error ? p.theme.colors.red : "#333333")};
     transition: inherit;
+    outline: none;
   }
 
   label {
@@ -34,7 +43,7 @@ export const Wrapper = styled.div<WrapperData>`
     user-select: none;
   }
 
-  input:not([value=""]) {
+  .styled__input:not([value=""]) {
     & ~ label {
       color: ${(p) => (p.$error ? p.theme.colors.red : "#888888")};
       font-size: 0.75rem;
@@ -42,7 +51,7 @@ export const Wrapper = styled.div<WrapperData>`
     }
   }
 
-  input:focus {
+  .styled__input:focus {
     border-color: ${(p) =>
       p.$error ? p.theme.colors.red : p.theme.colors.primary};
 
@@ -53,7 +62,7 @@ export const Wrapper = styled.div<WrapperData>`
     }
   }
 
-  span{
+  span {
     color: ${(p) => p.theme.colors.red};
     font-size: 0.9rem;
   }

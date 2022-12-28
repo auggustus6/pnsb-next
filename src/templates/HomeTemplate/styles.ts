@@ -17,25 +17,10 @@ export const BannerContent = styled.div`
   width: 100%;
   height: 100%;
 
-  ${media.lessThan("medium")`
+  @media (max-width: ${BREAKPOINTS.medium}) {
     flex-direction: column-reverse;
     margin-top: 7rem;
     margin-bottom: 2rem;
-  `}
-`;
-
-export const CardsContainer = styled.div<{ $height: number }>`
-  padding: 2rem 0;
-  display: flex;
-  height: ${(p) => p.$height}px;
-  overflow: hidden;
-  gap: 34px;
-  justify-content: space-around;
-  flex-wrap: wrap;
-
-  @media (max-width: ${BREAKPOINTS.medium}) {
-    overflow: visible;
-    height: auto;
   }
 `;
 
@@ -91,16 +76,25 @@ export const Left = styled.div`
   }
 `;
 
+export const ShortcutsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+`
+
+export const FullWidthWrapper = styled.div`
+  overflow: hidden;
+`;
+
 export const RentStudioContainer = styled.div`
-  position: relative;
   display: flex;
   gap: 2rem;
 
-  /* @media (max-width: ${BREAKPOINTS.medium}) {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-  } */
+  @media(max-width:${BREAKPOINTS.medium}){
+      flex-direction: column-reverse;
+  }
 `;
 
 export const RentStudio = styled.div`
@@ -146,30 +140,46 @@ export const RentStudio = styled.div`
       max-width: 90vw;
     }
   }
+
+  @media (max-width: ${BREAKPOINTS.small}) {
+    h2 {
+      font-size: 2rem;
+    }
+  }
+`;
+
+export const WrapperRentBg = styled.div`
+  flex: 1;
+  position: relative;
+  height: 626px;
 `;
 
 export const RentStudioBackGround = styled.div<{ $img: string }>`
-  flex: 1;
   position: absolute;
-  left: 50%;
-
+  top: 0;
+  right: -20%;
   background: linear-gradient(270deg, rgba(255, 255, 255, 0) 26.66%, #fff 99.1%),
     url(${(p) => p.$img});
   background-size: cover;
 
-  height: 630px;
-  width: 50%;
+  height: 100%;
+  width: 120%;
+
+  z-index: -1;
 
   @media (max-width: ${BREAKPOINTS.medium}) {
-    height: 250px;
+    position: static;
+    height: 200px;
     background: linear-gradient(0, rgba(255, 255, 255, 0) 26.66%, #fff 99.1%),
       url(${(p) => p.$img});
-    width: 100%;
+    width: 130%;
+    margin-left: -15%;
     left: 0;
     background-position-y: 40%;
     background-size: cover;
     top: 3rem;
   }
+  
 `;
 
 type PastoralContainerData = {
@@ -198,8 +208,8 @@ export const PastoralImages = styled.div`
     gap: 1rem;
   }
 
-  @media(max-width:${BREAKPOINTS.medium}){
-      margin-bottom: -3rem;
+  @media (max-width: ${BREAKPOINTS.medium}) {
+    margin-bottom: -3rem;
   }
 `;
 
@@ -215,16 +225,6 @@ export const PastoralImageItem = styled.img<PastoralContainerData>`
   &:hover {
     size: 150px;
   }
-
-  /* @media(max-width: 1250px){
-    width: calc(${(p) => p.$width}px - 50px);
-    height: calc(${(p) => p.$height}px - 50px);
-  }
-
-  @media(max-width: 1080px){
-    width: calc(${(p) => p.$width}px - 100px);
-    height: calc(${(p) => p.$height}px - 100px);
-  } */
 `;
 
 export const PastoralText = styled.div`
@@ -237,8 +237,14 @@ export const PastoralText = styled.div`
     font-weight: 700;
     color: ${(p) => p.theme.colors.green};
   }
-  @media(max-width:${BREAKPOINTS.medium}){
-      align-items: center;
-      text-align: center;
+  @media (max-width: ${BREAKPOINTS.medium}) {
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (max-width: ${BREAKPOINTS.small}) {
+    h2 {
+      font-size: 2rem;
+    }
   }
 `;
