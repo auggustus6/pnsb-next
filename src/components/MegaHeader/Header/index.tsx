@@ -8,9 +8,10 @@ type HeaderProps = {
   children?: ReactElement<NavigatorProps>;
   className?: string;
   onOpen?: (value: boolean) => void;
+  home?: boolean;
 };
 
-export const Header = ({ children, className, onOpen }: HeaderProps) => {
+export const Header = ({ children, className, onOpen, home=false }: HeaderProps) => {
   const [isOnTop, setIsOnTop] = useState(true);
 
   const listenScroll = () => {
@@ -23,7 +24,7 @@ export const Header = ({ children, className, onOpen }: HeaderProps) => {
     return window.removeEventListener("scroll", listenScroll);
   }, []);
   return (
-    <S.Wrapper className={className} $isOnTop={isOnTop}>
+    <S.Wrapper className={className} $isOnTop={isOnTop} $home={home}>
       <S.MyContainer>
         <Link href="/">
           <div style={{cursor: "pointer"}}>

@@ -15,12 +15,10 @@ type DefaultCardProps = {
 };
 
 export const DefaultCard = ({ className, post }: DefaultCardProps) => {
-  const formattedSummary = markDownToPlainText(post?.summary);
-  const router = useRouter();
-  let link = router.asPath !== "/" ? router.asPath : "";
+  const formattedSummary = markDownToPlainText(post?.summary || "");
 
   return (
-    <Link href={`${link}/${post.slug}`}>
+    <Link href={post.link || ""}>
       <Styles.Wrapper className={className}>
         <Image src={post.imgUrl} width={290} height={247} objectFit="cover" />
         <Styles.Content $info={!!post.date || !!post.time}>

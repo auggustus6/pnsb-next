@@ -4,6 +4,8 @@ import { SectionTitle } from "components/Labels";
 import FullWidthSection from "components/Sections/FullWidthSection";
 import DefaultLayout from "layouts/DefaultLayout";
 
+import PrayIcon from "../../../public/svgs/pray.svg";
+
 import BannerRecentEvent from "./components/BannerRecentEvent";
 import BannerSchedule from "./components/BannerSchedule";
 import * as Style from "./styles";
@@ -19,6 +21,7 @@ import {
   PastoraisQuery,
   EventsQuery,
   NoticiasQuery,
+  HorariosMissasQuery,
 } from "graphql/generated/schema";
 import { formatDate, formatTime } from "utils/format";
 import FluidCardsContainer from "components/FluidCardsContainer";
@@ -29,31 +32,32 @@ type HomeTemplateProps = {
   pastorais: PastoraisQuery;
   events: EventsQuery;
   news: NoticiasQuery;
+  mass: HorariosMissasQuery;
 };
 
-const HomeTemplate = ({ pastorais, events, news }: HomeTemplateProps) => {
+const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
   const ref1 = useTilt(true);
   const ref2 = useTilt(true);
   const ref3 = useTilt(true);
 
-  console.log(pastorais, events, news);
-
-  async function handleSendFacebookPostButton() {
-    const result = await api.post("/send_facebook_post", {
-      message: "Post feito pelo site",
-      photo: "https://i.kym-cdn.com/photos/images/original/001/972/760/d6c",
-    });
-    if (result.status === 200) {
-      alert("post enviado com sucesso.");
-    }
-  }
+  console.log(mass);
 
   return (
     <DefaultLayout home>
       <FullWidthSection img="/img/bg-main.png" href="#footer">
         <Style.BannerContent>
-          <BannerRecentEvent />
-          <BannerSchedule />
+          <BannerRecentEvent
+            post={{
+              imgUrl:
+                events.events?.data[0].attributes?.Imagem?.data?.attributes
+                  ?.url || "",
+              slug: events.events?.data[0].attributes?.Slug || "",
+              title: events.events?.data[0].attributes?.Titulo || "",
+              link: `noticias/${events.events?.data[0].attributes?.Slug}` || "",
+              summary: events.events?.data[0].attributes?.Descricao || "",
+            }}
+          />
+          <BannerSchedule mass={mass}/>
         </Style.BannerContent>
       </FullWidthSection>
 
@@ -69,6 +73,7 @@ const HomeTemplate = ({ pastorais, events, news }: HomeTemplateProps) => {
               key={event.attributes?.Slug}
               post={{
                 title: event.attributes?.Titulo || "",
+                link: `eventos/${event.attributes?.Slug}`,
                 summary: event.attributes?.Descricao || "",
                 slug: event.attributes?.Slug || "",
                 imgUrl: event.attributes?.Imagem?.data?.attributes?.url || "",
@@ -111,11 +116,13 @@ const HomeTemplate = ({ pastorais, events, news }: HomeTemplateProps) => {
         />
         <FluidCardsContainer>
           {news.noticias?.data.map((newsItem) => (
-            <NewsCard
+            <DefaultCard
               key={newsItem.attributes?.Slug}
               post={{
                 slug: newsItem.attributes?.Slug || "",
                 title: newsItem.attributes?.Titulo || "",
+                summary: newsItem.attributes?.Descricao || "",
+                link: `noticias/${newsItem.attributes?.Slug}`,
                 imgUrl: newsItem.attributes?.Imagem.data?.attributes?.url || "",
                 date: formatDate(newsItem.attributes?.publishedAt),
                 time: formatTime(newsItem.attributes?.publishedAt),

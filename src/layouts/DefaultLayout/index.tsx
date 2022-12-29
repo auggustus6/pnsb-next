@@ -17,7 +17,7 @@ const DefaultLayout = ({
 }: DefaultLayoutProps) => {
   return (
     <>
-      <PageHeader />
+      <PageHeader home={home}/>
       {!home && <div style={{ paddingTop: "90px" }} />}
       {breadCrumbs && (
         <Container>

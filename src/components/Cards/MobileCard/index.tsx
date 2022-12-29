@@ -15,7 +15,7 @@ type MobileCardProps = {
 };
 
 export const MobileCard = ({ className, post }: MobileCardProps) => {
-  const formattedSummary = markDownToPlainText(post?.summary);
+  const formattedSummary = markDownToPlainText(post?.summary || "");
   const router = useRouter();
 
   return (

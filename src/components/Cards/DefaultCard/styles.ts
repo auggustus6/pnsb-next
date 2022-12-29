@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
   `}
 `;
 
-export const Content = styled.div<{$info:boolean}>`
+export const Content = styled.div<{ $info: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -53,8 +53,8 @@ export const Content = styled.div<{$info:boolean}>`
 
   p {
     display: -webkit-box;
-    -webkit-line-clamp: ${(p) => p.$info ? "2" : "3"};
-    max-height: ${(p) => p.$info ? "3rem" : "4rem"};
+    -webkit-line-clamp: ${(p) => (p.$info ? "2" : "3")};
+    max-height: ${(p) => (p.$info ? "3rem" : "4rem")};
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

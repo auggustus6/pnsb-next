@@ -1,9 +1,11 @@
 import client from "graphql/client";
 import {
   EventsQuery,
+  HorariosMissasQuery,
   NoticiasQuery,
   PastoraisQuery,
 } from "graphql/generated/schema";
+import { QR_HORARIOS_MISSAS } from "graphql/querys/HorariosMissa";
 import { QR_EVENTS } from "graphql/querys/MuralEventos";
 import { QR_NOTICIAS } from "graphql/querys/Noticias";
 import { QR_PASTORAIS } from "graphql/querys/Pastorals";
@@ -14,10 +16,18 @@ type HomeProps = {
   pastorais: PastoraisQuery;
   events: EventsQuery;
   news: NoticiasQuery;
+  mass: HorariosMissasQuery;
 };
 
-export default function Home({ pastorais, events, news }: HomeProps) {
-  return <HomeTemplate pastorais={pastorais} events={events} news={news} />;
+export default function Home({ pastorais, events, news, mass }: HomeProps) {
+  return (
+    <HomeTemplate
+      pastorais={pastorais}
+      events={events}
+      news={news}
+      mass={mass}
+    />
+  );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -35,7 +45,11 @@ export const getStaticProps: GetStaticProps = async () => {
     variables: { offset: 0, limit: 4 },
   });
 
+  const mass = await client.query<HorariosMissasQuery>({
+    query: QR_HORARIOS_MISSAS,
+  });
+
   return {
-    props: { pastorais: pastoral.data, events: events.data, news: news.data },
+    props: { pastorais: pastoral.data, events: events.data, news: news.data, mass: mass.data },
   };
 };

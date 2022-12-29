@@ -1,35 +1,24 @@
-import { DefaultButton } from "components/Buttons";
+import { BorderButton } from "components/Buttons";
 import { DefaultInput } from "components/Inputs";
-import { FormSection } from "components/Sections";
-import * as Yup from "yup";
-import theme from "styles/theme";
 import { FormikProps, withFormik } from "formik";
-import { customSwal } from "utils/customSwal";
-import { useRouter } from "next/router";
 import client from "graphql/client";
-import { MT_WANNA_PARTICIPATE } from "graphql/mutations/pastorals";
-import { phoneMaskApply } from "utils/format";
+import { MT_CONTACT } from "graphql/mutations/contato";
+import { customSwal } from "utils/customSwal";
+import * as Styles from "./styles";
+import * as Yup from "yup";
 
 type MyFormProps = {
   name: string;
   email: string;
   phone: string;
-  pastoral: string;
+  message: string;
 };
 
 const MyForm = (props: FormikProps<MyFormProps>) => {
   const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
     props;
-  const router = useRouter();
-
   return (
-    <FormSection imgUrl="/img/jesus.jpg">
-      <h4 style={{ color: theme.colors.primary, marginBottom: "1rem" }}>
-        Algum Titulo Legal
-      </h4>
-
-      <input type="hidden" value={router.asPath.split("/").slice(-1)} />
-
+    <Styles.Wrapper onSubmit={handleSubmit}>
       <DefaultInput
         value={values.name}
         onChange={handleChange}
@@ -52,18 +41,19 @@ const MyForm = (props: FormikProps<MyFormProps>) => {
         name="phone"
         error={{ error: errors.phone || "", touched: touched.phone || false }}
       />
-
-      <DefaultButton
-        bgColor={theme.colors.primary}
-        height="3rem"
-        width="100%"
-        textColor="white"
-        style={{ borderRadius: "5px" }}
-        onClick={handleSubmit}
-      >
-        Participar
-      </DefaultButton>
-    </FormSection>
+      <DefaultInput
+        value={values.message}
+        onChange={handleChange}
+        inputLabel={"Mensagem"}
+        name={"message"}
+        error={{
+          error: errors.message || "",
+          touched: touched.message || false,
+        }}
+        textArea
+      />
+      <BorderButton style={{ maxWidth: "100%" }}>ENVIAR</BorderButton>
+    </Styles.Wrapper>
   );
 };
 
@@ -74,21 +64,24 @@ const formSchema = Yup.object().shape({
     .required("Obrigatório"),
   email: Yup.string().email("Email inválido").required("Obrigatório"),
   phone: Yup.string().min(6, "Número inválido!").required("Obrigatório"),
+  message: Yup.string()
+    .min(20, "Mensagem muito curta!")
+    .max(1000, "Mensagem muito longa!")
+    .required("Obrigatório"),
 });
 
-export const FormikForm = withFormik({
-  mapPropsToValues: () => ({ name: "", email: "", phone: "", pastoral: "" }),
+const ContactForm = withFormik({
+  mapPropsToValues: () => ({ name: "", email: "", phone: "", message: "" }),
 
   handleSubmit: async (values, { setSubmitting, resetForm }) => {
     try {
       const mutationResult = await client.mutate({
-        mutation: MT_WANNA_PARTICIPATE,
+        mutation: MT_CONTACT,
         variables: {
           nome: values.name,
           email: values.email,
           telefone: values.phone,
-          participa: true,
-          trabalho: values.pastoral,
+          participante: true,
         },
       });
 
@@ -118,4 +111,4 @@ export const FormikForm = withFormik({
   validationSchema: formSchema,
 })(MyForm);
 
-export default FormikForm;
+export default ContactForm;

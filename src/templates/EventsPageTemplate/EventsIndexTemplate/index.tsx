@@ -50,6 +50,7 @@ const EventsIndexTemplate = ({ events }: EventIndexTemplate) => {
               post={{
                 slug: event.attributes?.Slug || "",
                 title: event.attributes?.Titulo || "",
+                link: `eventos/${event.attributes?.Slug}`,
                 summary: event.attributes?.Descricao || "",
                 imgUrl: event.attributes?.Imagem?.data?.attributes?.url || "",
                 date: formatDate(event.attributes?.publishedAt),
@@ -64,7 +65,7 @@ const EventsIndexTemplate = ({ events }: EventIndexTemplate) => {
           <Pagination
             index={paginationIndex}
             setIndex={setPaginationIndex}
-            size={3}
+            size={1}
             color="green"
           />
         </Styles.PaginationContainer>

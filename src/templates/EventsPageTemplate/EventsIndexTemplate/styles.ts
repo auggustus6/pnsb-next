@@ -12,6 +12,7 @@ export const CardsContainer = styled.div<{ $isList: boolean }>`
   grid-template-columns: ${(p) =>
     p.$isList ? "1fr" : "repeat(auto-fit, minmax(300px, 1fr))"};
   justify-items: center;
+  justify-content: flex-start;
   padding-top: 2rem;
 
   @media (max-width: ${BREAKPOINTS.medium}) {

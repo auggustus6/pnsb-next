@@ -2,9 +2,11 @@ import Container from "components/Container";
 import styled from "styled-components";
 import { CgMenu } from "react-icons/cg";
 import media from "styled-media-query";
+import { BREAKPOINTS } from "utils/breakpoints";
 
 interface WrapperData {
   $isOnTop: boolean;
+  $home: boolean;
 }
 
 export const Wrapper = styled.header<WrapperData>`
@@ -12,19 +14,22 @@ export const Wrapper = styled.header<WrapperData>`
   z-index: ${(p) => p.theme.layers.menu};
   height: 90px;
   width: 100%;
+
   background: ${(p) => (p.$isOnTop ? "none" : "white")};
+  ${(p) => !p.$home && `background: ${p.$home ? "none" : "white"};`}
+
   transition: ${(p) => p.theme.transition.default};
 
-  box-shadow: ${(p) => p.$isOnTop ? "none" : p.theme.shadows.cards};
+  box-shadow: ${(p) => (p.$isOnTop ? "none" : p.theme.shadows.cards)};
+  /* ${(p) => !p.$home && `box-shadow: ${p.theme.shadows.cards} !important;`} */
 
-
-  ${media.greaterThan<WrapperData>("medium")`
+  @media (min-width: ${BREAKPOINTS.medium}) {
     a {
       color: ${(p) =>
         p.$isOnTop ? "inherit" : `${p.theme.colors.gray} !important`};
+      ${(p) => !p.$home && `color: ${p.theme.colors.textColor} !important;`}
     }
-  `}
-
+  }
 `;
 
 export const MyContainer = styled(Container)`
@@ -34,7 +39,7 @@ export const MyContainer = styled(Container)`
   align-items: center;
   padding: 0.6rem;
 
-  a{
+  a {
     cursor: pointer;
   }
 `;

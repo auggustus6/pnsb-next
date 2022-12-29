@@ -1,49 +1,51 @@
-import { ReactNode } from "react";
 import * as Styles from "./styles";
+import InputMask from "react-input-mask";
 
-type DefaultInputProps = {
-  className?: string;
-  state: string;
-  setState: any;
+interface DefaultInputProps extends React.InputHTMLAttributes<any> {
   inputLabel: string;
-  name: string;
   error: {
     error: string;
     touched: boolean;
   };
   textArea?: boolean;
-};
+  mask?: string;
+}
 
-export const DefaultInput = ({
-  className,
-  state,
-  setState,
-  inputLabel,
-  name,
-  error,
-  textArea = false,
-}: DefaultInputProps) => {
+
+export const DefaultInput = (props: DefaultInputProps) => {
+  const { className, inputLabel, name, error, textArea = false, mask } = props;
+
+  
+  
   return (
     <Styles.Wrapper
       className={className}
       $error={error.error && error.touched ? true : false}
     >
-      {!textArea && (
+      {!textArea && !mask && (
         <input
           type="text"
           id={name}
           name={name}
-          value={state}
-          onChange={setState}
           className="styled__input"
+          {...props}
+        />
+      )}
+      {mask && (
+        <InputMask
+          mask={mask}
+          type="text"
+          id={name}
+          name={name}
+          className="styled__input"
+          {...props}
         />
       )}
       {textArea && (
         <textarea
           id={name}
           name={name}
-          value={state}
-          onChange={setState}
+          {...props}
           maxLength={1000}
           className="styled__textarea styled__input"
         />

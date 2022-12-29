@@ -51,6 +51,7 @@ const PastoralIndexTemplate = ({ pastorais }: PastoralIndexTemplate) => {
               post={{
                 slug: pastorais.attributes?.Slug || "",
                 title: pastorais.attributes?.Titulo || "",
+                link: `pastoral/${pastorais.attributes?.Slug}`,
                 summary: pastorais.attributes?.Descricao || "",
                 imgUrl:
                   pastorais.attributes?.Galeria?.data[0].attributes?.url || "",

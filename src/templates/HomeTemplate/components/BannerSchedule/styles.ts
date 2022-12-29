@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import media from "styled-media-query";
+import { BREAKPOINTS } from "utils/breakpoints";
 
 export const Wrapper = styled.div`
+  max-width: 444px;
+  width: 100%;
 
-  ${media.lessThan("medium")`
+  @media (max-width: ${BREAKPOINTS.medium}) {
     max-width: 480px;
-    width: 100%;
-  `}
+  }
 `;
 
 export const Title = styled.div`
@@ -23,7 +25,6 @@ export const Title = styled.div`
 export const Content = styled.div`
   background: white;
   padding-bottom: 1rem;
-
 
   border-radius: 0 0 10px 10px;
 

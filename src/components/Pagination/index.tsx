@@ -31,7 +31,7 @@ const Pagination = ({
     }
   }
 
-  if(size <= 1){
+  if (size <= 1) {
     return null;
   }
 
@@ -40,7 +40,7 @@ const Pagination = ({
       <Styles.Wrapper className={className} $color={color}>
         <Styles.PaginationItem
           $disabled={index == 0}
-          onClick={index == 0 ? () => {} : handleBackButton}
+          onClick={index == 0 ? undefined : handleBackButton}
         >
           <ArrowIcon size={55} style={{ transform: "rotate(180deg)" }} />
         </Styles.PaginationItem>
@@ -55,7 +55,7 @@ const Pagination = ({
         ))}
         <Styles.PaginationItem
           $disabled={index == size - 1}
-          onClick={index == size - 1 ? () => {} : handleNextButton}
+          onClick={index == size - 1 ? undefined : handleNextButton}
         >
           <ArrowIcon size={55} />
         </Styles.PaginationItem>

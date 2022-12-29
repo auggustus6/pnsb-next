@@ -1,19 +1,21 @@
+import { HorariosMissasQuery } from "graphql/generated/schema";
 import { ReactNode } from "react";
 import ScheduleItem from "../ScheduleItem";
 import * as S from "./styles";
 
 type BannerScheduleProps = {
   className?: string;
+  mass: HorariosMissasQuery;
 };
 
-const BannerSchedule = ({ className }: BannerScheduleProps) => (
+const BannerSchedule = ({ className, mass }: BannerScheduleProps) => (
   <S.Wrapper className={className}>
     <S.Title>
       <b>HORÁRIOS</b> MISSAS:
     </S.Title>
     <S.Content>
       <ScheduleItem title={"PRESENCIAIS"}>
-        <p>
+        {/* <p>
           <b>Domingo:</b> 8h, 10h, 11h15, 12h30, 16h, 17h, 18h30 e 20h
         </p>
         <p>
@@ -24,10 +26,16 @@ const BannerSchedule = ({ className }: BannerScheduleProps) => (
         </p>
         <p>
           <b>Sábado:</b> 8h, 12h e 16h
-        </p>
+        </p> */}
+
+        {mass.horariosMissas?.data.map((m) => (
+          <p>
+            <b>{m.attributes?.Dia}</b>
+          </p>
+        ))}
       </ScheduleItem>
       <ScheduleItem title={"TRANSMITIDAS ONLINE"}>
-        <p>
+        {/* <p>
           <b>Domingo:</b> 8h, 12h30 e 18h30
         </p>
         <p>
@@ -35,7 +43,11 @@ const BannerSchedule = ({ className }: BannerScheduleProps) => (
         </p>
         <p>
           <b>Sábado:</b> 8h e 12h
-        </p>
+        </p> */}
+
+        {mass.horariosMissas?.data.map((m) => (
+          <b>{m.attributes?.Dia}</b>
+        ))}
       </ScheduleItem>
     </S.Content>
   </S.Wrapper>

@@ -21,9 +21,10 @@ import { GiReceiveMoney as CollaborateIcon } from "react-icons/gi";
 type PageHeaderProps = {
   children?: ReactNode;
   className?: string;
+  home?: boolean;
 };
 
-const PageHeader = ({ children, className }: PageHeaderProps) => {
+const PageHeader = ({ children, className, home=false }: PageHeaderProps) => {
   const { width } = useWindowSize();
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
@@ -33,7 +34,7 @@ const PageHeader = ({ children, className }: PageHeaderProps) => {
   }, [width]);
 
   return (
-    <Header onOpen={setIsOpen}>
+    <Header onOpen={setIsOpen} home={home}>
       <Navigator isOpen={isOpen} onClose={setIsOpen}>
         <NavItem text="Home" link={"/"} mobileIcon={<HomeIcon />} />
         <NavItem

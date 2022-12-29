@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { DefaultInput } from "components/Inputs";
 import { BorderButton, DefaultButton } from "components/Buttons";
+import ContactForm from "./components/ContactForm";
 
 type ContatoTemplateProps = {};
 
@@ -70,60 +71,12 @@ const ContatoTemplate = ({}: ContatoTemplateProps) => {
           <Styles.FormSide>
             <h4>Fale Conosco</h4>
             <Spacing size={2} />
-            <form action="">
-              {" "}
-              <DefaultInput
-                state={""}
-                setState={undefined}
-                inputLabel={"Nome"}
-                name={"name"}
-                error={{
-                  error: "",
-                  touched: false,
-                }}
-              />
-              <DefaultInput
-                state={""}
-                setState={undefined}
-                inputLabel={"Email"}
-                name={"email"}
-                error={{
-                  error: "",
-                  touched: false,
-                }}
-              />
-              <DefaultInput
-                state={"fdasfadfsa"}
-                setState={undefined}
-                inputLabel={"Telefone"}
-                name={"phone"}
-                error={{
-                  error: "",
-                  touched: false,
-                }}
-              />
-              <DefaultInput
-                state={"a"}
-                setState={undefined}
-                inputLabel={"Mensagem"}
-                name={"message"}
-                error={{
-                  error: "",
-                  touched: false,
-                }}
-                textArea
-              />
-              
-              <BorderButton style={{maxWidth: "100%"}}>ENVIAR</BorderButton>
-            </form>
+            <ContactForm />
           </Styles.FormSide>
         </Styles.ContentWrapper>
         <Spacing size={4} />
         <Styles.StyledIframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119072.75422041139!2d-47.8630628716355!3d-21.15146029336428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b9bc226406d3d1%3A0xf867b20e2cbd2976!2sPar%C3%B3quia%20Nossa%20Senhora%20de%20Lourdes!5e0!3m2!1spt-BR!2sbr!4v1672198309757!5m2!1spt-BR!2sbr"
-          // width="1312"
-          // height="367"
-          // style="border:0;"
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

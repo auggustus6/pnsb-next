@@ -21,7 +21,7 @@ type EventCardProps = {
 
 export const NewsCard = ({ post, className }: EventCardProps) => {
   const router = useRouter();
-  let link = router.asPath !== "/" ? router.asPath : "";
+  const link = router.asPath !== "/" ? router.asPath : "";
 
   return (
     <Link href={`${link}/${post.slug}`}>

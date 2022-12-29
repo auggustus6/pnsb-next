@@ -51,6 +51,7 @@ const NoticiaIndexTemplate = ({ noticias }: NoticiaIndexTemplate) => {
               post={{
                 slug: noticia.attributes?.Slug || "",
                 title: noticia.attributes?.Titulo || "",
+                link: `noticias/${noticia.attributes?.Slug}`,
                 summary: noticia.attributes?.Descricao || "",
                 imgUrl:
                   noticia.attributes?.Galeria?.data[0].attributes?.url || "",
@@ -66,7 +67,7 @@ const NoticiaIndexTemplate = ({ noticias }: NoticiaIndexTemplate) => {
           <Pagination
             index={paginationIndex}
             setIndex={setPaginationIndex}
-            size={3}
+            size={2}
             color="green"
           />
         </Styles.PaginationContainer>

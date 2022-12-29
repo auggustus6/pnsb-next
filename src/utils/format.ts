@@ -30,3 +30,17 @@ export const markDownToPlainText = (mdtext: string) =>
   mdtext.replace(/([-]{2}|[_]{2}|[~]{2}|[*]{2}|[`]{2})/g, "");
 
 export const urlToTitle = (url: string) => url.replace(/[-_]/g, " ");
+
+
+export const phoneMaskApply = (phone: string) => {
+  phone = phone.replace(/[^\d]/g, "");
+
+  if (phone.length > 2) {
+    phone = phone.replace(/^(\d{2})(\d*)/, "($1) $2");
+  }
+  if (phone.length > 9) {
+    phone = phone.replace(/^(.*)(\d{4})$/, "$1-$2");
+  }
+
+  return phone;
+};
