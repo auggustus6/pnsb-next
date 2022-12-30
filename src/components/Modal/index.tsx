@@ -11,7 +11,6 @@ type ModalProps = {
 
 const Modal = ({ children, className, style, modalName }: ModalProps) => {
   const closeRef = useRef<HTMLDivElement>(null);
-  const [isTouch, setIsTouch] = useState(false);
   const { toggleModal, modals, closeAllModals } = useModal();
 
   const closeModal = (evt: any) => {

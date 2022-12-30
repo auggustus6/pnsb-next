@@ -67,7 +67,7 @@ const PastoralIndexTemplate = ({ pastorais }: PastoralIndexTemplate) => {
           <Pagination
             index={paginationIndex}
             setIndex={setPaginationIndex}
-            size={3}
+            size={Math.floor(pastorais?.pastorals?.data.length! / 8)}
             color="green"
           />
         </Styles.PaginationContainer>

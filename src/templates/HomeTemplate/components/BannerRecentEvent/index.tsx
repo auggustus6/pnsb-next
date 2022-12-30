@@ -20,25 +20,21 @@ const BannerRecentEvent = ({ className, post }: BannerRecentEventProps) => {
         Transmissões online
       </S.StreamButton>
       <S.RecentEventInfoContainer>
-        <Link href={`/noticias/${post.slug}`}>
-          <div style={{ cursor: "pointer" }}>
-            <Image
-              src={post.imgUrl}
-              width={210}
-              height={210}
-              alt=""
-              objectFit="cover"
-            />
-          </div>
-        </Link>
+        <div>
+          <Image
+            src={post.imgUrl}
+            width={210}
+            height={210}
+            alt=""
+            objectFit="cover"
+          />
+        </div>
         <S.Info>
-          <Link href={`/noticias/${post.slug}`}>
-            <div style={{ cursor: "pointer" }}>
-              <h5>{post.title}</h5>
-              <p>{post.summary}</p>
-            </div>
-          </Link>
-          <Link href={"/noticias"}>Ver mais</Link>
+          <div>
+            <h5>{post.title}</h5>
+            <p>{post.summary}</p>
+          </div>
+          <Link href={`/eventos/${post.slug}`}>Ver mais</Link>
         </S.Info>
       </S.RecentEventInfoContainer>
     </S.Wrapper>

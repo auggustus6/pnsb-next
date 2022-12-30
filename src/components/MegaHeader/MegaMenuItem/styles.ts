@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import media from "styled-media-query";
+import { BREAKPOINTS } from "utils/breakpoints";
 
 export const Row = styled.div`
   display: flex;
@@ -10,16 +11,23 @@ export const Row = styled.div`
   width: 100%;
   text-align: start;
 
+  & > h5 {
+    font-size: 1.25rem;
+  }
+
   & + & {
     margin-left: 1rem;
   }
 
-  ${media.lessThan("medium")`
-    display: none;
-  `}
+  @media (max-width: ${BREAKPOINTS.medium}) {
+    padding: 1rem 2rem;
+    & + & {
+      margin-left: 0rem;
+    }
+  }
 `;
 
-export const MobileTitle = styled.span<{$titleColor: string}>`
+export const MobileTitle = styled.span<{ $titleColor: string }>`
   display: none;
   width: 95%;
   margin-left: 1rem;

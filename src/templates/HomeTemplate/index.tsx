@@ -40,8 +40,6 @@ const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
   const ref2 = useTilt(true);
   const ref3 = useTilt(true);
 
-  console.log(mass);
-
   return (
     <DefaultLayout home>
       <FullWidthSection img="/img/bg-main.png" href="#footer">
@@ -57,7 +55,7 @@ const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
               summary: events.events?.data[0].attributes?.Descricao || "",
             }}
           />
-          <BannerSchedule mass={mass}/>
+          <BannerSchedule mass={mass} />
         </Style.BannerContent>
       </FullWidthSection>
 
@@ -219,9 +217,11 @@ const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
               massa vel interdum. Ut nec velit ullamcorper, vestibulum nisl id,
               pretium mi. Nunc dignissim consectetur massa.
             </p>
-            <DefaultButton bgColor={theme.colors.green} textColor="white">
-              SAIBA MAIS
-            </DefaultButton>
+            <Link href="pastoral">
+              <DefaultButton bgColor={theme.colors.green} textColor="white">
+                SAIBA MAIS
+              </DefaultButton>
+            </Link>
           </Style.PastoralText>
         </Style.PastoralContainer>
       </Container>

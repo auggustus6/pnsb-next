@@ -65,7 +65,7 @@ const EventsIndexTemplate = ({ events }: EventIndexTemplate) => {
           <Pagination
             index={paginationIndex}
             setIndex={setPaginationIndex}
-            size={1}
+            size={Math.floor(events?.events?.data.length! / 8)}
             color="green"
           />
         </Styles.PaginationContainer>

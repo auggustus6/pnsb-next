@@ -2,6 +2,11 @@ import BreadCrumbs from "components/BreadCrumbs";
 import Container from "components/Container";
 import Footer from "components/Footer";
 import PageHeader from "components/PageHeader";
+import {
+  PastoraisQuery,
+  EventsQuery,
+  NoticiasQuery,
+} from "graphql/generated/schema";
 import { ReactNode } from "react";
 
 type DefaultLayoutProps = {
@@ -17,7 +22,7 @@ const DefaultLayout = ({
 }: DefaultLayoutProps) => {
   return (
     <>
-      <PageHeader home={home}/>
+      <PageHeader home={home} />
       {!home && <div style={{ paddingTop: "90px" }} />}
       {breadCrumbs && (
         <Container>

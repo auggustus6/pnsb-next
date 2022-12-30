@@ -20,7 +20,7 @@ const MegaMenuItem = ({
 }: MegaMenuItemProps) => {
   return (
     <>
-      <S.MobileTitle $titleColor={mobileTitleColor}>{title}</S.MobileTitle>
+      {/* <S.MobileTitle $titleColor={mobileTitleColor}>{title}</S.MobileTitle> */}
       <S.Row className={className}>
         {title && <h5 style={{ color: titleColor }}>{title}</h5>}
         {children}

@@ -12,6 +12,8 @@ export const Wrapper = styled.div`
   border-radius: 5px;
   cursor: pointer;
 
+  padding: 0.3rem;
+
   &:hover {
     filter: brightness(0.95);
   }

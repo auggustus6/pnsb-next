@@ -2,6 +2,7 @@ import styled from "styled-components";
 import media from "styled-media-query";
 import { CgClose } from "react-icons/cg";
 import Image from "next/image";
+import { BREAKPOINTS } from "utils/breakpoints";
 
 type MenuBackgroundData = {
   $imgSrc: string;
@@ -19,6 +20,8 @@ export const MegaMenu = styled.div`
   justify-content: space-between;
   gap: 1rem;
   padding: 0.5rem;
+
+  cursor: initial;
 
   opacity: 0;
   visibility: hidden;
@@ -77,9 +80,12 @@ export const MegaMenuContent = styled.div`
   width: 100%;
   padding: 1rem;
 
+  max-height: 50vh;
+  overflow-y: scroll;
+
   gap: 1rem;
 
-  ${media.lessThan("medium")`
+  @media (max-width: ${BREAKPOINTS.medium}) {
     flex-direction: column;
     justify-content: flex-start;
     text-align: start;
@@ -88,10 +94,14 @@ export const MegaMenuContent = styled.div`
     width: 100%;
     padding: 0;
 
-    a{
+    background: #f6f6f6;
+
+    border-radius: 0 0 10px 10px;
+
+    a {
       padding: 0.6rem 0;
       width: 100%;
       padding-left: 1rem;
     }
-  `}
+  }
 `;

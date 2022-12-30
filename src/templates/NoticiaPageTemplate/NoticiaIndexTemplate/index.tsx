@@ -67,7 +67,7 @@ const NoticiaIndexTemplate = ({ noticias }: NoticiaIndexTemplate) => {
           <Pagination
             index={paginationIndex}
             setIndex={setPaginationIndex}
-            size={2}
+            size={Math.floor(noticias?.noticias?.data.length! / 8)}
             color="green"
           />
         </Styles.PaginationContainer>

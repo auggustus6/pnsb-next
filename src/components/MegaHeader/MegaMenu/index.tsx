@@ -8,9 +8,11 @@ export type MegaMenuProps = {
   style?: React.CSSProperties;
 };
 
-export const MegaMenu = ({ children, imgSrc, style }: MegaMenuProps) => (
-  <S.MegaMenu className="megamenu" style={style}>
-    <S.MenuBackground $imgSrc={imgSrc} />
-    <S.MegaMenuContent>{children}</S.MegaMenuContent>
-  </S.MegaMenu>
-);
+export const MegaMenu = ({ children, imgSrc, style }: MegaMenuProps) => {
+  return (
+    <S.MegaMenu className="megamenu" style={style}>
+      <S.MenuBackground $imgSrc={imgSrc} />
+      <S.MegaMenuContent>{children}</S.MegaMenuContent>
+    </S.MegaMenu>
+  );
+};

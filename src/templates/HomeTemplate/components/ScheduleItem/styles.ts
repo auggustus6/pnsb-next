@@ -13,6 +13,11 @@ export const Title = styled.div`
 
 export const Content = styled.div`
   margin-top: 1rem;
+
+  b{
+    color: #222;
+  }
+
   p{
     margin-top: 0.4rem;
   }

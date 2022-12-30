@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { CgMenu } from "react-icons/cg";
 import media from "styled-media-query";
 import { BREAKPOINTS } from "utils/breakpoints";
+import Logo from "components/Logo";
 
 interface WrapperData {
   $isOnTop: boolean;
@@ -23,6 +24,13 @@ export const Wrapper = styled.header<WrapperData>`
   box-shadow: ${(p) => (p.$isOnTop ? "none" : p.theme.shadows.cards)};
   /* ${(p) => !p.$home && `box-shadow: ${p.theme.shadows.cards} !important;`} */
 
+  .megamenu_clicked {
+    & > .megamenu {
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+
   @media (min-width: ${BREAKPOINTS.medium}) {
     a {
       color: ${(p) =>
@@ -30,6 +38,12 @@ export const Wrapper = styled.header<WrapperData>`
       ${(p) => !p.$home && `color: ${p.theme.colors.textColor} !important;`}
     }
   }
+`;
+
+export const CustomLogo = styled(Logo)`
+  height: 68px;
+  width: 102px;
+  cursor: pointer;
 `;
 
 export const MyContainer = styled(Container)`

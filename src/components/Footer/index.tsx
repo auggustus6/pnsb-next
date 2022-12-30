@@ -4,7 +4,20 @@ import FooterLinksSection from "./components/Categories/FooterLinksSection";
 import { useTheme } from "styled-components";
 import Image from "next/image";
 import Logo from "components/Logo";
+import {
+  PastoraisQuery,
+  EventsQuery,
+  NoticiasQuery,
+} from "graphql/generated/schema";
+import { useQuery } from "@apollo/client";
+import { QR_PASTORAIS } from "graphql/querys/Pastorals";
+import { QR_EVENTS } from "graphql/querys/MuralEventos";
+import { QR_NOTICIAS } from "graphql/querys/Noticias";
+
 const Footer = () => {
+  const { data: pastorais } = useQuery<PastoraisQuery>(QR_PASTORAIS);
+  const { data: events } = useQuery<EventsQuery>(QR_EVENTS);
+  const { data: news } = useQuery<NoticiasQuery>(QR_NOTICIAS);
   const theme = useTheme();
 
   const links = [
@@ -14,12 +27,22 @@ const Footer = () => {
     { text: "Lorem ipsum", href: "/" },
     { text: "Ipsum dolor", href: "/" },
     { text: "Dolor sit amet", href: "/" },
-    { text: "Adipiscing elit. ", href: "/" },
-    { text: "Phasellus ac nisi et lig", href: "/" },
-    { text: "Mattis lectus efficitur a.", href: "/" },
-    { text: "Dolor sit amet", href: "/" },
-    { text: "Ipsum dolor", href: "/" },
   ];
+
+  const pastoraisLinks = pastorais?.pastorals?.data.map((past) => ({
+    text: past.attributes?.Titulo,
+    href: `/pastoral/${past.attributes?.Slug}`,
+  }));
+
+  const eventsLinks = events?.events?.data.map((event) => ({
+    text: event.attributes?.Titulo,
+    href: `/eventos/${event.attributes?.Slug}`,
+  }));
+
+  const newsLinks = news?.noticias?.data.map((noticia) => ({
+    text: noticia.attributes?.Titulo,
+    href: `/noticias/${noticia.attributes?.Slug}`,
+  }));
 
   return (
     <S.Wrapper id="footer">
@@ -38,15 +61,15 @@ const Footer = () => {
           <S.ContentInfos>
             <S.Info>
               <Image src="/img/icons/church.svg" width={29} height={29} />
-              <p>Rua Lorem Impsum dollor.</p>
+              <p>Rua Vergilio Dias de Castro, São José do Rio Preto - SP</p>
             </S.Info>
             <S.Info>
               <Image src="/img/icons/emailExample.svg" width={29} height={29} />
-              <p>(11) 9 9999-9999</p>
+              <p>pnsbrasil1@gmail.com</p>
             </S.Info>
             <S.Info>
               <Image src="/img/icons/Telephone.svg" width={29} height={29} />
-              <p>Rua Lorem Impsum dollor.</p>
+              <p>(17) 3234-5616</p>
             </S.Info>
           </S.ContentInfos>
         </S.ContainerFooterLogo>
@@ -106,21 +129,23 @@ const Footer = () => {
             <FooterLinksSection
               title="PASTORAIS"
               titleColor={theme.colors.turquoise}
-              links={links.slice(0, 7)}
-              seeMoreHref="/"
-              seeMoreText="Ver todas"
+              links={pastoraisLinks}
+              seeMoreHref="/pastorais"
+              seeMoreText="Ver todas pastorais"
             />
             <FooterLinksSection
               title="MURAL DE EVENTOS"
               titleColor={theme.colors.green}
-              links={links.slice(0, 7)}
-              seeMoreHref="/"
+              links={eventsLinks}
+              seeMoreHref="/eventos"
               seeMoreText="Ver todos eventos"
             />
             <FooterLinksSection
               title="NOTÍCIAS"
               titleColor={theme.colors.primary}
               links={links.slice(0, 3)}
+              seeMoreHref="/noticias"
+              seeMoreText="Ver todas as noticias"
             />
           </S.WrapperLinks>
         </S.NavFooter>

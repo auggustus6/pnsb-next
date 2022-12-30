@@ -8,6 +8,8 @@ interface InstitutionalData {
 export const Institutional = styled.div<InstitutionalData>`
   text-align: left;
 
+  width: 218px;
+
   ${media.lessThan("small")`
     max-width: 300px;
     width: 100%;

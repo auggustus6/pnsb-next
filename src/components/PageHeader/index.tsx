@@ -17,6 +17,7 @@ import {
 } from "react-icons/bs";
 import { ImNewspaper as NewsIcon } from "react-icons/im";
 import { GiReceiveMoney as CollaborateIcon } from "react-icons/gi";
+import Link from "next/link";
 
 type PageHeaderProps = {
   children?: ReactNode;
@@ -24,7 +25,7 @@ type PageHeaderProps = {
   home?: boolean;
 };
 
-const PageHeader = ({ children, className, home=false }: PageHeaderProps) => {
+const PageHeader = ({ children, className, home = false }: PageHeaderProps) => {
   const { width } = useWindowSize();
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
@@ -50,6 +51,11 @@ const PageHeader = ({ children, className, home=false }: PageHeaderProps) => {
               title="QUEM SOMOS"
               titleColor={theme.colors.secondary}
             >
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Curabitur blandit dignissim orci, et iaculis nibh tempor vitae.
+                Aliquam erat volutpat. Etiam est est, suscipit.
+              </p>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Curabitur blandit dignissim orci, et iaculis nibh tempor vitae.
@@ -92,27 +98,58 @@ const PageHeader = ({ children, className, home=false }: PageHeaderProps) => {
               title="HORÁRIOS DA SECRETARIA"
               titleColor={theme.colors.turquoise}
             >
-              <span>
-                <p>
-                  <b>Dias úteis:</b> das 8h00 às 18h.
-                </p>
-                <p>
-                  <b>Sábados:</b> das 9h às 13h00.
-                </p>
-                <p>email.example@email.com.br</p>
-              </span>
+              <S.SecretaryTime>
+                <span>
+                  <p>
+                    <b>Dias úteis:</b> das 8h00 às 18h.
+                  </p>
+                  <p>
+                    <b>Sábados:</b> das 9h às 13h00.
+                  </p>
+                  <p>email.example@email.com.br</p>
+                </span>
+                <Link href="contato">
+                  <div>
+                    <S.SendEmailButton>Entre em contato</S.SendEmailButton>
+                  </div>
+                </Link>
+              </S.SecretaryTime>
 
-              <S.SendEmailButton>Envie um email</S.SendEmailButton>
+              <S.PrivacyPolitics>
+                <h5>POLÍTICA DE PRIVACIDADE</h5>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Curabitur blandit dignissim orci, et iaculis nibh tempor
+                  vitae. Aliquam erat volutpat. Etiam est est, suscipit vitae
+                  tortor vel, pretium fermentum risus.
+                </p>
+              </S.PrivacyPolitics>
             </MegaMenuItem>
           </MegaMenu>
         </NavItem>
-        <NavItem text="Pastorais" link={"/pastoral"} mobileIcon={<CharityIcon />}>
+        <NavItem
+          text="Pastorais"
+          link={"/pastoral"}
+          mobileIcon={<CharityIcon />}
+        >
           <MegaMenu imgSrc="/img/logo.png"></MegaMenu>
         </NavItem>
-        <NavItem text="Mural Eventos" link={"/eventos"} mobileIcon={<EventsIcon />} />
+        <NavItem
+          text="Mural Eventos"
+          link={"/eventos"}
+          mobileIcon={<EventsIcon />}
+        />
         <NavItem text="Notícias" link={"/noticias"} mobileIcon={<NewsIcon />} />
-        <NavItem text="Colabore" link={"/colabore"} mobileIcon={<CollaborateIcon />} />
-        <NavItem text="Contato" link={"/contato"} mobileIcon={<ContactIcon />} />
+        <NavItem
+          text="Colabore"
+          link={"/colabore"}
+          mobileIcon={<CollaborateIcon />}
+        />
+        <NavItem
+          text="Contato"
+          link={"/contato"}
+          mobileIcon={<ContactIcon />}
+        />
       </Navigator>
     </Header>
   );

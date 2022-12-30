@@ -20,9 +20,11 @@ export const ContainerFooterLogo = styled(Container)`
   justify-content: space-between;
   align-items: center;
 
+  height: 150px;
+
   ${media.lessThan("small")`
     align-items: flex-start;
-`}
+  `}
 `;
 
 export const Box = styled.div`
@@ -57,6 +59,7 @@ export const NavFooter = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  gap: 0.5rem;
 
   ${media.lessThan("large")`
     flex-direction: column;
@@ -71,6 +74,7 @@ export const WrapperLinks = styled.div`
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
+  gap: 0.5rem;
 
   ${media.lessThan("small")`
   flex-direction: column;
@@ -93,9 +97,9 @@ export const ContainerFooter = styled(Container)`
 `;
 
 export const ContentInfos = styled.div`
-  ${media.lessThan("small")`
-  padding-top: 14px;
-`}
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const Info = styled.div`
@@ -104,7 +108,8 @@ export const Info = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+
+  max-width: 400px;
 
   &:hover {
     color: ${(p) => p.theme.colors.primary};

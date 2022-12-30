@@ -19,8 +19,6 @@ export const Wrapper = styled.button<WrapperData>`
   white-space: nowrap;
   font-weight: 700;
 
-  transition: all ${(p) => p.theme.transition.default};
-
   border-radius: 30px;
 
   max-width: ${(p) => p.$width};
@@ -36,8 +34,8 @@ export const Wrapper = styled.button<WrapperData>`
     css`
       background: none;
       border: 1px solid ${p.$borderColor};
-      color:${p.$borderColor};
-      &:hover{
+      color: ${p.$borderColor};
+      &:hover {
         background: ${p.$borderColor};
         color: white;
       }

@@ -1,9 +1,53 @@
 import Link from "next/link";
 import styled from "styled-components";
 import media from "styled-media-query";
+import { BREAKPOINTS } from "utils/breakpoints";
+
+export const MobileItem = styled.span`
+  position: relative;
+  display: none;
+  gap: 0.6rem;
+  align-items: center;
+
+  svg {
+    color: ${(p) => p.theme.colors.primary};
+    font-size: 30px;
+    transition: ${(p) => p.theme.transition.fast};
+  }
+
+  cursor: pointer;
+  width: 100%;
+  text-align: start;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+
+  transition: ${(p) => p.theme.transition.fast};
+
+  &:hover {
+    background: ${(p) => p.theme.colors.primary};
+    color: white;
+
+    .mobile__more__indicator {
+      transform: rotate(180deg);
+    }
+
+    svg {
+      color: white;
+    }
+  }
+
+  .mobile__more__indicator {
+    position: absolute;
+    right: 1rem;
+  }
+
+  ${media.lessThan("medium")`
+    display: flex;
+  `}
+`;
 
 export const NavItem = styled.span`
-  ${media.greaterThan("medium")`
+  @media (min-width: ${BREAKPOINTS.medium}) {
     display: flex;
 
     &:hover {
@@ -68,10 +112,10 @@ export const NavItem = styled.span`
         visibility: hidden;
       }
     }
-  `}
+  }
 
   /* mobile style */
-  ${media.lessThan("medium")`
+  @media (max-width: ${BREAKPOINTS.medium}) {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -81,70 +125,43 @@ export const NavItem = styled.span`
 
     font-size: 1.4rem;
 
-    .megamenu{
+    .megamenu {
       position: static;
-      display: none;
+      display: block;
+      height: 0px;
+      overflow: hidden;
       opacity: 1;
       visibility: visible;
+      transition: 0.3s all;
     }
 
-    &:hover > .megamenu{
-      display: block;
+    &:hover > .megamenu {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    &:hover > ${MobileItem} {
+      background: ${(p) => p.theme.colors.primary};
+      color: white !important;
+      svg {
+        color: white;
+      }
+      .mobile__more__indicator {
+        color: white;
+        transform: rotate(180deg) !important;
+      }
     }
 
     /* .megamenu span:hover{
       background: red;
     } */
 
-    & > a{
+    & > a {
       display: none;
     }
 
-    a::before{
+    a::before {
       content: none;
     }
-  `}
-`;
-
-export const MobileItem = styled.span`
-  position: relative;
-  display: none;
-  gap: 0.6rem;
-  align-items: center;
-
-  svg{
-    color: ${(p) => p.theme.colors.primary};
-    font-size: 30px;
-    transition: ${(p) => p.theme.transition.fast};
   }
-
-  cursor: pointer;
-  width: 100%;
-  text-align: start;
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-
-  transition: ${(p) => p.theme.transition.fast};
-
-  &:hover {
-    background: ${(p) => p.theme.colors.primary};
-    color: white;
-
-    .mobile__more__indicator{
-      transform: rotate(180deg);
-    }
-
-    svg{
-      color: white;
-    }
-  }
-
-  .mobile__more__indicator{
-    position: absolute;
-    right: 1rem;
-  }
-
-  ${media.lessThan("medium")`
-    display: flex;
-  `}
 `;
