@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
+    "paths": {
+      "@svgs/*": ["./public/svgs/*"],
+      "@img/*": ["./public/img/*"]
+    },
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,12 +20,13 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-  ]
+    "**/*.tsx",
+    "src/graphql/querys/Church.js"
+  ],
+  "include": ["custom-next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "next-env.d.ts"]
 }

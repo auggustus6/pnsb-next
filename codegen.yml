@@ -1,0 +1,18 @@
+overwrite: true
+watch: true
+schema: "https://adm-pnsb-6h995.ondigitalocean.app/graphql"
+documents: "src/graphql/**/*.ts"
+generates:
+  ./src/graphql/generated/schema.ts:
+    plugins:
+      - "typescript" #plugin to generate the schema as a ts file
+      - "typescript-operations" #plugin to generate fragments and query types
+      # - "typescript-react-apollo" #plugin to generate react hooks
+      - typed-document-node #plugin to generate type as const attributes to use in graphqlUtil
+
+  ###### configs to download the schema as json ######
+  # ./graphql.schema.json:
+  #   plugins:
+  #     - "introspection"
+skipDocumentsValidation:
+  - skipDuplicateValidation

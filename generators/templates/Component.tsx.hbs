@@ -1,9 +1,17 @@
-import * as S from './styles'
+import { ReactNode } from "react";
+import * as Styles from './styles'
 
-const {{pascalCase name}} = () => (
-  <S.Wrapper>
-    <h1>{{pascalCase name}}</h1>
-  </S.Wrapper>
-)
+type {{pascalCase name}}Props = {
+  children?: ReactNode;
+  className?: string;
+}
+
+const {{pascalCase name}} = ({children, className}:{{pascalCase name}}Props) => {
+  return(
+    <Styles.Wrapper className={className}>
+      {children}
+    </Styles.Wrapper>
+  )
+};
 
 export default {{pascalCase name}}

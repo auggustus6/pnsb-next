@@ -25,16 +25,18 @@ export default {
     },
   },
   colors: {
-    primary: "#20659F",
-    secondary: "#e54400",
-    tertiary: "#00ec8c",
+    primary: "#3787FF",
+    secondary: "#E8A635",
+    green: "#83DB43",
+    darkGreen: "#6BC52B",
+    turquoise: "#2EC4C9",
     white: "#FFF",
     black: "#141414",
-    gray: "#8F8F8F",
+    gray: "#7B7B7B",
     lightGray: "#E5E5E5",
     dangerDark: "#f13003b",
-    mainBg: "#141414",
-    red: "#BC0000",
+    textColor: "#474747",
+    red: "#BC0000"
   },
   spacings: {
     xxsmall: "0.4rem",
@@ -55,5 +57,9 @@ export default {
   transition: {
     default: "0.3s ease-in-out",
     fast: "0.1s ease-in-out",
+  },
+  shadows: {
+    small: "0px 0px 10px 0px rgba(0, 0, 0, 0.25)",
+    cards: "0px 0px 30px 0px rgba(0, 0, 0, 0.25)",
   },
 } as const;

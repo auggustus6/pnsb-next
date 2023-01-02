@@ -37,6 +37,7 @@ const GlobalStyles: GlobalStyleComponent<
 
   body {
     font-family: "Inter", "Roboto", Helvetica, sans-serif;
+    color: ${(p) => p.theme.colors.textColor};
   }
 
   h1{
@@ -54,7 +55,8 @@ const GlobalStyles: GlobalStyleComponent<
   h5{
     font-size: 1.44rem;
   }
-  h5{
+  
+  h6{
     font-size: 1.2rem;
   }
   p{
@@ -67,6 +69,10 @@ const GlobalStyles: GlobalStyleComponent<
 
   input {
     outline:none;
+  }
+
+  ul {
+    list-style: none;
   }
 
   button {
