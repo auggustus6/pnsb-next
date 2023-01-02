@@ -1,6 +1,5 @@
 import { ApolloClient, InMemoryCache, HttpLink, from } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
-import { customSwal } from "utils/customSwal";
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -11,13 +10,14 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       //   icon: "error",
       //   confirmButtonText: "Ok",
       // });
+      console.log({ error: result });
     });
   }
 });
 
 const link = from([
   errorLink,
-  new HttpLink({ uri: process.env.NEXT_PUBLIC_GRAPHQL_URI }),
+  new HttpLink({ uri: "https://adm-pnsb-6h995.ondigitalocean.app/graphql" }),
 ]);
 
 const client = new ApolloClient({
