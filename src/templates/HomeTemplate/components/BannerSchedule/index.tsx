@@ -1,8 +1,6 @@
 import { HorariosMissasQuery } from "graphql/generated/schema";
-import { ReactNode } from "react";
-import { formatTime } from "utils/format";
 import ScheduleItem from "../ScheduleItem";
-import * as S from "./styles";
+import * as Styles from "./styles";
 
 type BannerScheduleProps = {
   className?: string;
@@ -23,11 +21,11 @@ const BannerSchedule = ({ className, mass }: BannerScheduleProps) => {
   const firstOnline = onlineMass?.shift();
 
   return (
-    <S.Wrapper className={className}>
-      <S.Title>
+    <Styles.Wrapper className={className}>
+      <Styles.Title>
         <b>HORÁRIOS</b> MISSAS:
-      </S.Title>
-      <S.Content>
+      </Styles.Title>
+      <Styles.Content>
         <ScheduleItem title={"PRESENCIAIS"}>
           <p>
             <b>Segunda à Sexta: </b>
@@ -79,8 +77,8 @@ const BannerSchedule = ({ className, mass }: BannerScheduleProps) => {
             </p>
           ))}
         </ScheduleItem>
-      </S.Content>
-    </S.Wrapper>
+      </Styles.Content>
+    </Styles.Wrapper>
   );
 };
 

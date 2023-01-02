@@ -1,6 +1,3 @@
-import { DefaultButton } from "components/Buttons";
-import { DefaultInput } from "components/Inputs";
-import { FormSection } from "components/Sections";
 import * as Yup from "yup";
 import theme from "styles/theme";
 import { FormikProps, withFormik } from "formik";
@@ -8,7 +5,9 @@ import { customSwal } from "utils/customSwal";
 import { useRouter } from "next/router";
 import client from "graphql/client";
 import { MT_WANNA_PARTICIPATE } from "graphql/mutations/pastorals";
-import { phoneMaskApply } from "utils/format";
+import { DefaultButton } from "components/customHtmlComponents/Buttons";
+import { DefaultInput } from "components/customHtmlComponents/Inputs";
+import { FormSection } from "components/layoutComponents/Sections";
 
 type MyFormProps = {
   name: string;

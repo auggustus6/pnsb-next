@@ -1,4 +1,4 @@
-import BetterNextImg from "components/BetterNextImg";
+import BetterNextImg from "components/customHtmlComponents/BetterNextImg";
 import styled from "styled-components";
 import { BREAKPOINTS } from "utils/breakpoints";
 
@@ -20,7 +20,6 @@ export const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  min-width: 390px;
 `;
 
 export const LeftBg = styled(BetterNextImg)`
@@ -41,20 +40,29 @@ export const InfoWrapper = styled.div`
   gap: 1rem;
 `;
 
-export const Info = styled.div`
+export const Info = styled.a`
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: ${(p) => p.theme.colors.textColor};
 
-  max-width: 594px;
+  &:visited {
+    color: ${(p) => p.theme.colors.textColor};
+  }
+
+  svg {
+    min-width: 2rem;
+    min-height: 2rem;
+    fill: ${(p) => p.theme.colors.green};
+  }
+
   width: 100%;
 
-  p {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+  &:hover {
+    color: ${(p) => p.theme.colors.primary};
   }
 `;
 

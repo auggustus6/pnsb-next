@@ -1,9 +1,9 @@
+import BreadCrumbs from "components/featureComponents/BreadCrumbs";
+import Container from "components/layoutComponents/Container";
+import { BlogContentSection } from "components/layoutComponents/Sections";
+import FullWidthSection from "components/layoutComponents/Sections/FullWidthSection";
 import DefaultLayout from "layouts/DefaultLayout";
 import { ReactNode } from "react";
-import BreadCrumbs from "components/BreadCrumbs";
-import Container from "components/Container";
-import { BlogContentSection } from "components/Sections";
-import BackGroundSection from "components/Sections/FullWidthSection";
 
 type BlogLayoutProps = {
   children?: ReactNode;
@@ -24,7 +24,7 @@ const BlogLayout = ({
 }: BlogLayoutProps) => {
   return (
     <DefaultLayout>
-      <BackGroundSection img={bgImg} height="470px" />
+      <FullWidthSection img={bgImg} height="470px" />
       <Container>
         <div style={{ padding: "1rem 0 2rem" }}>
           <BreadCrumbs />

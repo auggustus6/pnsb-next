@@ -1,4 +1,4 @@
-import Logo from "components/Logo";
+import Logo from "components/layoutComponents/Logo";
 import styled from "styled-components";
 import media from "styled-media-query";
 import { BREAKPOINTS } from "utils/breakpoints";

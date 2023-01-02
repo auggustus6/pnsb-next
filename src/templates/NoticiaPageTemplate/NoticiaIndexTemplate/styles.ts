@@ -1,8 +1,5 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { BREAKPOINTS } from "utils/breakpoints";
-// import media, {myMedia} from "styled-media-query";
-
-// const teste = media as MediaGenerator<DefaultBreakpoints, typeof theme>;
 
 export const Wrapper = styled.div``;
 
@@ -14,10 +11,6 @@ export const CardsContainer = styled.div<{ $isList: boolean }>`
   justify-items: center;
   justify-content: center;
   padding-top: 2rem;
-
-  /* display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap; */
 
   @media (max-width: ${BREAKPOINTS.medium}) {
     grid-template-columns: 1fr;

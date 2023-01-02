@@ -1,12 +1,8 @@
-import BreadCrumbs from "components/BreadCrumbs";
-import Container from "components/Container";
-import Footer from "components/Footer";
-import PageHeader from "components/PageHeader";
-import {
-  PastoraisQuery,
-  EventsQuery,
-  NoticiasQuery,
-} from "graphql/generated/schema";
+
+import BreadCrumbs from "components/featureComponents/BreadCrumbs";
+import Container from "components/layoutComponents/Container";
+import Footer from "components/layoutComponents/Footer";
+import PageHeader from "components/layoutComponents/PageHeader";
 import { ReactNode } from "react";
 
 type DefaultLayoutProps = {

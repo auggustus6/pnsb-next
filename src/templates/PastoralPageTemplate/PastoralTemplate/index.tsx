@@ -1,10 +1,10 @@
-import { DefaultButton } from "components/Buttons";
-import Modal from "components/Modal";
 import { useModal } from "hooks/useModal";
 import theme from "styles/theme";
 import FormikForm from "./components/FormikForm";
 import { PastoralEntity } from "graphql/generated/schema";
 import BlogLayout from "layouts/BlogLayout";
+import { DefaultButton } from "components/customHtmlComponents/Buttons";
+import Modal from "components/featureComponents/Modal";
 
 interface PastoraisTemplateProps {
   pastoral: PastoralEntity;

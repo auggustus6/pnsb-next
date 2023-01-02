@@ -6,6 +6,7 @@ export const MT_CONTACT = gql`
     $email: String
     $telefone: String
     $participante: Boolean
+    $mensagem: String
   ) {
     createContato(
       data: {
@@ -13,6 +14,7 @@ export const MT_CONTACT = gql`
         Email: $email
         Telefone: $telefone
         Participante: $participante
+        Mensagem: $mensagem
       }
     ) {
       data {

@@ -1,8 +1,5 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { BREAKPOINTS } from "utils/breakpoints";
-// import media, {myMedia} from "styled-media-query";
-
-// const teste = media as MediaGenerator<DefaultBreakpoints, typeof theme>;
 
 export const Wrapper = styled.div``;
 

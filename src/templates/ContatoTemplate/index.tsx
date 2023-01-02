@@ -1,13 +1,12 @@
-import BetterNextImg from "components/BetterNextImg";
-import Container from "components/Container";
-import Spacing from "components/Spacing";
 import DefaultLayout from "layouts/DefaultLayout";
 import * as Styles from "./styles";
-import Image from "next/image";
-import Link from "next/link";
-import { DefaultInput } from "components/Inputs";
-import { BorderButton, DefaultButton } from "components/Buttons";
 import ContactForm from "./components/ContactForm";
+
+import ChurchIcon from "../../../public/svgs/church.svg";
+import EmailIcon from "../../../public/svgs/email.svg";
+import PhoneIcon from "../../../public/svgs/phone.svg";
+import Container from "components/layoutComponents/Container";
+import Spacing from "components/layoutComponents/Spacing";
 
 type ContatoTemplateProps = {};
 
@@ -20,52 +19,22 @@ const ContatoTemplate = ({}: ContatoTemplateProps) => {
           <Styles.LeftSide>
             <Styles.LeftBg src="/img/foto-igreja.jpg" objectFit="cover" />
             <Styles.InfoWrapper>
-              <Styles.Info>
-                <h4>Ou se preferir</h4>
-                <p>
-                  <Image src="/img/icons/church.svg" width={29} height={29} />
-                  (17) 3234-5616(Também WhatsApp)
-                </p>
-                <p>
-                  <Image
-                    src="/img/icons/emailExample.svg"
-                    width={29}
-                    height={29}
-                  />
-                  pnsbrasil1@gmail.com
-                </p>
-                <p>
-                  <Image
-                    src="/img/icons/Telephone.svg"
-                    width={29}
-                    height={29}
-                  />
-                  Rua Vergilio Dias de Castro, 388 - CJ.Hab. São Deocleciano,{" "}
-                  São José do Rio Preto - SP - CEP 17057-030
-                </p>
+              <h4>Ou se preferir</h4>
+              <Styles.Info
+                href="https://www.google.com/maps?ll=-21.20146,-47.849988&z=15&t=m&hl=pt-BR&gl=BR&mapclient=embed&cid=17899471017957206390"
+                target="_blank"
+              >
+                <ChurchIcon />
+                <p>Rua Vergilio Dias de Castro, São José do Rio Preto - SP</p>
               </Styles.Info>
-              <Styles.Social>
-                <ul>
-                  <li>
-                    <Link href="/">
-                      <img src="/img/social/map.svg" alt="Icone de mapa" />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/">
-                      <img
-                        src="/img/social/phone.svg"
-                        alt="Icone de um telefone celular"
-                      />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/">
-                      <img src="/img/social/email.svg" alt="Icone de mapa" />
-                    </Link>
-                  </li>
-                </ul>
-              </Styles.Social>
+              <Styles.Info href="mailto:pnsbrasil1@gmail.com">
+                <EmailIcon />
+                <p>pnsbrasil1@gmail.com</p>
+              </Styles.Info>
+              <Styles.Info href="tel:(17) 3234-5616">
+                <PhoneIcon />
+                <p>(17) 3234-5616</p>
+              </Styles.Info>
             </Styles.InfoWrapper>
           </Styles.LeftSide>
           <Styles.FormSide>
@@ -75,8 +44,9 @@ const ContatoTemplate = ({}: ContatoTemplateProps) => {
           </Styles.FormSide>
         </Styles.ContentWrapper>
         <Spacing size={4} />
+
         <Styles.StyledIframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119072.75422041139!2d-47.8630628716355!3d-21.15146029336428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b9bc226406d3d1%3A0xf867b20e2cbd2976!2sPar%C3%B3quia%20Nossa%20Senhora%20de%20Lourdes!5e0!3m2!1spt-BR!2sbr!4v1672198309757!5m2!1spt-BR!2sbr"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6255.878465906392!2d-47.850084728194986!3d-21.201389504757284!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf867b20e2cbd2976!2sPar%C3%B3quia%20Nossa%20Senhora%20de%20Lourdes!5e0!3m2!1spt-BR!2sbr!4v1672541860549!5m2!1spt-BR!2sbr"
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

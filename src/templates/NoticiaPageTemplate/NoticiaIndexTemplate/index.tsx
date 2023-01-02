@@ -1,14 +1,14 @@
-import BreadCrumbs from "components/BreadCrumbs";
-import Container from "components/Container";
-import Pagination from "components/Pagination";
-import { NoticiasQuery, PastoraisQuery } from "graphql/generated/schema";
+import BreadCrumbs from "components/featureComponents/BreadCrumbs";
+import { SwitchCards } from "components/featureComponents/Cards";
+import Pagination from "components/featureComponents/Pagination";
+import Container from "components/layoutComponents/Container";
+
+import { NoticiasQuery } from "graphql/generated/schema";
 import DefaultLayout from "layouts/DefaultLayout";
 import { useState } from "react";
 import * as Styles from "./styles";
-import { repeatJSX } from "utils/repeatJSX";
 import { FaList } from "react-icons/fa";
 import { BsGrid3X2Gap } from "react-icons/bs";
-import { SwitchCards } from "components/Cards";
 import { formatDate, formatTime } from "utils/format";
 
 type NoticiaIndexTemplate = {
@@ -54,7 +54,7 @@ const NoticiaIndexTemplate = ({ noticias }: NoticiaIndexTemplate) => {
                 link: `noticias/${noticia.attributes?.Slug}`,
                 summary: noticia.attributes?.Descricao || "",
                 imgUrl:
-                  noticia.attributes?.Galeria?.data[0].attributes?.url || "",
+                  noticia.attributes?.Galeria?.data[0]?.attributes?.url || "",
                 date: formatDate(noticia.attributes?.publishedAt),
                 time: formatTime(noticia.attributes?.publishedAt),
               }}

@@ -73,6 +73,7 @@ export type ComponentTimesHoraInput = {
 export type Contato = {
   __typename?: 'Contato';
   Email: Scalars['String'];
+  Mensagem: Scalars['String'];
   Nome: Scalars['String'];
   Participante?: Maybe<Scalars['Boolean']>;
   Telefone: Scalars['String'];
@@ -99,6 +100,7 @@ export type ContatoEntityResponseCollection = {
 
 export type ContatoFiltersInput = {
   Email?: InputMaybe<StringFilterInput>;
+  Mensagem?: InputMaybe<StringFilterInput>;
   Nome?: InputMaybe<StringFilterInput>;
   Participante?: InputMaybe<BooleanFilterInput>;
   Telefone?: InputMaybe<StringFilterInput>;
@@ -112,6 +114,7 @@ export type ContatoFiltersInput = {
 
 export type ContatoInput = {
   Email?: InputMaybe<Scalars['String']>;
+  Mensagem?: InputMaybe<Scalars['String']>;
   Nome?: InputMaybe<Scalars['String']>;
   Participante?: InputMaybe<Scalars['Boolean']>;
   Telefone?: InputMaybe<Scalars['String']>;

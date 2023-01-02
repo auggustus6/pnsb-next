@@ -4,14 +4,13 @@ import { customSwal } from "utils/customSwal";
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
-    graphQLErrors.map(({ message, locations, path }) => {
-      customSwal({
-        title: `GRAPHQL ERROR: ${message}`,
-        text: JSON.stringify(locations),
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-      console.error({ locations }, { path });
+    graphQLErrors.map((result) => {
+      // customSwal({
+      //   title: `GRAPHQL ERROR: ${message}`,
+      //   text: JSON.stringify(locations),
+      //   icon: "error",
+      //   confirmButtonText: "Ok",
+      // });
     });
   }
 });

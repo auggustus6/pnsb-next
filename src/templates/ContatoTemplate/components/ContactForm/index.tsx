@@ -1,17 +1,19 @@
-import { BorderButton } from "components/Buttons";
-import { DefaultInput } from "components/Inputs";
 import { FormikProps, withFormik } from "formik";
 import client from "graphql/client";
 import { MT_CONTACT } from "graphql/mutations/contato";
 import { customSwal } from "utils/customSwal";
 import * as Styles from "./styles";
 import * as Yup from "yup";
+import { BorderButton } from "components/customHtmlComponents/Buttons";
+import { DefaultInput } from "components/customHtmlComponents/Inputs";
+import ToggleSwitch from "components/customHtmlComponents/Inputs/ToggleSwitch";
 
 type MyFormProps = {
   name: string;
   email: string;
   phone: string;
   message: string;
+  participant: boolean;
 };
 
 const MyForm = (props: FormikProps<MyFormProps>) => {
@@ -41,6 +43,12 @@ const MyForm = (props: FormikProps<MyFormProps>) => {
         name="phone"
         error={{ error: errors.phone || "", touched: touched.phone || false }}
       />
+      <ToggleSwitch
+        label={"Participante?"}
+        value={values.participant}
+        onChange={handleChange}
+        name={"participant"}
+      />
       <DefaultInput
         value={values.message}
         onChange={handleChange}
@@ -64,6 +72,7 @@ const formSchema = Yup.object().shape({
     .required("Obrigatório"),
   email: Yup.string().email("Email inválido").required("Obrigatório"),
   phone: Yup.string().min(6, "Número inválido!").required("Obrigatório"),
+  participant: Yup.bool(),
   message: Yup.string()
     .min(20, "Mensagem muito curta!")
     .max(1000, "Mensagem muito longa!")
@@ -71,7 +80,13 @@ const formSchema = Yup.object().shape({
 });
 
 const ContactForm = withFormik({
-  mapPropsToValues: () => ({ name: "", email: "", phone: "", message: "" }),
+  mapPropsToValues: () => ({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    participant: false,
+  }),
 
   handleSubmit: async (values, { setSubmitting, resetForm }) => {
     try {
@@ -81,9 +96,11 @@ const ContactForm = withFormik({
           nome: values.name,
           email: values.email,
           telefone: values.phone,
-          participante: true,
+          participante: values.participant,
+          mensagem: values.message,
         },
       });
+
 
       if (mutationResult.errors) {
         customSwal({
@@ -101,6 +118,7 @@ const ContactForm = withFormik({
           confirmButtonText: "Ok",
         });
       }
+
 
       setSubmitting(false);
       resetForm();

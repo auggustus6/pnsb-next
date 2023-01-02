@@ -1,5 +1,4 @@
-import { DefaultButton } from "components/Buttons";
-import Container from "components/Container";
+import { DefaultButton } from "components/customHtmlComponents/Buttons";
 import styled from "styled-components";
 import media from "styled-media-query";
 import { BREAKPOINTS } from "utils/breakpoints";
@@ -76,13 +75,7 @@ export const Left = styled.div`
   }
 `;
 
-export const ShortcutsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
 
-`
 
 export const FullWidthWrapper = styled.div`
   overflow: hidden;

@@ -1,22 +1,24 @@
-import { DefaultCard, NewsCard, ShortcutCard } from "components/Cards";
-import Container from "components/Container";
-import { SectionTitle } from "components/Labels";
-import FullWidthSection from "components/Sections/FullWidthSection";
 import DefaultLayout from "layouts/DefaultLayout";
-
-import PrayIcon from "../../../public/svgs/pray.svg";
-
+import {
+  BorderButton,
+  DefaultButton,
+} from "components/customHtmlComponents/Buttons";
+import { SectionTitle } from "components/customHtmlComponents/Labels";
+import { DefaultCard, ShortcutCard } from "components/featureComponents/Cards";
+import FluidCardsContainer from "components/featureComponents/FluidCardsContainer";
+import Container from "components/layoutComponents/Container";
+import FullWidthSection from "components/layoutComponents/Sections/FullWidthSection";
+import Spacing from "components/layoutComponents/Spacing";
 import BannerRecentEvent from "./components/BannerRecentEvent";
 import BannerSchedule from "./components/BannerSchedule";
 import * as Style from "./styles";
 
-import { BorderButton, DefaultButton } from "components/Buttons";
 import Link from "next/link";
 import Image from "next/image";
 import theme from "styles/theme";
+
 import { FaMicrophone } from "react-icons/fa";
 import { useTilt } from "hooks/useTilt";
-import api from "services/axios";
 import {
   PastoraisQuery,
   EventsQuery,
@@ -24,9 +26,8 @@ import {
   HorariosMissasQuery,
 } from "graphql/generated/schema";
 import { formatDate, formatTime } from "utils/format";
-import FluidCardsContainer from "components/FluidCardsContainer";
 import { repeatJSX } from "utils/repeatJSX";
-import Spacing from "components/Spacing";
+import ShortcutsSection from "./components/ShortcutsSection";
 
 type HomeTemplateProps = {
   pastorais: PastoraisQuery;
@@ -142,15 +143,7 @@ const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
           titleColor={"secondary"}
         />
 
-        <Style.ShortcutsWrapper>
-          {repeatJSX(
-            <ShortcutCard
-              title="Obras Sociais"
-              description="Pequena descrição do que o usuário vai encontrar acessando o link."
-            />,
-            8,
-          )}
-        </Style.ShortcutsWrapper>
+        <ShortcutsSection />
       </Container>
       <div style={{ paddingTop: "3rem" }}></div>
 

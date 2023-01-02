@@ -1,10 +1,4 @@
-import BreadCrumbs from "components/BreadCrumbs";
-import Container from "components/Container";
-import { BlogContentSection } from "components/Sections";
-import BackGroundSection from "components/Sections/FullWidthSection";
-import { useModal } from "hooks/useModal";
-import DefaultLayout from "layouts/DefaultLayout";
-import { NoticiaEntity, PastoralEntity } from "graphql/generated/schema";
+import { NoticiaEntity } from "graphql/generated/schema";
 import BlogLayout from "layouts/BlogLayout";
 
 interface PastoraisTemplateProps {

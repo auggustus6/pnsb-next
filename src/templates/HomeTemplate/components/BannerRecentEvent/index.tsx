@@ -1,10 +1,8 @@
-import Logo from "components/Logo";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { CardType } from "types/card-types";
-import * as S from "./styles";
+import * as Styles from "./styles";
 
 type BannerRecentEventProps = {
   className?: string;
@@ -13,13 +11,15 @@ type BannerRecentEventProps = {
 
 const BannerRecentEvent = ({ className, post }: BannerRecentEventProps) => {
   return (
-    <S.Wrapper className={className}>
-      <S.MyLogo width={166} height={110} className="logo__recent__event" />
-      <S.StreamButton>
-        <AiFillPlayCircle size={24} />
-        Transmissões online
-      </S.StreamButton>
-      <S.RecentEventInfoContainer>
+    <Styles.Wrapper className={className}>
+      <Styles.MyLogo width={166} height={110} className="logo__recent__event" />
+      <a href="https://www.youtube.com/paroquianossasenhoradobrasil" target="_blank">
+        <Styles.StreamButton>
+          <AiFillPlayCircle size={24} />
+          Transmissões online
+        </Styles.StreamButton>
+      </a>
+      <Styles.RecentEventInfoContainer>
         <div>
           <Image
             src={post.imgUrl}
@@ -29,15 +29,15 @@ const BannerRecentEvent = ({ className, post }: BannerRecentEventProps) => {
             objectFit="cover"
           />
         </div>
-        <S.Info>
+        <Styles.Info>
           <div>
             <h5>{post.title}</h5>
             <p>{post.summary}</p>
           </div>
           <Link href={`/eventos/${post.slug}`}>Ver mais</Link>
-        </S.Info>
-      </S.RecentEventInfoContainer>
-    </S.Wrapper>
+        </Styles.Info>
+      </Styles.RecentEventInfoContainer>
+    </Styles.Wrapper>
   );
 };
 

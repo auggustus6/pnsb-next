@@ -1,14 +1,14 @@
-import BreadCrumbs from "components/BreadCrumbs";
-import Container from "components/Container";
-import Pagination from "components/Pagination";
 import { EventsQuery } from "graphql/generated/schema";
 import DefaultLayout from "layouts/DefaultLayout";
 import { useState } from "react";
 import * as Styles from "./styles";
 import { FaList } from "react-icons/fa";
 import { BsGrid3X2Gap } from "react-icons/bs";
-import { SwitchCards } from "components/Cards";
 import { formatDate, formatTime } from "utils/format";
+import BreadCrumbs from "components/featureComponents/BreadCrumbs";
+import { SwitchCards } from "components/featureComponents/Cards";
+import Pagination from "components/featureComponents/Pagination";
+import Container from "components/layoutComponents/Container";
 
 type EventIndexTemplate = {
   events?: EventsQuery;

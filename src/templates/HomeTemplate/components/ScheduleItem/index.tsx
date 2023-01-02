@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import * as S from "./styles";
+import * as Styles from "./styles";
 
 type ScheduleItemProps = {
   children?: ReactNode;
@@ -8,10 +8,10 @@ type ScheduleItemProps = {
 };
 
 const ScheduleItem = ({ children, className, title }: ScheduleItemProps) => (
-  <S.Wrapper className={className}>
-    <S.Title>{title}</S.Title>
-    <S.Content>{children}</S.Content>
-  </S.Wrapper>
+  <Styles.Wrapper className={className}>
+    <Styles.Title>{title}</Styles.Title>
+    <Styles.Content>{children}</Styles.Content>
+  </Styles.Wrapper>
 );
 
 export default ScheduleItem;
