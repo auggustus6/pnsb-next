@@ -13,7 +13,6 @@ type ContatoTemplateProps = {};
 const ContatoTemplate = ({}: ContatoTemplateProps) => {
   return (
     <DefaultLayout breadCrumbs>
-      <Spacing size={0} />
       <Container>
         <Styles.ContentWrapper>
           <Styles.LeftSide>

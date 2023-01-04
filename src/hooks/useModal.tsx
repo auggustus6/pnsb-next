@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 
-export type ModalsNames = "wannaParticipate" | "outroModal" | "maisotro";
+export type ModalsNames = "wannaParticipate" | "rentStudio";
 
 export type ModalType = {
   [key in ModalsNames]: boolean;

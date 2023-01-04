@@ -14,7 +14,7 @@ function App({ Component, pageProps }: AppProps) {
         <Head>
           <title>Paróquia Nossa Senhora do Brasil</title>
         </Head>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme} >
           <GlobalStyles />
           <Component {...pageProps} />
         </ThemeProvider>

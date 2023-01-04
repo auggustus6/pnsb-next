@@ -28,6 +28,9 @@ import {
 import { formatDate, formatTime } from "utils/format";
 import { repeatJSX } from "utils/repeatJSX";
 import ShortcutsSection from "./components/ShortcutsSection";
+import Modal from "components/featureComponents/Modal";
+import RentPodcastModal from "./RentPodcastModal";
+import { useModal } from "hooks/useModal";
 
 type HomeTemplateProps = {
   pastorais: PastoraisQuery;
@@ -40,6 +43,7 @@ const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
   const ref1 = useTilt(true);
   const ref2 = useTilt(true);
   const ref3 = useTilt(true);
+  const { toggleModal } = useModal();
 
   return (
     <DefaultLayout home>
@@ -164,11 +168,16 @@ const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
                 massa vel interdum. Ut nec velit ullamcorper, vestibulum nisl
                 id, pretium mi. Nunc dignissim consectetur massa.
               </p>
-              <Link href={""}>
-                <DefaultButton bgColor={theme.colors.primary} textColor="white">
-                  SAIBA MAIS
-                </DefaultButton>
-              </Link>
+              <DefaultButton
+                bgColor={theme.colors.primary}
+                textColor="white"
+                onClick={() => toggleModal("rentStudio")}
+              >
+                ALUGUE
+              </DefaultButton>
+              <Modal modalName={"rentStudio"}>
+                <RentPodcastModal />
+              </Modal>
             </Style.RentStudio>
             <Style.WrapperRentBg>
               <Style.RentStudioBackGround $img="/img/estudio.png" />

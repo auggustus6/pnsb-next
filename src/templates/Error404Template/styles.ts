@@ -6,6 +6,9 @@ import { BREAKPOINTS } from "utils/breakpoints";
 export const Wrapper = styled(Container)`
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   min-height: 550px;
 

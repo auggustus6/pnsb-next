@@ -12,9 +12,9 @@ const Error404Template = ({ className }: Error404TemplateProps) => {
   return (
     <DefaultLayout>
       <Styles.Wrapper>
-        <h1>
+        {/* <h1>
           erro <b>404</b>
-        </h1>
+        </h1> */}
         <h3>A página que você buscou não existe ou está indisponível...</h3>
 
         <div className="map__icon__wrapper">
