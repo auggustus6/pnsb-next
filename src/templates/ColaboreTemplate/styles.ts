@@ -12,6 +12,10 @@ export const IntroSectionContainer = styled.div`
   h1 {
     color: ${(p) => p.theme.colors.primary};
   }
+
+  @media (max-width: ${BREAKPOINTS.medium}) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const IntroContent = styled.div`
@@ -28,11 +32,11 @@ export const IntroContent = styled.div`
 
 export const FlexImage = styled(BetterNextImg)`
   flex: 1;
-  width: 100%;
   border-radius: 10px;
 
   @media (max-width: ${BREAKPOINTS.medium}) {
     flex: unset;
+    min-height: 40vw;
   }
 
   &:hover {
@@ -45,11 +49,23 @@ export const FlexImage = styled(BetterNextImg)`
 export const WaysOfHelpContainer = styled.div`
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+  @media(max-width:${BREAKPOINTS.medium}){
+      gap: 4rem;
+  }
 `;
 
 export const Method = styled.div`
   display: flex;
   gap: 1rem;
+
+  /* min-width: 400px; */
+  max-width: 640px;
+  width: 100%;
+
+  @media (max-width: ${BREAKPOINTS.medium}) {
+    flex-direction: column;
+  }
 `;
 
 export const MethodContent = styled.div`
@@ -63,6 +79,12 @@ export const MethodContent = styled.div`
   }
 `;
 
+export const SocialWorkWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+`;
+
 export const SocialWorkContent = styled.div``;
 
 export const SocialWorkItem = styled.div<{ $inverse?: boolean }>`
@@ -70,8 +92,9 @@ export const SocialWorkItem = styled.div<{ $inverse?: boolean }>`
   flex-direction: ${(p) => (p.$inverse ? "row-reverse" : "row")};
   gap: 2rem;
 
-  & + & {
-    margin-top: 6rem;
+  @media (max-width: ${BREAKPOINTS.medium}) {
+    flex-direction: column-reverse;
+    height: 100%;
   }
 
   ${SocialWorkContent} {
@@ -94,6 +117,13 @@ export const SocialWorkItem = styled.div<{ $inverse?: boolean }>`
 
     p {
       max-width: 604px;
+    }
+
+    @media (max-width: ${BREAKPOINTS.medium}) {
+      justify-content: flex-start;
+      div {
+        min-height: unset;
+      }
     }
   }
 `;

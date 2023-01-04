@@ -10,7 +10,14 @@ interface BetterNextImgProps {
   caption?: string;
 }
 
-const BetterNextImg = ({ className, src, style, alt, objectFit="contain",caption }: BetterNextImgProps) => {
+const BetterNextImg = ({
+  className,
+  src,
+  style,
+  alt,
+  objectFit = "contain",
+  caption,
+}: BetterNextImgProps) => {
   return (
     <Styles.Wrapper className={className} style={style}>
       <Image src={src} layout="fill" objectFit={objectFit} alt={alt} />
