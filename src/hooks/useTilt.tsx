@@ -8,7 +8,7 @@ export function useTilt(active: boolean) {
       return;
     }
 
-    let el = ref.current as any;
+    const el = ref.current as any;
 
     const rotate = (p: number) => p - 0.5;
 

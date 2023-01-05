@@ -9,6 +9,8 @@ interface MyRequest extends NextApiRequest {
 }
 
 export default async function handler(req: MyRequest, res: NextApiResponse) {
+  console.log(req.body);
+
   try {
     if (req.method !== "POST") {
       return res.status(405).json({ error: "METHOD NOT ALLOWED!" });

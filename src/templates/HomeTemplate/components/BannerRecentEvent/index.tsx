@@ -13,7 +13,7 @@ const BannerRecentEvent = ({ className, post }: BannerRecentEventProps) => {
   return (
     <Styles.Wrapper className={className}>
       <Styles.MyLogo width={166} height={110} className="logo__recent__event" />
-      <a href="https://www.youtube.com/paroquianossasenhoradobrasil" target="_blank">
+      <a href="https://www.youtube.com/paroquianossasenhoradobrasil" target="_blank" rel="noreferrer">
         <Styles.StreamButton>
           <AiFillPlayCircle size={24} />
           Transmissões online
