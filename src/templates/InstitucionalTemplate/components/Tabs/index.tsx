@@ -4,14 +4,20 @@ import * as Styles from "./styles";
 type TabsProps = {
   currentTab: string;
   tabs: string[];
-  setTab: () => void;
+  setTab: (option: string) => void;
 };
 
 const Tabs = ({ currentTab, tabs, setTab }: TabsProps) => {
   return (
     <Styles.Wrapper>
       {tabs.map((tab) => (
-        <Styles.Item $isActive={currentTab === tab}>{tab}</Styles.Item>
+        <Styles.ItemWrapper
+          $isActive={currentTab === tab}
+          onClick={() => setTab(tab)}
+          key={tab}
+        >
+          <Styles.Item>{tab}</Styles.Item>
+        </Styles.ItemWrapper>
       ))}
     </Styles.Wrapper>
   );

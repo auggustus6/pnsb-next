@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import NextCors from "nextjs-cors";
 import api from "services/axios";
 
 interface MyRequest extends NextApiRequest {
@@ -8,8 +9,14 @@ interface MyRequest extends NextApiRequest {
   };
 }
 
-export default async function handler(req: MyRequest, res: NextApiResponse) {
-  console.log(req.body);
+export default async function handler(req: any, res: any) {
+  // await NextCors(req, res, {
+  //   methods: ["POST"],
+  //   origin: "*",
+  //   optionsSuccessStatus: 200,
+  // });
+
+  console.log(req.headers["x-access-token"]);
 
   try {
     if (req.method !== "POST") {
