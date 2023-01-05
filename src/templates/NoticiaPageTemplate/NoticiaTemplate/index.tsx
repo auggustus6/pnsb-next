@@ -1,3 +1,6 @@
+import Disqus from "components/featureComponents/Disqus";
+import Container from "components/layoutComponents/Container";
+import Spacing from "components/layoutComponents/Spacing";
 import { NoticiaEntity } from "graphql/generated/schema";
 import BlogLayout from "layouts/BlogLayout";
 
@@ -15,7 +18,12 @@ const NoticiaTemplate = ({ noticia }: PastoraisTemplateProps) => {
       postContent={noticia?.attributes?.Descricao || undefined}
       publishedAt={noticia?.attributes?.publishedAt}
       videoUrl={noticia?.attributes?.Video || undefined}
-    />
+    >
+      <Container style={{maxWidth: "1045px"}}>
+        <Disqus />
+      </Container>
+      <Spacing size={6}/>
+    </BlogLayout>
   );
 };
 

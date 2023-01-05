@@ -75,7 +75,7 @@ const Footer = () => {
               <ChurchIcon />
               <p>Rua Vergilio Dias de Castro, São José do Rio Preto - SP</p>
             </Styles.Info>
-            <Styles.Info href="mailto:pnsbrasil1@gmail.com">
+            <Styles.Info href="mailto:pnsbrasil1@gmail">
               <EmailIcon />
               <p>pnsbrasil1@gmail.com</p>
             </Styles.Info>
@@ -108,6 +108,10 @@ const Footer = () => {
               <p>
                 <span>Sábados:</span> das 9h às 13h00.
               </p>
+              <p>CNPJ.: 450969890090-92</p>
+              <Link href={""}>
+                <span style={{color: theme.colors.primary, cursor:"pointer"}}>Politicas de privacidade</span>
+              </Link>
               <Styles.Social>
                 <ul>
                   <li>
