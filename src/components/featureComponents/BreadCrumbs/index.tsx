@@ -11,7 +11,7 @@ type BreadCrumbsProps = {
 const BreadCrumbs = ({ className }: BreadCrumbsProps) => {
   const router = useRouter();
 
-  const breads = router.asPath.split("/");
+  const breads = router.asPath.split("?")[0].split("/");
   breads.shift();
 
   const currentPage = breads.slice(-1)[0]; //getting last element
@@ -27,16 +27,14 @@ const BreadCrumbs = ({ className }: BreadCrumbsProps) => {
       </CustomNextLink>
       <Styles.NextIcon />
       {breads.map((bread, i) => (
-        <div key={bread} style={{display:"flex"}}>
+        <div key={bread} style={{ display: "flex" }}>
           <CustomNextLink href={getLink(i)} key={bread}>
             {urlToTitle(bread)}
           </CustomNextLink>
           <Styles.NextIcon />
         </div>
       ))}
-      <span className="bread-active">
-        {urlToTitle(currentPage)}
-      </span>
+      <span className="bread-active">{urlToTitle(currentPage)}</span>
     </Styles.Wrapper>
   );
 };
