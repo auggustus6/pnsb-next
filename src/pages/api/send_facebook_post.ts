@@ -46,9 +46,7 @@ export default async function handler(
           process.env.NEXT_PUBLIC_FACEBOOK_API
         }/photos/?message=${encodeURIComponent(Titulo)} 
         %0A%0Ahttps://pnsb-next-qyl8pbs98-auggustus6.vercel.app/noticias/${Slug}
-        &url=${
-          Imagem.url
-        }
+        &url=${Imagem.url}
         &access_token=${process.env.NEXT_PUBLIC_FACEBOOK_ACCESS_TOKEN}`,
       );
 
@@ -64,7 +62,8 @@ export default async function handler(
     const result = await api.post(
       `https://graph.facebook.com/v15.0/${
         process.env.NEXT_PUBLIC_FACEBOOK_API
-      }/feed/?message=${encodeURIComponent(Titulo)}&access_token=${
+      }/feed/?message=${encodeURIComponent(Titulo)} 
+      %0A%0Ahttps://pnsb-next-qyl8pbs98-auggustus6.vercel.app/noticias/${Slug}&access_token=${
         process.env.NEXT_PUBLIC_FACEBOOK_ACCESS_TOKEN
       }`,
     );
