@@ -6,7 +6,7 @@ export const Wrapper = styled.div<{ $height: number }>`
   height: ${(p) => p.$height}px;
   overflow: hidden;
   gap: 34px;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 1rem;
   margin-bottom: 3rem;

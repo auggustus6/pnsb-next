@@ -7,7 +7,7 @@ export const CardsContainer = styled.div<{ $isList: boolean }>`
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: ${(p) =>
-    p.$isList ? "1fr" : "repeat(auto-fit, minmax(300px, 1fr))"};
+    p.$isList ? "1fr" : "repeat(auto-fill, minmax(300px, 1fr))"};
   justify-items: center;
   justify-content: flex-start;
   padding-top: 2rem;
