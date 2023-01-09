@@ -169,7 +169,7 @@ const Footer = () => {
       </Styles.ContainerFooter>
       <Styles.FooterByID>
         Desenvolvido com <span>amor e carinho</span> pela{" "}
-        <a href="https://www.iniciodesign.com.br/" target="_blank">
+        <a href="https://www.iniciodesign.com.br/" target="_blank" rel="noreferrer">
           <img src="/img/id.png" alt="logo inicio design"/>
         </a>
       </Styles.FooterByID>
