@@ -14,7 +14,13 @@ export default function Noticias({ noticias }: NoticiasProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const result = await client.query<NoticiasQuery>({ query: QR_NOTICIAS });
+  const result = await client.query<NoticiasQuery>({
+    query: QR_NOTICIAS,
+    variables: {
+      offset: 0,
+      limit: 8,
+    },
+  });
 
   return {
     props: { noticias: result.data },

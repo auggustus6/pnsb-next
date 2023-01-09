@@ -37,7 +37,11 @@ export const getStaticProps: GetStaticProps = async () => {
   });
   const events = await client.query<EventsQuery>({
     query: QR_EVENTS,
-    variables: { offset: 0, limit: 4 },
+    variables: {
+      offset: 0,
+      limit: 4,
+      afterDate: new Date(new Date().toLocaleDateString()),
+    },
   });
 
   const news = await client.query<NoticiasQuery>({
@@ -50,6 +54,11 @@ export const getStaticProps: GetStaticProps = async () => {
   });
 
   return {
-    props: { pastorais: pastoral.data, events: events.data, news: news.data, mass: mass.data },
+    props: {
+      pastorais: pastoral.data,
+      events: events.data,
+      news: news.data,
+      mass: mass.data,
+    },
   };
 };

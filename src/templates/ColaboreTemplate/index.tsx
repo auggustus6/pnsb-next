@@ -12,10 +12,6 @@ type ColaboreTemplateProps = {
 };
 
 const ColaboreTemplate = ({ children, className }: ColaboreTemplateProps) => {
-  useEffect(() => {
-    console.log("renderizei");
-  }, []);
-
   const theme = useTheme();
   return (
     <DefaultLayout breadCrumbs>

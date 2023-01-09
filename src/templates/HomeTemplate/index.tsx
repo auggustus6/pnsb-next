@@ -49,51 +49,56 @@ const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
     <DefaultLayout home>
       <FullWidthSection img="/img/bg-main.png" href="#footer">
         <Style.BannerContent>
-          <BannerRecentEvent
-            post={{
-              imgUrl:
-                events.events?.data[0].attributes?.Imagem?.data?.attributes
-                  ?.url || "",
-              slug: events.events?.data[0].attributes?.Slug || "",
-              title: events.events?.data[0].attributes?.Titulo || "",
-              link: `noticias/${events.events?.data[0].attributes?.Slug}` || "",
-              summary: events.events?.data[0].attributes?.Descricao || "",
-            }}
-          />
+          {events.events?.data.at(0) ? (
+            <BannerRecentEvent
+              post={{
+                imgUrl:
+                  events.events?.data[0].attributes?.Imagem?.data?.attributes
+                    ?.url || "",
+                slug: events.events?.data[0].attributes?.Slug || "",
+                title: events.events?.data[0].attributes?.Titulo || "",
+                link:
+                  `noticias/${events.events?.data[0].attributes?.Slug}` || "",
+                summary: events.events?.data[0].attributes?.Descricao || "",
+              }}
+            />
+          ) : null}
           <BannerSchedule mass={mass} />
         </Style.BannerContent>
       </FullWidthSection>
 
-      <Container style={{ paddingTop: "3rem" }}>
-        <SectionTitle
-          title={"Próximos eventos"}
-          subtitle={"Eventos que ocorrerão nos próximos dias:"}
-          titleColor={"primary"}
-        />
-        <FluidCardsContainer>
-          {events?.events?.data.map((event) => (
-            <DefaultCard
-              key={event.attributes?.Slug}
-              post={{
-                title: event.attributes?.Titulo || "",
-                link: `eventos/${event.attributes?.Slug}`,
-                summary: event.attributes?.Descricao || "",
-                slug: event.attributes?.Slug || "",
-                imgUrl: event.attributes?.Imagem?.data?.attributes?.url || "",
-                date: formatDate(event.attributes?.publishedAt),
-                time: formatTime(event.attributes?.publishedAt),
-              }}
-            />
-          ))}
-        </FluidCardsContainer>
-        <Spacing size={3} />
-        <BorderButton link="/eventos">VER MAIS</BorderButton>
-      </Container>
+      {events?.events?.data.at(0) ? (
+        <Container style={{ paddingTop: "3rem" }}>
+          <SectionTitle
+            title={"Próximos eventos"}
+            subtitle={"Eventos que ocorrerão nos próximos dias:"}
+            titleColor={"primary"}
+          />
+          <FluidCardsContainer>
+            {events?.events?.data.map((event) => (
+              <DefaultCard
+                key={event.attributes?.Slug}
+                post={{
+                  title: event.attributes?.Titulo || "",
+                  link: `eventos/${event.attributes?.Slug}`,
+                  summary: event.attributes?.Descricao || "",
+                  slug: event.attributes?.Slug || "",
+                  imgUrl: event.attributes?.Imagem?.data?.attributes?.url || "",
+                  date: formatDate(event.attributes?.publishedAt),
+                  time: formatTime(event.attributes?.publishedAt),
+                }}
+              />
+            ))}
+          </FluidCardsContainer>
+          <Spacing size={3} />
+          <BorderButton link="/eventos">VER MAIS</BorderButton>
+        </Container>
+      ) : <div style={{marginTop: "-3rem"}}></div>}
 
       <FullWidthSection
         color="secondary"
         height="222px"
-        style={{ marginTop: "3rem" }}
+        style={{ marginTop: "3rem", zIndex: "0" }}
       >
         <Container>
           <Style.DonateBanner>

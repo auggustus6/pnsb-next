@@ -14,7 +14,13 @@ export default function Noticias({ events }: EventsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const result = await client.query<EventsQuery>({ query: QR_EVENTS });
+  const result = await client.query<EventsQuery>({
+    query: QR_EVENTS,
+    variables: {
+      offset: 0,
+      limit: 8,
+    },
+  });
 
   return {
     props: { events: result.data },

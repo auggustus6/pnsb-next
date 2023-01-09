@@ -3,21 +3,12 @@ import { FR_EVENT } from "../fragments/MuralEventos";
 
 export const QR_EVENTS = gql`
   ${FR_EVENT}
-  query Events {
-    events {
-      data {
-        attributes {
-          ...FR_EVENT
-        }
-      }
-    }
-  }
-`;
-
-export const QR_EVENTS_BY_SLUG = gql`
-  ${FR_EVENT}
-  query GetEventBySlug($slug: StringFilterInput) {
-    events(filters: { Slug: $slug }) {
+  query Events($slug: String, $offset: Int, $limit: Int, $afterDate: DateTime) {
+    events(
+      filters: { Slug: { eq: $slug }, publishedAt: { gt: $afterDate } }
+      pagination: { start: $offset, limit: $limit }
+      sort: "publishedAt:DESC"
+    ) {
       data {
         attributes {
           ...FR_EVENT

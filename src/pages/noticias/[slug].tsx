@@ -1,6 +1,6 @@
 import client from "graphql/client";
 import { NoticiaEntity, NoticiasQuery } from "graphql/generated/schema";
-import { QR_GET_NOTICIA_BY_SLUG, QR_NOTICIAS } from "graphql/querys/Noticias";
+import {  QR_NOTICIAS } from "graphql/querys/Noticias";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import NoticiaTemplate from "templates/NoticiaPageTemplate/NoticiaTemplate";
@@ -19,7 +19,7 @@ export default function NoticiaPost({ noticia }: NoticiaPostProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const result = await client.query<NoticiasQuery>({
-    query: QR_GET_NOTICIA_BY_SLUG,
+    query: QR_NOTICIAS,
   });
 
   const paths = result.data.noticias?.data.map((noticia) => {
@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as SlugParams;
   const result = await client.query<NoticiasQuery>({
     query: QR_NOTICIAS,
-    variables: { $slug: slug },
+    variables: { slug },
   });
 
   return {

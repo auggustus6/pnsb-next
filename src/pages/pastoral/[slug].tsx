@@ -1,9 +1,6 @@
 import client from "graphql/client";
 import { PastoraisQuery, PastoralEntity } from "graphql/generated/schema";
-import {
-  QR_GET_PASTORAL_BY_SLUG,
-  QR_PASTORAIS,
-} from "graphql/querys/Pastorals";
+import { QR_PASTORAIS } from "graphql/querys/Pastorals";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import PastoralTemplate from "templates/PastoralPageTemplate/PastoralTemplate";
@@ -40,8 +37,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as SlugParams;
   const result = await client.query<PastoraisQuery>({
-    query: QR_GET_PASTORAL_BY_SLUG,
-    variables: { $slug: slug },
+    query: QR_PASTORAIS,
+    variables: { slug },
   });
 
   return {

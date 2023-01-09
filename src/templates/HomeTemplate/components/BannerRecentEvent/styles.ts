@@ -2,6 +2,7 @@ import Logo from "components/layoutComponents/Logo";
 import styled from "styled-components";
 import media from "styled-media-query";
 import { BREAKPOINTS } from "utils/breakpoints";
+import { textOverflowVertical } from "utils/cssUtil";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -99,5 +100,9 @@ export const Info = styled.div`
     &:hover {
       color: ${(p) => p.theme.colors.primary};
     }
+  }
+
+  p {
+    ${textOverflowVertical(8, 1)}
   }
 `;

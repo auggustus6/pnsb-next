@@ -9,20 +9,20 @@ interface PastoraisTemplateProps {
 }
 
 const NoticiaTemplate = ({ noticia }: PastoraisTemplateProps) => {
-  const bgImage = noticia?.attributes?.Galeria?.data[0].attributes?.url;
+  const bgImage = noticia?.attributes?.Imagem.data?.attributes?.url
 
   return (
     <BlogLayout
-      bgImg={bgImage}
+      bgImg={bgImage || "/svgs/no_content.svg"}
       postTitle={noticia?.attributes?.Titulo}
       postContent={noticia?.attributes?.Descricao || undefined}
       publishedAt={noticia?.attributes?.publishedAt}
       videoUrl={noticia?.attributes?.Video || undefined}
     >
-      <Container style={{maxWidth: "1045px"}}>
+      <Container style={{ maxWidth: "1045px" }}>
         <Disqus />
       </Container>
-      <Spacing size={6}/>
+      <Spacing size={6} />
     </BlogLayout>
   );
 };

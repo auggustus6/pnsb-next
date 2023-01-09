@@ -19,6 +19,7 @@ type MyFormProps = {
 const MyForm = (props: FormikProps<MyFormProps>) => {
   const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
     props;
+
   return (
     <Styles.Wrapper onSubmit={handleSubmit}>
       <DefaultInput
@@ -101,7 +102,6 @@ const ContactForm = withFormik({
         },
       });
 
-
       if (mutationResult.errors) {
         customSwal({
           title:
@@ -118,7 +118,6 @@ const ContactForm = withFormik({
           confirmButtonText: "Ok",
         });
       }
-
 
       setSubmitting(false);
       resetForm();

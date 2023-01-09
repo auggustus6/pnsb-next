@@ -4,8 +4,6 @@ import { BREAKPOINTS } from "utils/breakpoints";
 import Container from "../Container";
 
 export const Wrapper = styled.div`
-  padding-bottom: 6rem;
-
   h5 {
     margin-bottom: 1rem;
   }
@@ -24,8 +22,8 @@ export const ContainerFooterLogo = styled(Container)`
 
   height: 150px;
 
-  @media(max-width:${BREAKPOINTS.small}){
-      justify-content: center;
+  @media (max-width: ${BREAKPOINTS.small}) {
+    justify-content: center;
   }
 `;
 
@@ -94,7 +92,8 @@ export const ContainerFooter = styled(Container)`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  padding-top: 6rem;
+  padding-top: 3rem;
+  padding-bottom: 6rem;
 
   ${media.lessThan("large")`
     gap: 2rem;
@@ -178,5 +177,27 @@ export const Social = styled.div`
     display: flex;
     list-style: none;
     gap: 10px;
+  }
+`;
+
+export const FooterByID = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  height: 2.2rem;
+  /* background: ${(p) => p.theme.colors.secondary}; */
+  background: #333;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 0.875rem;
+
+  a {
+    margin-top: 0.1rem;
+  }
+
+  img {
+    height: 16px;
+    width: fill;
   }
 `;

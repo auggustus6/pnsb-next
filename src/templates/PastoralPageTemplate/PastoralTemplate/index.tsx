@@ -5,14 +5,18 @@ import { PastoralEntity } from "graphql/generated/schema";
 import BlogLayout from "layouts/BlogLayout";
 import { DefaultButton } from "components/customHtmlComponents/Buttons";
 import Modal from "components/featureComponents/Modal";
+import { useRouter } from "next/dist/client/router";
 
 interface PastoraisTemplateProps {
   pastoral: PastoralEntity;
 }
 
 const PastoralTemplate = ({ pastoral }: PastoraisTemplateProps) => {
+  const router = useRouter();
   const { toggleModal } = useModal();
-  const bgImage = pastoral?.attributes?.Galeria?.data[0].attributes?.url;
+  const bgImage = pastoral?.attributes?.Imagem?.data?.attributes?.url;
+
+  // console.log(router.back());
 
   return (
     <BlogLayout

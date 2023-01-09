@@ -7,16 +7,28 @@ import PastoraisIndexTemplate from "templates/PastoralPageTemplate/PastoralIndex
 
 type PastoraisProps = {
   pastorais: PastoraisQuery;
+  postLength: number;
 };
 
-export default function Pastorais({ pastorais }: PastoraisProps) {
-  return <PastoraisIndexTemplate pastorais={pastorais} />;
+export default function Pastorais({ pastorais, postLength }: PastoraisProps) {
+  return (
+    <PastoraisIndexTemplate pastorais={pastorais} postLength={postLength} />
+  );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const result = await client.query<PastoraisQuery>({ query: QR_PASTORAIS });
+  const result = await client.query<PastoraisQuery>({
+    query: QR_PASTORAIS,
+    variables: {
+      offset: 0,
+      limit: 8,
+    },
+  });
 
   return {
-    props: { pastorais: result.data },
+    props: {
+      pastorais: result.data,
+      postLength: result.data.pastorals?.meta.pagination.total,
+    },
   };
 };

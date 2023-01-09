@@ -12,8 +12,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  console.log(req.body);
-
   try {
     if (
       req.headers["authorization"] !==
@@ -24,10 +22,6 @@ export default async function handler(
 
     const { Titulo, Imagem, Slug } = req.body.entry;
 
-    console.log(Titulo, Imagem);
-
-    console.log("1");
-
     if (req.method !== "POST") {
       return res.status(405).json({ error: "METHOD NOT ALLOWED!" });
     }
@@ -36,11 +30,7 @@ export default async function handler(
       return res.status(400).json({ error: "A MESSAGE IS REQUIRED!" });
     }
 
-    console.log("2");
-
     if (Imagem) {
-      console.log("3");
-
       const result = await api.post(
         `https://graph.facebook.com/v15.0/${
           process.env.NEXT_PUBLIC_FACEBOOK_API
@@ -50,14 +40,11 @@ export default async function handler(
         &access_token=${process.env.NEXT_PUBLIC_FACEBOOK_ACCESS_TOKEN}`,
       );
 
-      console.log(result);
       if (result.data?.data?.id) {
         return res.status(500).json({ error: "ERROR POSTING TO FACEBOOK!" });
       }
       return res.status(200).send("");
     }
-
-    console.log("4");
 
     const result = await api.post(
       `https://graph.facebook.com/v15.0/${

@@ -4,8 +4,7 @@ import {
   EventsQuery,
   NoticiasQuery,
 } from "graphql/generated/schema";
-import { QR_EVENTS, QR_EVENTS_BY_SLUG } from "graphql/querys/MuralEventos";
-import { QR_GET_NOTICIA_BY_SLUG } from "graphql/querys/Noticias";
+import { QR_EVENTS } from "graphql/querys/MuralEventos";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import EventsTemplate from "templates/EventsPageTemplate/EventsTemplate";
@@ -44,8 +43,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as SlugParams;
   const result = await client.query<EventsQuery>({
-    query: QR_EVENTS_BY_SLUG,
-    variables: { $slug: slug },
+    query: QR_EVENTS,
+    variables: { slug },
   });
 
   return {

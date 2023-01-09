@@ -3,24 +3,20 @@ import { FR_PASTORAIS } from "../fragments/Pastorais";
 
 export const QR_PASTORAIS = gql`
   ${FR_PASTORAIS}
-  query Pastorais {
-    pastorals {
+  query Pastorais($slug: String, $offset: Int, $limit: Int) {
+    pastorals(
+      filters: { Slug: { eq: $slug } }
+      pagination: { start: $offset, limit: $limit }
+      sort: "publishedAt:DESC"
+    ) {
       data {
         attributes {
           ...FR_PASTORAIS
         }
       }
-    }
-  }
-`;
-
-export const QR_GET_PASTORAL_BY_SLUG = gql`
-  ${FR_PASTORAIS}
-  query GetPastoralBySlug($slug: StringFilterInput) {
-    pastorals(filters: { Slug: $slug }) {
-      data {
-        attributes {
-          ...FR_PASTORAIS
+      meta {
+        pagination {
+          total
         }
       }
     }

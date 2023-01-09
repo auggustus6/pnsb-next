@@ -8,6 +8,8 @@ import { MT_WANNA_PARTICIPATE } from "graphql/mutations/pastorals";
 import { DefaultButton } from "components/customHtmlComponents/Buttons";
 import { DefaultInput } from "components/customHtmlComponents/Inputs";
 import { FormSection } from "components/layoutComponents/Sections";
+import { useModal } from "hooks/useModal";
+import * as Styles from "./styles"
 
 type MyFormProps = {
   name: string;
@@ -20,11 +22,13 @@ const MyForm = (props: FormikProps<MyFormProps>) => {
   const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
     props;
   const router = useRouter();
+  const { closeAllModals } = useModal();
 
   return (
-    <FormSection imgUrl="/img/jesus.jpg">
+    <FormSection imgUrl="/img/jesus.jpg" style={{position: "relative"}}>
+      <Styles.CloseButton onClick={closeAllModals} />
       <h4 style={{ color: theme.colors.primary, marginBottom: "1rem" }}>
-        Algum Titulo Legal
+        Participe
       </h4>
 
       <input type="hidden" value={router.asPath.split("/").slice(-1)} />

@@ -3,7 +3,7 @@ import { FR_HORARIOS_MISSAS } from "../fragments/HorariosMissa";
 
 export const QR_HORARIOS_MISSAS = gql`
   ${FR_HORARIOS_MISSAS}
-  query HorariosMissas{
+  query HorariosMissas {
     horariosMissas {
       data {
         attributes {

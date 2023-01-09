@@ -110,7 +110,11 @@ const Footer = () => {
               </p>
               <p>CNPJ.: 450969890090-92</p>
               <Link href={""}>
-                <span style={{color: theme.colors.primary, cursor:"pointer"}}>Politicas de privacidade</span>
+                <span
+                  style={{ color: theme.colors.primary, cursor: "pointer" }}
+                >
+                  Politicas de privacidade
+                </span>
               </Link>
               <Styles.Social>
                 <ul>
@@ -163,6 +167,12 @@ const Footer = () => {
           </Styles.WrapperLinks>
         </Styles.NavFooter>
       </Styles.ContainerFooter>
+      <Styles.FooterByID>
+        Desenvolvido com <span>amor e carinho</span> pela{" "}
+        <a href="https://www.iniciodesign.com.br/" target="_blank">
+          <img src="/img/id.png" alt="logo inicio design"/>
+        </a>
+      </Styles.FooterByID>
     </Styles.Wrapper>
   );
 };

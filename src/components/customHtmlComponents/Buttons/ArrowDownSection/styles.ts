@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   left: calc(50% - var(---size) / 2);
   bottom: calc((var(--size) / 2) * -1);
 
+  z-index: 1;
   cursor: pointer;
 
   &:before {
@@ -14,8 +15,6 @@ export const Wrapper = styled.div`
     position: absolute;
     left: -8px;
     top: -8px;
-
-    z-index: 0;
 
     width: calc(var(--size) + 16px);
     height: calc(var(--size) + 16px);
@@ -47,11 +46,11 @@ export const MyLink = styled.a`
 
   @keyframes arrowUp {
     from {
-      transform: translateY(0);
+      transform: translateY(-2px);
     }
 
     to {
-      transform: translateY(4px);
+      transform: translateY(3px);
     }
   }
 

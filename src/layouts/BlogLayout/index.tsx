@@ -3,7 +3,6 @@ import Container from "components/layoutComponents/Container";
 import { BlogContentSection } from "components/layoutComponents/Sections";
 import FullWidthSection from "components/layoutComponents/Sections/FullWidthSection";
 import DefaultLayout from "layouts/DefaultLayout";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import { AiOutlineArrowLeft as BackIcon } from "react-icons/ai";
@@ -26,19 +25,23 @@ const BlogLayout = ({
   videoUrl,
 }: BlogLayoutProps) => {
   const router = useRouter();
-  const backLink = router.asPath.split("/").slice(0, -1).join("/");
 
   return (
     <DefaultLayout>
-      <FullWidthSection img={bgImg} height="470px" />
+      <FullWidthSection img={bgImg || "/svgs/no_content.svg"} height="470px" />
       <Container>
         <div style={{ padding: "1rem 0 2rem" }}>
           <BreadCrumbs />
         </div>
 
-        <Link href={backLink}>
-          <BackIcon size={30} cursor="pointer" opacity={0.7} />
-        </Link>
+        <BackIcon
+          size={30}
+          cursor="pointer"
+          opacity={0.7}
+          onClick={() => {
+            router.back();
+          }}
+        />
 
         <BlogContentSection
           title={postTitle}

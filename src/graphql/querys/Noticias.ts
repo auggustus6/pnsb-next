@@ -3,21 +3,12 @@ import { FR_NOTICIAS } from "graphql/fragments/Noticias";
 
 export const QR_NOTICIAS = gql`
   ${FR_NOTICIAS}
-  query Noticias {
-    noticias {
-      data {
-        attributes {
-          ...FR_NOTICIAS
-        }
-      }
-    }
-  }
-`;
-
-export const QR_GET_NOTICIA_BY_SLUG = gql`
-  ${FR_NOTICIAS}
-  query GetNoticiaBySlug($slug: StringFilterInput) {
-    noticias(filters: { Slug: $slug }) {
+  query Noticias($slug: String, $offset: Int, $limit: Int) {
+    noticias(
+      filters: { Slug: { eq: $slug } }
+      pagination: { start: $offset, limit: $limit }
+      sort: "publishedAt:DESC"
+    ) {
       data {
         attributes {
           ...FR_NOTICIAS
