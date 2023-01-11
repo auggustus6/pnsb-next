@@ -10,7 +10,6 @@ import theme from "styles/theme";
 
 import * as Styles from "./styles";
 
-
 export default function InstitucionalMenu() {
   const { data: mass } = useQuery<HorariosMissasQuery>(QR_HORARIOS_MISSAS);
 
@@ -39,7 +38,11 @@ export default function InstitucionalMenu() {
           volutpat. Etiam est est, suscipit.
         </p>
 
-        <Styles.MoreAboutButton>SAIBA MAIS</Styles.MoreAboutButton>
+        <Link href={"institucional"}>
+          <span>
+            <Styles.MoreAboutButton>SAIBA MAIS</Styles.MoreAboutButton>
+          </span>
+        </Link>
       </MegaMenuItem>
       <MegaMenuItem title="HORÁRIOS DE MISSAS" titleColor={theme.colors.green}>
         <MegaMenuCard imgLink="/img/bg-main.png" title="PRESENCIAIS">

@@ -15,12 +15,18 @@ const MegaMenuItem = ({
   className,
   title,
   titleColor,
+  mobileHref,
 }: MegaMenuItemProps) => {
   return (
     <>
       {/* <Styles.MobileTitle $titleColor={mobileTitleColor}>{title}</Styles.MobileTitle> */}
       <Styles.Row className={className}>
-        {title && <h5 style={{ color: titleColor }}>{title}</h5>}
+        {title && mobileHref && (
+          <Link href={mobileHref}>
+            <h5 style={{ color: titleColor, cursor: "pointer" }}>{title}</h5>
+          </Link>
+        )}
+        {title && !mobileHref && <h5 style={{ color: titleColor }}>{title}</h5>}
         {children}
       </Styles.Row>
     </>

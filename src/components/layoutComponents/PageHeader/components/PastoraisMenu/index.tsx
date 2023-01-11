@@ -16,11 +16,11 @@ export default function PastoraisMenu() {
     variables: { offset: 0, limit: 3 },
   });
 
-  // const firstColumn = pastorais?.pastorals?.data.slice(0, 2);
-  // const secondColumn = pastorais?.pastorals?.data.slice(2, 3);
+  const firstColumn = pastorais?.pastorals?.data.slice(0, 2);
+  const secondColumn = pastorais?.pastorals?.data.slice(2, 3)[0];
 
-  const firstColumn = new Array(2).fill(pastorais?.pastorals?.data[0]);
-  const secondColumn = pastorais?.pastorals?.data[0];
+  // const firstColumn = new Array(2).fill(pastorais?.pastorals?.data[0]);
+  // const secondColumn = pastorais?.pastorals?.data[0];
 
   return (
     <MegaMenu imgSrc="/img/image1.png">
@@ -39,7 +39,12 @@ export default function PastoraisMenu() {
           volutpat. Etiam est est, suscipit.
         </p>
       </MegaMenuItem>
-      <Styles.Item title="PASTORAIS" titleColor={theme.colors.turquoise}>
+
+      <Styles.Item
+        title="PASTORAIS"
+        titleColor={theme.colors.turquoise}
+        mobileHref="pastoral"
+      >
         {firstColumn?.map((past) => (
           <MegaMenuCard
             key={past?.attributes?.Slug}
@@ -53,21 +58,23 @@ export default function PastoraisMenu() {
           </MegaMenuCard>
         ))}
       </Styles.Item>
-      <Styles.Item>
-        <Styles.CustomSpace />
-        {/**<Spacing size={1.5} />  1.5rem is the same size of the title */}
-        <MegaMenuCard
-          key={secondColumn?.attributes?.Slug}
-          imgLink={secondColumn?.attributes?.Imagem?.data?.attributes?.url}
-          title={secondColumn?.attributes?.Titulo}
-          href={"/pastoral/" + secondColumn?.attributes?.Slug}
-        >
-          <span className="megamenu__card__text">
-            {markDownToPlainText(secondColumn?.attributes?.Descricao || "")}
-          </span>
-        </MegaMenuCard>
-        <Styles.Button>Ver mais</Styles.Button>
-      </Styles.Item>
+      {secondColumn && (
+        <Styles.Item>
+          <Styles.CustomSpace />
+          {/**<Spacing size={1.5} />  1.5rem is the same size of the title */}
+          <MegaMenuCard
+            key={secondColumn?.attributes?.Slug}
+            imgLink={secondColumn?.attributes?.Imagem?.data?.attributes?.url}
+            title={secondColumn?.attributes?.Titulo}
+            href={"/pastoral/" + secondColumn?.attributes?.Slug}
+          >
+            <span className="megamenu__card__text">
+              {markDownToPlainText(secondColumn?.attributes?.Descricao || "")}
+            </span>
+          </MegaMenuCard>
+          <Styles.Button>Ver mais</Styles.Button>
+        </Styles.Item>
+      )}
     </MegaMenu>
   );
 }

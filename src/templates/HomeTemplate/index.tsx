@@ -47,7 +47,12 @@ const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
 
   return (
     <DefaultLayout home>
-      <FullWidthSection img="/img/bg-main.png" href="#footer">
+      <FullWidthSection
+        img="/img/bg-main.png"
+        href={
+          events?.events?.data.at(0) ? "#next-events-section" : "#news-section"
+        }
+      >
         <Style.BannerContent>
           {events.events?.data.at(0) ? (
             <BannerRecentEvent
@@ -62,13 +67,15 @@ const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
                 summary: events.events?.data[0].attributes?.Descricao || "",
               }}
             />
-          ) : null}
+          ) : (
+            <div style={{ width: "480px" }} />
+          )}
           <BannerSchedule mass={mass} />
         </Style.BannerContent>
       </FullWidthSection>
 
       {events?.events?.data.at(0) ? (
-        <Container style={{ paddingTop: "3rem" }}>
+        <Container style={{ paddingTop: "3rem" }} id="next-events-section">
           <SectionTitle
             title={"Próximos eventos"}
             subtitle={"Eventos que ocorrerão nos próximos dias:"}
@@ -93,7 +100,9 @@ const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
           <Spacing size={3} />
           <BorderButton link="/eventos">VER MAIS</BorderButton>
         </Container>
-      ) : <div style={{marginTop: "-3rem"}}></div>}
+      ) : (
+        <div style={{ marginTop: "-3rem" }}></div>
+      )}
 
       <FullWidthSection
         color="secondary"
@@ -105,18 +114,22 @@ const HomeTemplate = ({ pastorais, events, news, mass }: HomeTemplateProps) => {
             <Style.Left>
               <Image src="/svgs/pray.svg" width={92} height={92} />
               <div>
-                <h2 style={{ color: "white" }}>Seja um Dizimista Fiel</h2>
+                <h2 style={{ color: "white" }}>
+                  Colabore com a nossa Paróquia.
+                </h2>
                 <p>
                   Ajude no crescimento de nossa obra, seja um dizimista fiel.
                 </p>
               </div>
             </Style.Left>
-            <Style.CustomButton>SEJA UM DIZIMISTA</Style.CustomButton>
+            <Style.CustomButton>
+              COLABORE COM A NOSSA PARÓQUIA
+            </Style.CustomButton>
           </Style.DonateBanner>
         </Container>
       </FullWidthSection>
 
-      <Container style={{ marginTop: "4rem" }}>
+      <Container style={{ marginTop: "4rem" }} id="news-section">
         <SectionTitle
           title={"Noticias da Igreja"}
           subtitle={"Eventos que ocorreram nos ultimos dias:"}

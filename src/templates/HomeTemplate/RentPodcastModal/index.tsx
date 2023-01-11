@@ -18,15 +18,15 @@ type MyFormProps = {
 };
 
 const RentPodcastModal = (props: FormikProps<MyFormProps>) => {
-  const {closeAllModals} = useModal();
+  const { closeAllModals } = useModal();
   const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
     props;
 
   return (
     <Styles.MyFormSection imgUrl="/img/estudio.png">
-      <Styles.CloseButton onClick={closeAllModals}/>
+      <Styles.CloseButton onClick={closeAllModals} />
       <h4 style={{ color: theme.colors.primary, marginBottom: "1rem" }}>
-        Algum Titulo Legal
+        Alugue nosso PodCast
       </h4>
 
       <DefaultInput
